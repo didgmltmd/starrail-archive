@@ -26,7 +26,7 @@ pnpm sync:gamedata
 - **HoYoLAB 연동**: 앱 안에서 로그인 → 보유 캐릭터 전체 불러오기. 로그인 정보는 Windows 자격 증명에 저장
 - **세팅 점검 / 파밍 추천**: 캐릭터별 권장 세팅(hsr-optimizer 기준 + 직접 정리한 세트)과 비교해 점수, 문제점, 돌아야 할 동굴/차원장식 순위. 등급 필터, 육성 제외 캐릭터 지정
 - **엔드 컨텐츠**: 혼돈의 기억 / 허구 이야기 / 종말의 환영 이번·지난 기간 기록 (HoYoLAB 실제 기록: 별, 점수, 사용 파티, 버프, 보스)
-- **친구**: UID로 친구 추가, 서로 공개한 캐릭터와 엔드 컨텐츠 기록 보기 → 설정: [docs/FRIENDS_SETUP.md](docs/FRIENDS_SETUP.md)
+- **친구**: UID로 친구 추가, 서로 공개한 캐릭터와 엔드 컨텐츠 기록 보기. 서버는 방장 PC에서 실행 → [docs/FRIENDS_SERVER.md](docs/FRIENDS_SERVER.md)
 - **자동 업데이트**: GitHub Releases에 새 버전을 올리면 앱이 알아서 업데이트 → 설정: [docs/UPDATES.md](docs/UPDATES.md)
 
 ## 동기화 주기
@@ -61,6 +61,6 @@ src/
   lib/useAccount.ts    연동 상태, 자동 동기화
   lib/audit.ts         성유물 점수, 세팅 점검
   lib/farming.ts       파밍 우선순위
-  lib/friends.ts       친구 공유 (Supabase)
+  lib/friends.ts       친구 공유 (방장 PC 서버: server/index.mjs)
 src-tauri/             데스크톱 앱 (Rust) — src/hoyolab.rs: 로그인 창, 쿠키 저장, HoYoLAB API
 ```

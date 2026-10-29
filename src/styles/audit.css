@@ -955,3 +955,104 @@ button.dist-item:disabled {
   color: var(--text);
   border-color: var(--line-strong);
 }
+
+/* ---------- 이잘키 benchmark, team builds ---------- */
+
+.bench {
+  padding: 10px 12px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  background: var(--row-alt);
+}
+.bench-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.bench-verdict {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 10px;
+  color: #f2a46c;
+  border: 1px solid rgba(242, 164, 108, 0.45);
+}
+.bench-verdict.ok {
+  color: var(--bonus);
+  border-color: rgba(143, 227, 196, 0.5);
+}
+.bench-eid {
+  font-size: 11px;
+  color: var(--text-faint);
+}
+.bench-eid.warn {
+  color: #f2a46c;
+}
+.bench-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 28px;
+  font-size: 13px;
+}
+.bench-row img {
+  width: 16px;
+  height: 16px;
+}
+.bench-row > span:nth-child(2) {
+  flex: 1;
+}
+.bench-cur {
+  font-size: 15px;
+}
+.bench-target {
+  font-size: 13px;
+  color: var(--text-faint);
+  min-width: 60px;
+}
+.bench-row b {
+  width: 16px;
+  text-align: center;
+}
+.bench-row.ok b {
+  color: var(--bonus);
+}
+.bench-row.bad b,
+.bench-row.bad .bench-cur {
+  color: #f2a46c;
+}
+.bench-note {
+  margin: 6px 0 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-dim);
+}
+
+.team-builds {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.team-build {
+  padding: 10px 12px;
+  border-radius: 6px;
+  background: var(--row-alt);
+}
+.team-build b {
+  font-size: 13px;
+  color: var(--gold);
+}
+.team-build-sets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 6px;
+}
+.team-build p {
+  margin: 6px 0 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-dim);
+}

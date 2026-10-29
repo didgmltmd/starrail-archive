@@ -3,6 +3,9 @@ import { useMemo, useState } from "react";
 import { asset, formatStat, game, SLOT_NAMES, SLOT_ORDER, STATS } from "../data/game";
 import { auditCharacter, setLabel, statName, weightedStats, type CharacterAudit, type Grade, type Severity } from "../lib/audit";
 import { useExcluded } from "../lib/excluded";
+import { statTotal } from "../lib/stats";
+import { meta } from "../data/meta";
+import { Sources } from "../components/MetaBits";
 import type { Account } from "../types";
 import "../styles/audit.css";
 
@@ -311,6 +314,9 @@ function AuditDetail({
         })}
       </div>
 
+      <BenchmarkSection charId={audit.charId} character={character} />
+      <TeamBuildSection charId={audit.charId} />
+
       <h3 className="section-title">유효 부옵션</h3>
       <div className="weights">
         {weightedStats(build).map((w) => (
@@ -339,5 +345,77 @@ function AuditDetail({
         </ul>
       )}
     </div>
+  );
+}
+
+/** "이잘키" (well-built) stat thresholds from the weekly research, compared with the in-game stats. */
+function BenchmarkSection({ charId, character }: { charId: string; character: Account["characters"][number] }) {
+  const b = meta.benchmarks?.[charId];
+  if (!b) return null;
+  const rows = Object.entries(b.stats) as [keyof typeof STATS, number][];
+  const met = rows.filter(([k, v]) => statTotal(character, k) >= v).length;
+  const eidolonOk = b.eidolon === undefined || character.eidolon >= b.eidolon;
+  return (
+    <>
+      <h3 className="section-title">이잘키 기준</h3>
+      <div className="bench">
+        <div className="bench-head">
+          <span className={`bench-verdict ${met === rows.length ? "ok" : ""}`}>
+            {met === rows.length ? "기준 달성" : `${rows.length}개 중 ${met}개 달성`}
+          </span>
+          {b.eidolon !== undefined && (
+            <span className={`bench-eid ${eidolonOk ? "" : "warn"}`}>성혼 {b.eidolon} 이상 기준</span>
+          )}
+        </div>
+        {rows.map(([k, v]) => {
+          const cur = statTotal(character, k);
+          const ok = cur >= v;
+          return (
+            <div key={k} className={`bench-row ${ok ? "ok" : "bad"}`}>
+              <img src={asset(STATS[k].icon)} alt="" />
+              <span>{statName(k)}</span>
+              <span className="num bench-cur">{formatStat(k, cur)}</span>
+              <span className="num bench-target">/ {formatStat(k, v)}</span>
+              <b>{ok ? "✓" : "✗"}</b>
+            </div>
+          );
+        })}
+        {b.note && <p className="bench-note">{b.note}</p>}
+        <Sources sources={b.sources} />
+      </div>
+    </>
+  );
+}
+
+/** Team- or eidolon-specific builds that differ from the default recommendation. */
+function TeamBuildSection({ charId }: { charId: string }) {
+  const list = (meta.teamBuilds ?? []).filter((t) => t.charId === charId);
+  if (!list.length) return null;
+  return (
+    <>
+      <h3 className="section-title">파티별 · 돌파별 세팅</h3>
+      <div className="team-builds">
+        {list.map((t, i) => (
+          <div key={i} className="team-build">
+            <b>{t.when}</b>
+            <div className="team-build-sets">
+              {(t.relicSets ?? []).map((p, j) => (
+                <span key={j} className="chip">{setLabel(p)}</span>
+              ))}
+              {(t.ornamentSets ?? []).map((id) => (
+                <span key={id} className="chip">{game.relicSets[id]?.name ?? id}</span>
+              ))}
+              {Object.entries(t.mains ?? {}).map(([slot, keys]) => (
+                <span key={slot} className="chip">
+                  {SLOT_NAMES[slot as keyof typeof SLOT_NAMES]} · {(keys ?? []).map(statName).join(" / ")}
+                </span>
+              ))}
+            </div>
+            {t.note && <p>{t.note}</p>}
+            <Sources sources={t.sources} />
+          </div>
+        ))}
+      </div>
+    </>
   );
 }

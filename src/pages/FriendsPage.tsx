@@ -8,7 +8,6 @@ import {
   getFriendUids,
   getLastPublished,
   getShareEnabled,
-  isFriendsConfigured,
   isValidUid,
   publishProfile,
   removeFriendUid,
@@ -36,7 +35,7 @@ export function FriendsPage({ myAccount }: { myAccount: Account }) {
   const [error, setError] = useState<string | null>(null);
 
   const refresh = useCallback(async (list: string[]) => {
-    if (!isFriendsConfigured() || list.length === 0) return;
+    if (list.length === 0) return;
     setLoading(true);
     setError(null);
     try {
@@ -54,7 +53,6 @@ export function FriendsPage({ myAccount }: { myAccount: Account }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (!isFriendsConfigured()) return <NotConfigured />;
 
   const friend = view.kind !== "list" ? profiles[view.uid] : undefined;
 
@@ -73,7 +71,7 @@ export function FriendsPage({ myAccount }: { myAccount: Account }) {
   if (view.kind === "endgame" && friend) {
     return (
       <div className="page">
-        <EndgamePage account={friend} title={`${friend.nickname}의 기록`} />
+        <EndgamePage account={friend} title={`${friend.nickname}의 기록`} showStrategy={false} />
         <FriendBar label={`${friend.nickname}의 엔드 컨텐츠`} back="친구 목록" onBack={() => setView({ kind: "list" })} />
       </div>
     );
@@ -377,30 +375,11 @@ function MySharePanel({ account }: { account: Account }) {
           <button className="pill-btn share-publish" onClick={publish} disabled={!enabled || busy}>
             {busy ? "처리 중…" : "지금 공개/갱신"}
           </button>
-          <p className="share-note">공개되는 건 캐릭터, 광추, 성유물 정보뿐이에요. 로그인 정보는 이 PC 밖으로 나가지 않아요.</p>
+          <p className="share-note">공개되는 건 캐릭터, 광추, 성유물, 엔드 컨텐츠 기록뿐이에요. 로그인 정보는 이 PC 밖으로 나가지 않아요.</p>
         </>
       )}
 
       {msg && <p className={`share-msg ${msg.ok ? "ok" : "err"}`}>{msg.text}</p>}
     </aside>
-  );
-}
-
-function NotConfigured() {
-  return (
-    <div className="page friends-page center">
-      <motion.div className="friends-setup" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-        <div className="setup-emblem">
-          <IconFriends />
-        </div>
-        <h2>친구 기능 준비 중</h2>
-        <p>
-          친구끼리 캐릭터를 보려면 공유 서버(Supabase) 설정이 필요해요.
-          <br />
-          앱을 만든 사람이 한 번만 설정하면, 이후 배포되는 앱에서는 바로 쓸 수 있어요.
-        </p>
-        <span className="setup-doc">설정 방법: docs/FRIENDS_SETUP.md</span>
-      </motion.div>
-    </div>
   );
 }

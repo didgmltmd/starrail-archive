@@ -660,3 +660,38 @@ img {
   color: #ffb4a3;
   border-color: rgba(244, 91, 66, 0.45);
 }
+
+/* ---------- Sources (researched meta) ---------- */
+
+.sources {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  margin-top: 6px;
+}
+.sources-label {
+  font-size: 10px;
+  color: var(--text-faint);
+  margin-right: 2px;
+}
+.source-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 20px;
+  padding: 0 8px;
+  border-radius: 10px;
+  font-size: 10px;
+  color: var(--text-dim);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line);
+  transition: all 0.15s;
+}
+.source-chip span {
+  color: var(--text-faint);
+}
+.source-chip:hover {
+  color: var(--gold);
+  border-color: rgba(220, 188, 124, 0.5);
+}

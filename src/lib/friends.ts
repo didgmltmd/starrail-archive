@@ -1,6 +1,6 @@
 // Friend sharing: publish my game data (never login cookies) and read friends' data by UID.
 import type { Account, ChallengeRecords, OwnedCharacter } from "../types";
-import { ensureSession, getSupabase, supabaseConfigured } from "./supabase";
+import { api } from "./server";
 
 const KEY_SHARE = "sra.friends.share";
 const KEY_FRIENDS = "sra.friends.uids";
@@ -23,8 +23,9 @@ function write(key: string, value: string | null) {
   }
 }
 
+/** The friend server lives on the host PC, so the feature is always available (it may be offline). */
 export function isFriendsConfigured(): boolean {
-  return supabaseConfigured;
+  return true;
 }
 
 export function isValidUid(uid: string): boolean {
@@ -71,90 +72,107 @@ export function removeFriendUid(uid: string): string[] {
   return list;
 }
 
-// ---------- Server ----------
+// ---------- Server (host PC, see server/index.mjs) ----------
 
-interface ProfileRow {
+const KEY_CACHE = "sra.friends.cache";
+
+interface ProfileDoc {
   uid: string;
-  nickname: string | null;
-  level: number | null;
-  avatar_id: string | null;
-  signature: string | null;
-  characters: unknown;
+  nickname?: string;
+  level?: number;
+  avatarId?: string;
+  signature?: string;
+  characters?: unknown;
   challenges?: unknown;
-  updated_at: string;
+  updatedAt: string;
 }
 
-function toAccount(row: ProfileRow): Account {
+function toAccount(d: ProfileDoc): Account {
   return {
-    uid: row.uid,
-    nickname: row.nickname ?? "개척자",
-    level: row.level ?? 0,
-    avatarId: row.avatar_id ?? "8001",
-    signature: row.signature ?? "",
-    characters: Array.isArray(row.characters) ? (row.characters as OwnedCharacter[]) : [],
-    updatedAt: row.updated_at,
+    uid: d.uid,
+    nickname: d.nickname || "개척자",
+    level: d.level ?? 0,
+    avatarId: d.avatarId ?? "8001",
+    signature: d.signature ?? "",
+    characters: Array.isArray(d.characters) ? (d.characters as OwnedCharacter[]) : [],
+    updatedAt: d.updatedAt,
     source: "hoyolab",
-    challenges: (row.challenges as ChallengeRecords | null) ?? undefined,
+    challenges: (d.challenges as ChallengeRecords | null) ?? undefined,
   };
 }
 
+function friendlyError(e: unknown, action: string): Error {
+  const err = e as Error & { status?: number };
+  if (err.status === 403) return new Error("이 UID는 다른 기기에서 이미 공개했어요. 처음 공개한 PC에서 공개를 꺼 주세요.");
+  if (err.status === 429) return new Error("요청이 너무 많아요. 잠시 후 다시 시도해 주세요.");
+  return new Error(err.status ? `${action}: ${err.message}` : err.message);
+}
+
 /**
- * Uploads my account so friends can see it. Does nothing unless sharing is configured,
- * switched on, and the data comes from HoYoLAB (sample data is never published).
+ * Uploads my account so friends can see it. Does nothing unless sharing is switched on
+ * and the data comes from HoYoLAB (sample data is never published).
  */
 export async function publishProfile(account: Account): Promise<void> {
-  const sb = getSupabase();
-  if (!sb || !getShareEnabled() || account.source !== "hoyolab") return;
-  await ensureSession(sb);
-
-  const { error } = await sb.from("profiles").upsert(
-    {
-      uid: account.uid,
-      nickname: account.nickname,
-      level: account.level,
-      avatar_id: account.avatarId,
-      signature: account.signature,
-      characters: account.characters,
-      challenges: account.challenges ?? null,
-      updated_at: new Date().toISOString(),
-    },
-    { onConflict: "uid" },
-  );
-  if (error) {
-    // RLS rejects updates to a UID that another install published first
-    if (error.code === "42501" || /row-level security/i.test(error.message)) {
-      throw new Error("이 UID는 다른 기기에서 이미 공개했어요. 처음 공개한 PC에서 공개를 꺼 주세요.");
-    }
-    throw new Error(`공개하지 못했어요: ${error.message}`);
+  if (!getShareEnabled() || account.source !== "hoyolab") return;
+  try {
+    await api(`/api/profiles/${account.uid}`, {
+      method: "PUT",
+      secret: true,
+      body: JSON.stringify({
+        nickname: account.nickname,
+        level: account.level,
+        avatarId: account.avatarId,
+        signature: account.signature,
+        characters: account.characters,
+        challenges: account.challenges ?? null,
+      }),
+    });
+  } catch (e) {
+    throw friendlyError(e, "공개하지 못했어요");
   }
   write(KEY_PUBLISHED, new Date().toISOString());
 }
 
 /** Removes my published data (used when sharing is switched off). */
 export async function unpublishProfile(uid: string): Promise<void> {
-  const sb = getSupabase();
-  if (!sb) return;
-  await ensureSession(sb);
-  const { error } = await sb.from("profiles").delete().eq("uid", uid);
-  if (error) throw new Error(`공개를 해제하지 못했어요: ${error.message}`);
+  try {
+    await api(`/api/profiles/${uid}`, { method: "DELETE", secret: true });
+  } catch (e) {
+    throw friendlyError(e, "공개를 해제하지 못했어요");
+  }
   write(KEY_PUBLISHED, null);
 }
 
-export async function fetchProfile(uid: string): Promise<Account | null> {
-  const sb = getSupabase();
-  if (!sb) return null;
-  const { data, error } = await sb.from("profiles").select("*").eq("uid", uid.trim()).maybeSingle();
-  if (error) throw new Error(`친구 정보를 불러오지 못했어요: ${error.message}`);
-  return data ? toAccount(data as ProfileRow) : null;
+function readCache(): Record<string, ProfileDoc> {
+  try {
+    return JSON.parse(read(KEY_CACHE) ?? "{}");
+  } catch {
+    return {};
+  }
 }
 
-/** Loads several friends at once. UIDs that never published are simply missing from the map. */
+export async function fetchProfile(uid: string): Promise<Account | null> {
+  return (await fetchProfiles([uid.trim()]))[uid.trim()] ?? null;
+}
+
+/**
+ * Loads several friends at once. UIDs that never published are missing from the map.
+ * When the server is offline, the last downloaded copies are returned (and the error is rethrown
+ * only if there is nothing cached).
+ */
 export async function fetchProfiles(uids: string[]): Promise<Record<string, Account>> {
-  const sb = getSupabase();
-  if (!sb || uids.length === 0) return {};
-  const { data, error } = await sb.from("profiles").select("*").in("uid", uids);
-  if (error) throw new Error(`친구 정보를 불러오지 못했어요: ${error.message}`);
-  return Object.fromEntries((data as ProfileRow[]).map((r) => [r.uid, toAccount(r)]));
+  if (uids.length === 0) return {};
+  const cache = readCache();
+  try {
+    const { profiles } = await api<{ profiles: Record<string, ProfileDoc> }>(`/api/profiles?uids=${uids.join(",")}`);
+    const next = { ...cache, ...profiles };
+    write(KEY_CACHE, JSON.stringify(next));
+    return Object.fromEntries(Object.entries(profiles).map(([u, d]) => [u, toAccount(d)]));
+  } catch (e) {
+    const cached = Object.fromEntries(uids.filter((u) => cache[u]).map((u) => [u, toAccount(cache[u])]));
+    if (Object.keys(cached).length) return cached;
+    throw friendlyError(e, "친구 정보를 불러오지 못했어요");
+  }
 }
 
 /** "방금 전", "5분 전", "3시간 전", "2일 전" */

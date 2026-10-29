@@ -4,14 +4,25 @@ import { IconStar } from "../components/icons";
 import { asset, game } from "../data/game";
 import { CHALLENGE_KINDS, CHALLENGE_NAMES, daysLeft, maxStars } from "../lib/challenges";
 import type { Account, ChallengeKind, ChallengePeriod, ChallengeTeam } from "../types";
+import { StrategyPanel } from "./StrategyPanel";
 import "../styles/endgame.css";
 
 type Which = "current" | "previous";
 
 const TEAM_LABEL = ["전반", "후반", "3번째"];
 
-export function EndgamePage({ account, title }: { account: Account; title?: string }) {
+export function EndgamePage({
+  account,
+  title,
+  showStrategy = true,
+}: {
+  account: Account;
+  title?: string;
+  /** Show the researched strategy / recommendations tab (my own account only) */
+  showStrategy?: boolean;
+}) {
   const [which, setWhich] = useState<Which>("current");
+  const [view, setView] = useState<"records" | "strategy">("records");
   const [kind, setKind] = useState<ChallengeKind>("moc");
   const records = account.challenges?.[which];
   const period = records?.[kind];
@@ -62,14 +73,30 @@ export function EndgamePage({ account, title }: { account: Account; title?: stri
 
       <AnimatePresence mode="wait">
         <motion.div
-          key={which + kind}
+          key={which + kind + view}
           className="mode-detail"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
         >
-          {period?.hasData ? <PeriodDetail period={period} /> : <div className="endgame-empty small">이 기간에는 도전 기록이 없어요</div>}
+          {showStrategy && which === "current" && (
+            <div className="detail-tabs">
+              <button className={view === "records" ? "on" : ""} onClick={() => setView("records")}>
+                내 기록
+              </button>
+              <button className={view === "strategy" ? "on" : ""} onClick={() => setView("strategy")}>
+                공략 · 추천 파티
+              </button>
+            </div>
+          )}
+          {showStrategy && which === "current" && view === "strategy" ? (
+            <StrategyPanel kind={kind} account={account} />
+          ) : period?.hasData ? (
+            <PeriodDetail period={period} />
+          ) : (
+            <div className="endgame-empty small">이 기간에는 도전 기록이 없어요</div>
+          )}
         </motion.div>
       </AnimatePresence>
     </div>
