@@ -1,11 +1,2056 @@
 {
   "version": 1,
   "updatedAt": "2026-10-30",
-  "gameVersion": "",
-  "notes": [],
-  "rotations": {},
-  "teams": [],
-  "benchmarks": {},
-  "teamBuilds": [],
-  "buildPriority": []
+  "gameVersion": "4.6",
+  "notes": [
+    "이잘키 기준은 한국 커뮤니티 시트 「붕괴 : 스타레일 세팅 4.6V」(에펨코리아 '붕스판 이정도면 잘키웠다 표' 글에서 링크, ejk.gg도 같은 값)를 썼고 '치명타' 열을 치명타 확률 / 치명타 피해로 읽었다. 시트 수치 중 '(전투)'로 표시된 값은 benchmarks.stats에서 빼고 note에만 적었다.",
+    "시트는 2026-10-30 시점 4.6V 표기. 개별 행의 작성일은 확인 안 됨.",
+    "제레(1102) 시트 행은 CSV 내보내기에서 머리글과 섞여 조건별 수치를 확정하지 못해 Game8 영문 권장 스탯을 썼다.",
+    "ejk.gg는 단항•등황 속성을 '바람'으로, 개척자•환락 초상화를 8009로 표시함(사이트 데이터 오류로 보임, 수치는 시트와 일치).",
+    "혼돈의 기억: 12층 구성·약점은 나무위키(4.6 버전 '내세로의 도하' 항목)와 allthings.how(적 이름) 기준. 10층은 Game8 'Stage 10' 가이드 기준이며 'Automaton Spider', 'Flame Reaver of the Deepest Dark'의 한국어 이름은 확인 안 됨.",
+    "허구 이야기 노드 1 추천 약점: 나무위키는 얼음·번개, Timesaver는 얼음·허수로 달라서 공통인 얼음만 적었다. 종료일 2026-11-30은 Timesaver 기준(나무위키는 미정 표기).",
+    "종말의 환영 보스 한국어 이름은 플레이어 HoYoLAB 기록의 이름을 Game8 영문 이름(Soulhook Sovereign / Arbiter of the Lost Abyss / Fulminating Wolflord)에 대응시킨 것. 약점은 Game8만 명시. 선택 버프의 한국어 명칭(마법 시간, 빈틈 포착 등)과 효과의 정확한 대응은 확인 안 됨.",
+    "Prydwen, icy-veins, 아카라이브는 페이지 열람이 막혀(403) 출처로 쓰지 못했다.",
+    "다음 혼돈의 기억 「적자생존」은 2026-11-03 시작(나무위키, 버프: 아군이 필살기 발동 시 웃음 포인트 5pt 획득). 기간 시작 후 갱신 필요."
+  ],
+  "rotations": {
+    "moc": {
+      "name": "내세로의 도하",
+      "begin": "2026-09-28",
+      "end": "2026-11-02",
+      "summary": "기간 효과: 파티 편성 첫 번째 캐릭터가 환락 스킬 [극락의 소용돌이]를 얻어 모든 적에게 캐릭터 속성의 환락 피해 100%를 가함. 라운드 시작마다 아하가 웃음 포인트 20pt로 고정 집계되는 보너스 턴 1개를 얻음(웃음 포인트 소모 없음). 12층은 3파티 스타라이즈 모드(전반·중반·후반). 다음 기수 「적자생존」은 2026-11-03 시작.",
+      "sides": [
+        {
+          "label": "12층 전반",
+          "weaknesses": [
+            "Fire",
+            "Quantum"
+          ],
+          "enemies": [
+            "데이브레이크 스쿼드·던랜스",
+            "외우주의 얼음",
+            "스파키 축제@Official"
+          ]
+        },
+        {
+          "label": "12층 중반",
+          "weaknesses": [
+            "Physical",
+            "Ice"
+          ],
+          "enemies": [
+            "실버메인 사관",
+            "승로천인",
+            "첫 번째 지니어스, 엔텔레키, 잔다르"
+          ]
+        },
+        {
+          "label": "12층 후반",
+          "weaknesses": [
+            "Fire"
+          ],
+          "enemies": [
+            "데이브레이크 스쿼드·아주르윙",
+            "「축제에 취한 현재」",
+            "창시의 화가, 무라타 그래피아"
+          ]
+        },
+        {
+          "label": "10층 전반",
+          "weaknesses": [
+            "Thunder",
+            "Ice"
+          ],
+          "enemies": [
+            "Automaton Spider",
+            "Flame Reaver of the Deepest Dark"
+          ]
+        },
+        {
+          "label": "10층 후반",
+          "weaknesses": [
+            "Fire",
+            "Ice"
+          ],
+          "enemies": [
+            "아젠티"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "붕괴: 스타레일/혼돈의 기억 - 나무위키",
+          "url": "https://namu.wiki/w/%EB%B6%95%EA%B4%B4:%20%EC%8A%A4%ED%83%80%EB%A0%88%EC%9D%BC/%ED%98%BC%EB%8F%88%EC%9D%98%20%EA%B8%B0%EC%96%B5",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "Honkai Star Rail 4.6 Memory of Chaos 12 Starward Mode explained - allthings.how",
+          "url": "https://allthings.how/honkai-star-rail-4-6-memory-of-chaos-12-starward-mode-explained/",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "Memory of Chaos Stage 10 Guide for Version 4.6 - Game8",
+          "url": "https://game8.co/games/Honkai-Star-Rail/archives/415655",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    "pf": {
+      "name": "취상 작문",
+      "begin": "2026-10-19",
+      "end": "2026-11-30",
+      "summary": "기간 버프 「사그라든 전의」: 적의 효과 저항 30% 감소, 디버프 4개 이상 보유한 적이 받는 피해 20% 증가. 선택 버프: 토카타(필살기·추가 공격 피해 40% 증가), 청아한 웃음소리(환락 스킬로 공격한 적을 [향락] 상태로 만들어 받는 피해 15% 증가), 푸가(「용솟음치는 전의」 단계에서 공격 시 지속 피해 디버프 1개가 피해의 400%를 즉시 가함). 노드 3은 스타라이즈 전용.",
+      "sides": [
+        {
+          "label": "노드 1",
+          "weaknesses": [
+            "Ice"
+          ],
+          "enemies": [
+            "천벌의 집정관",
+            "암흑의 검, 불을 훔치는 자"
+          ]
+        },
+        {
+          "label": "노드 2",
+          "weaknesses": [
+            "Fire",
+            "Imaginary"
+          ],
+          "enemies": [
+            "나쁜꿈 극단의 스위트 고릴라",
+            "합금 메카아머·폼폼킹"
+          ]
+        },
+        {
+          "label": "노드 3 (스타라이즈)",
+          "weaknesses": [
+            "Physical",
+            "Ice"
+          ],
+          "enemies": [
+            "승로천인",
+            "아젠티"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "붕괴: 스타레일/허구 이야기/4.n 버전 - 나무위키",
+          "url": "https://namu.wiki/w/%EB%B6%95%EA%B4%B4:%20%EC%8A%A4%ED%83%80%EB%A0%88%EC%9D%BC/%ED%97%88%EA%B5%AC%20%EC%9D%B4%EC%95%BC%EA%B8%B0/4.n%20%EB%B2%84%EC%A0%84",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "HSR Pure Fiction 4.6 (Imagined Words) - Timesaver",
+          "url": "https://timesaver.gg/blog/hsr-pure-fiction",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    "as": {
+      "name": "지배와 망각",
+      "begin": "2026-10-05",
+      "end": "2026-11-16",
+      "summary": "기간 효과: 모든 적에게 가하는 필살기 피해 25%, 환락 피해 15% 증가. 「Steadfast Safeguard」를 가진 적을 약점 격파하면 아군 제어 상태 해제·행동 당기기·아하 보너스 턴. 선택 버프 예: 전반은 환락 캐릭터 수에 따른 환락도 증가/격파/필살기·추가 공격, 후반은 환락 피해 시 받는 피해 증가/디버프 부여 시 치명타 피해 증가/전투 스킬·필살기 피해, 스타라이즈는 기억 정령 방어 무시/필살기 후 치명타 피해·격파 효율/SP 소모 시 치명타 피해.",
+      "sides": [
+        {
+          "label": "전반",
+          "weaknesses": [
+            "Imaginary",
+            "Physical",
+            "Wind",
+            "Fire"
+          ],
+          "enemies": [
+            "영혼을 사로잡는 지배자 (카프카)"
+          ]
+        },
+        {
+          "label": "후반",
+          "weaknesses": [
+            "Imaginary",
+            "Physical",
+            "Thunder",
+            "Fire"
+          ],
+          "enemies": [
+            "길 잃은 심연의 판정자"
+          ]
+        },
+        {
+          "label": "스타라이즈",
+          "weaknesses": [
+            "Quantum",
+            "Physical",
+            "Wind",
+            "Fire"
+          ],
+          "enemies": [
+            "질풍신뢰의 늑대 주인 (후레이)"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Apocalyptic Shadow Guide for Version 4.6 - Game8",
+          "url": "https://game8.co/games/Honkai-Star-Rail/archives/457411",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "Honkai: Star Rail 4.6 Apocalyptic Shadow Starward Mode Guide - The Phrase Maker",
+          "url": "https://thephrasemaker.com/2026/10/11/honkai-star-rail-4-6-apocalyptic-shadow-starward-mode-guide-strategy-best-teams-more/",
+          "checked": "2026-10-30"
+        }
+      ]
+    }
+  },
+  "teams": [
+    {
+      "id": "elation-sw999-sparxie",
+      "name": "은랑 LV.999 · 스파키 환락 파티",
+      "members": [
+        "1506",
+        "1501",
+        "1502",
+        "1503"
+      ],
+      "alternatives": {
+        "1502": [
+          "8010"
+        ],
+        "1503": [
+          "1414"
+        ]
+      },
+      "modes": [
+        "pf",
+        "as"
+      ],
+      "note": "Game8 종말 가이드의 'Silver Wolf Lv.999 DPS' 파티. The Phrase Maker는 종말 전반·후반 모두에 추천하고, Timesaver는 허구 노드 2(청아한 웃음소리 버프)에 추천.",
+      "sources": [
+        {
+          "title": "Apocalyptic Shadow Guide for Version 4.6 - Game8",
+          "url": "https://game8.co/games/Honkai-Star-Rail/archives/457411",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "Honkai: Star Rail 4.6 Apocalyptic Shadow Starward Mode Guide - The Phrase Maker",
+          "url": "https://thephrasemaker.com/2026/10/11/honkai-star-rail-4-6-apocalyptic-shadow-starward-mode-guide-strategy-best-teams-more/",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "HSR Pure Fiction 4.6 (Imagined Words) - Timesaver",
+          "url": "https://timesaver.gg/blog/hsr-pure-fiction",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "id": "elation-sw999-trailblazer",
+      "name": "은랑 LV.999 · 환락 개척자 파티",
+      "members": [
+        "1506",
+        "1502",
+        "1503",
+        "8010"
+      ],
+      "modes": [
+        "moc"
+      ],
+      "note": "혼돈의 기억 12층 스타라이즈 노드 1(스파키 축제@Official) 추천 파티(환락 중심).",
+      "sources": [
+        {
+          "title": "Honkai Star Rail 4.6 Memory of Chaos 12 Starward Mode explained - allthings.how",
+          "url": "https://allthings.how/honkai-star-rail-4-6-memory-of-chaos-12-starward-mode-explained/",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "id": "elation-evanescia",
+      "name": "에바네시아 '마법 시간' 환락 파티",
+      "members": [
+        "1505",
+        "8010",
+        "1502",
+        "1503"
+      ],
+      "alternatives": {
+        "1503": [
+          "1217"
+        ]
+      },
+      "modes": [
+        "pf",
+        "as"
+      ],
+      "note": "Game8 종말 가이드의 'Magic Time' 파티. The Phrase Maker 종말 전반·후반, Timesaver 허구 노드 2에도 같은 구성.",
+      "sources": [
+        {
+          "title": "Apocalyptic Shadow Guide for Version 4.6 - Game8",
+          "url": "https://game8.co/games/Honkai-Star-Rail/archives/457411",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "Honkai: Star Rail 4.6 Apocalyptic Shadow Starward Mode Guide - The Phrase Maker",
+          "url": "https://thephrasemaker.com/2026/10/11/honkai-star-rail-4-6-apocalyptic-shadow-starward-mode-guide-strategy-best-teams-more/",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "HSR Pure Fiction 4.6 (Imagined Words) - Timesaver",
+          "url": "https://timesaver.gg/blog/hsr-pure-fiction",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "id": "sparxie-sparkle",
+      "name": "스파키 · 스파클 파티",
+      "members": [
+        "1501",
+        "1306",
+        "1502",
+        "1503"
+      ],
+      "modes": [
+        "moc"
+      ],
+      "note": "Game8 혼돈의 기억 10층(4.6) 추천 파티 목록의 'Sparxie DPS'.",
+      "sources": [
+        {
+          "title": "Memory of Chaos Stage 10 Guide for Version 4.6 - Game8",
+          "url": "https://game8.co/games/Honkai-Star-Rail/archives/415655",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "id": "nova-hypercarry",
+      "name": "히메코•노바 하이퍼캐리",
+      "members": [
+        "1510",
+        "1306",
+        "1512",
+        "1414"
+      ],
+      "alternatives": {
+        "1306": [
+          "1313"
+        ]
+      },
+      "modes": [
+        "moc",
+        "pf"
+      ],
+      "note": "Timesaver 허구 노드 3(스타라이즈) 추천 구성, Game8 Best Team Comps의 노바 'Verdict' 파티. 혼돈 12층 노드 3은 스파클 대신 선데이(allthings.how), Game8 혼돈 10층은 노바·선데이·스파클·단항•등황.",
+      "sources": [
+        {
+          "title": "HSR Pure Fiction 4.6 (Imagined Words) - Timesaver",
+          "url": "https://timesaver.gg/blog/hsr-pure-fiction",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "Best Team Comps | Honkai: Star Rail - Game8",
+          "url": "https://game8.co/games/Honkai-Star-Rail/archives/409824",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "Honkai Star Rail 4.6 Memory of Chaos 12 Starward Mode explained - allthings.how",
+          "url": "https://allthings.how/honkai-star-rail-4-6-memory-of-chaos-12-starward-mode-explained/",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "Memory of Chaos Stage 10 Guide for Version 4.6 - Game8",
+          "url": "https://game8.co/games/Honkai-Star-Rail/archives/415655",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "id": "nova-welt",
+      "name": "히메코•노바 · 웰트 파티",
+      "members": [
+        "1510",
+        "1507",
+        "1004",
+        "1512"
+      ],
+      "alternatives": {
+        "1507": [
+          "1306"
+        ],
+        "1512": [
+          "8007",
+          "1217"
+        ]
+      },
+      "modes": [
+        "as"
+      ],
+      "note": "The Phrase Maker 종말 전반·스타라이즈 추천. Game8 종말 'Himeko Nova DPS'는 노바·천야•블레이드·웰트·곽향.",
+      "sources": [
+        {
+          "title": "Honkai: Star Rail 4.6 Apocalyptic Shadow Starward Mode Guide - The Phrase Maker",
+          "url": "https://thephrasemaker.com/2026/10/11/honkai-star-rail-4-6-apocalyptic-shadow-starward-mode-guide-strategy-best-teams-more/",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "Apocalyptic Shadow Guide for Version 4.6 - Game8",
+          "url": "https://game8.co/games/Honkai-Star-Rail/archives/457411",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "id": "archer-rin",
+      "name": "아처 · 토오사카 린 파티",
+      "members": [
+        "1015",
+        "1306",
+        "1508",
+        "1403"
+      ],
+      "alternatives": {
+        "1403": [
+          "1303",
+          "1414"
+        ]
+      },
+      "modes": [
+        "as"
+      ],
+      "note": "The Phrase Maker 종말 스타라이즈(단일 대상 보스) 'Archer Hypercarry'. Game8 Best Team Comps에도 린을 아처 서브딜로 쓰는 파티(린·아처·스파클·단항•등황)가 있음.",
+      "sources": [
+        {
+          "title": "Honkai: Star Rail 4.6 Apocalyptic Shadow Starward Mode Guide - The Phrase Maker",
+          "url": "https://thephrasemaker.com/2026/10/11/honkai-star-rail-4-6-apocalyptic-shadow-starward-mode-guide-strategy-best-teams-more/",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "Best Team Comps | Honkai: Star Rail - Game8",
+          "url": "https://game8.co/games/Honkai-Star-Rail/archives/409824",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "id": "acheron-mblade",
+      "name": "아케론 · 천야•블레이드 파티",
+      "members": [
+        "1308",
+        "1507",
+        "1406",
+        "1217"
+      ],
+      "alternatives": {
+        "1217": [
+          "1409",
+          "1414"
+        ],
+        "1406": [
+          "1004",
+          "1512"
+        ]
+      },
+      "modes": [
+        "as"
+      ],
+      "note": "Game8 종말 스타라이즈 'Comic Relief'(아케론·천야•블레이드·사이퍼·곽향). The Phrase Maker는 종말 후반에 아케론·천야•블레이드·웰트·히아킨 / 로빈•서머레토·단항•등황 구성 추천.",
+      "sources": [
+        {
+          "title": "Apocalyptic Shadow Guide for Version 4.6 - Game8",
+          "url": "https://game8.co/games/Honkai-Star-Rail/archives/457411",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "Honkai: Star Rail 4.6 Apocalyptic Shadow Starward Mode Guide - The Phrase Maker",
+          "url": "https://thephrasemaker.com/2026/10/11/honkai-star-rail-4-6-apocalyptic-shadow-starward-mode-guide-strategy-best-teams-more/",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "id": "firefly-break",
+      "name": "반디 격파 파티",
+      "members": [
+        "1310",
+        "1321",
+        "1225",
+        "1222"
+      ],
+      "alternatives": {
+        "1222": [
+          "1303"
+        ],
+        "1225": [
+          "8005"
+        ]
+      },
+      "modes": [
+        "moc",
+        "as"
+      ],
+      "note": "Game8 혼돈 10층·종말 후반 추천 'Firefly DPS'. The Phrase Maker는 종말 전반에 반디·달리아·망귀인(또는 화합 개척자)·완•매 추천.",
+      "sources": [
+        {
+          "title": "Memory of Chaos Stage 10 Guide for Version 4.6 - Game8",
+          "url": "https://game8.co/games/Honkai-Star-Rail/archives/415655",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "Apocalyptic Shadow Guide for Version 4.6 - Game8",
+          "url": "https://game8.co/games/Honkai-Star-Rail/archives/457411",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "Honkai: Star Rail 4.6 Apocalyptic Shadow Starward Mode Guide - The Phrase Maker",
+          "url": "https://thephrasemaker.com/2026/10/11/honkai-star-rail-4-6-apocalyptic-shadow-starward-mode-guide-strategy-best-teams-more/",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "id": "ashveil-mblade",
+      "name": "애쉬베일 · 천야•블레이드 파티",
+      "members": [
+        "1504",
+        "1507",
+        "1403",
+        "1409"
+      ],
+      "alternatives": {
+        "1403": [
+          "1512",
+          "1004"
+        ]
+      },
+      "modes": [
+        "moc",
+        "as"
+      ],
+      "note": "Game8 혼돈 10층 'Ashveil DPS', The Phrase Maker 종말 전반·후반 'AshBlade'. 디버프가 많은 종말 후반 판정자전에 유리하다고 설명.",
+      "sources": [
+        {
+          "title": "Memory of Chaos Stage 10 Guide for Version 4.6 - Game8",
+          "url": "https://game8.co/games/Honkai-Star-Rail/archives/415655",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "Honkai: Star Rail 4.6 Apocalyptic Shadow Starward Mode Guide - The Phrase Maker",
+          "url": "https://thephrasemaker.com/2026/10/11/honkai-star-rail-4-6-apocalyptic-shadow-starward-mode-guide-strategy-best-teams-more/",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "id": "castorice-remembrance",
+      "name": "카스토리스 기억 파티",
+      "members": [
+        "1407",
+        "1413",
+        "1415",
+        "1409"
+      ],
+      "alternatives": {
+        "1415": [
+          "1512"
+        ]
+      },
+      "modes": [
+        "moc",
+        "pf",
+        "as"
+      ],
+      "note": "혼돈 12층 노드 2 추천(allthings.how), Game8 혼돈 10층 'Castorice DPS'. 허구 노드 1(Timesaver)과 종말 후반(Game8)에서는 키레네 대신 로빈•서머레토.",
+      "sources": [
+        {
+          "title": "Honkai Star Rail 4.6 Memory of Chaos 12 Starward Mode explained - allthings.how",
+          "url": "https://allthings.how/honkai-star-rail-4-6-memory-of-chaos-12-starward-mode-explained/",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "Memory of Chaos Stage 10 Guide for Version 4.6 - Game8",
+          "url": "https://game8.co/games/Honkai-Star-Rail/archives/415655",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "HSR Pure Fiction 4.6 (Imagined Words) - Timesaver",
+          "url": "https://timesaver.gg/blog/hsr-pure-fiction",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "Apocalyptic Shadow Guide for Version 4.6 - Game8",
+          "url": "https://game8.co/games/Honkai-Star-Rail/archives/457411",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "id": "dot-hysilens",
+      "name": "히실렌스 · 카프카 · 블랙 스완 지속 피해 파티",
+      "members": [
+        "1410",
+        "1307",
+        "1005",
+        "1217"
+      ],
+      "alternatives": {
+        "1217": [
+          "1414"
+        ]
+      },
+      "modes": [
+        "pf",
+        "as"
+      ],
+      "note": "Timesaver 허구 노드 1 추천(푸가 버프가 지속 피해 파티용). The Phrase Maker 종말 후반 'DoT' — 디버프로 추가 강인도·고정 피해를 주는 기믹에 유리.",
+      "sources": [
+        {
+          "title": "HSR Pure Fiction 4.6 (Imagined Words) - Timesaver",
+          "url": "https://timesaver.gg/blog/hsr-pure-fiction",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "Honkai: Star Rail 4.6 Apocalyptic Shadow Starward Mode Guide - The Phrase Maker",
+          "url": "https://thephrasemaker.com/2026/10/11/honkai-star-rail-4-6-apocalyptic-shadow-starward-mode-guide-strategy-best-teams-more/",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "id": "the-herta-erudition",
+      "name": "더 헤르타 지식 파티",
+      "members": [
+        "1401",
+        "1405",
+        "1512",
+        "1409"
+      ],
+      "alternatives": {
+        "1409": [
+          "1414"
+        ],
+        "1512": [
+          "1403"
+        ]
+      },
+      "modes": [
+        "moc"
+      ],
+      "note": "Game8 혼돈 10층 'The Herta DPS'. Game8 Best Team Comps의 프리미엄 구성은 더 헤르타·아낙사·트리비·단항•등황.",
+      "sources": [
+        {
+          "title": "Memory of Chaos Stage 10 Guide for Version 4.6 - Game8",
+          "url": "https://game8.co/games/Honkai-Star-Rail/archives/415655",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "Best Team Comps | Honkai: Star Rail - Game8",
+          "url": "https://game8.co/games/Honkai-Star-Rail/archives/409824",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "id": "waveflair-toccata",
+      "name": "어벤츄린•웨이브 · 트리비 파티",
+      "members": [
+        "1513",
+        "1403",
+        "1304",
+        "8007"
+      ],
+      "alternatives": {
+        "1304": [
+          "1217"
+        ],
+        "8007": [
+          "1507"
+        ]
+      },
+      "modes": [
+        "pf"
+      ],
+      "note": "Timesaver 허구 노드 1 추천(토카타 버프). 대체 구성은 어벤츄린•웨이브·트리비·곽향·천야•블레이드.",
+      "sources": [
+        {
+          "title": "HSR Pure Fiction 4.6 (Imagined Words) - Timesaver",
+          "url": "https://timesaver.gg/blog/hsr-pure-fiction",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "id": "phainon-hypercarry",
+      "name": "파이논 하이퍼캐리",
+      "members": [
+        "1408",
+        "1412",
+        "1415",
+        "1303"
+      ],
+      "alternatives": {
+        "1303": [
+          "1414",
+          "1403"
+        ]
+      },
+      "modes": [
+        "as"
+      ],
+      "note": "The Phrase Maker 종말 후반·스타라이즈 'Phainon Hypercarry/Sustainless'.",
+      "sources": [
+        {
+          "title": "Honkai: Star Rail 4.6 Apocalyptic Shadow Starward Mode Guide - The Phrase Maker",
+          "url": "https://thephrasemaker.com/2026/10/11/honkai-star-rail-4-6-apocalyptic-shadow-starward-mode-guide-strategy-best-teams-more/",
+          "checked": "2026-10-30"
+        }
+      ]
+    }
+  ],
+  "benchmarks": {
+    "1005": {
+      "stats": {
+        "SPD": 166.7,
+        "EHR": 0.75
+      },
+      "note": "한국 커뮤니티 이잘키 시트(4.6V) 기준. 매 + 초보자 임무 시작 전 세팅(\"대부분의 경우 매 + 초임시 세팅이 우위\"). 죄수 세팅은 파티별 세팅 참고.",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "카프카 종결 세팅·스킬·육성 재료 | 붕괴 스타레일 | 이잘키 (ejk.gg)",
+          "url": "https://www.ejk.gg/hsr/characters/kafka",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    "1006": {
+      "stats": {
+        "SPD": 166.7,
+        "EHR": 0.67
+      },
+      "note": "이잘키 사이트(ejk.gg) 기준, 메모 \"매셋 착용 시 필살기 가동률을 위해 권장\". Game8(영문)은 속도 160+, 효과 명중 67%+.",
+      "sources": [
+        {
+          "title": "은랑 종결 세팅·스킬·육성 재료 | 붕괴 스타레일 | 이잘키 (ejk.gg)",
+          "url": "https://www.ejk.gg/hsr/characters/silver-wolf",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "Silver Wolf Best Builds and Teams | Honkai: Star Rail - Game8",
+          "url": "https://game8.co/games/Honkai-Star-Rail/archives/405757",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    "1015": {
+      "stats": {
+        "ATK": 3000,
+        "CR": 1,
+        "CD": 1
+      },
+      "note": "한국 커뮤니티 이잘키 시트(4.6V) 기준. 메모: \"스파클 전광 치확 10\", \"린 포함 시 아처 1돌 효율 감소\". Game8(영문)은 치확 100% 목표, 치피 120%+, 공격력 2600+, 행동 당기기 서포터(스파클 등)는 속도 160 이상.",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "아처 종결 세팅·스킬·육성 재료 | 붕괴 스타레일 | 이잘키 (ejk.gg)",
+          "url": "https://www.ejk.gg/hsr/characters/archer",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "Archer Best Builds and Teams | Honkai: Star Rail - Game8",
+          "url": "https://game8.co/games/Honkai-Star-Rail/archives/519877",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    "1101": {
+      "stats": {
+        "SPD": 133.3,
+        "CD": 2
+      },
+      "note": "한국 커뮤니티 이잘키 시트(4.6V) 기준. 기본(사제) 세팅, \"딜러 속도보다 느리게\". 매 + 댄스! 댄스! 댄스! 세팅은 파티별 세팅 참고.",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "브로냐 종결 세팅·스킬·육성 재료 | 붕괴 스타레일 | 이잘키 (ejk.gg)",
+          "url": "https://www.ejk.gg/hsr/characters/bronya",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    "1102": {
+      "stats": {
+        "CR": 0.7,
+        "CD": 1.5,
+        "ATK": 2600
+      },
+      "note": "Game8 영문 권장 스탯(치명타·공격력은 전투 밖 기준, 속도는 \"115 SPD is already enough\"). 한국 시트의 제레 행은 내보내기에서 표 머리글과 섞여 조건별 수치를 확정하지 못함.",
+      "sources": [
+        {
+          "title": "Seele Best Builds and Teams | Honkai: Star Rail - Game8",
+          "url": "https://game8.co/games/Honkai-Star-Rail/archives/405758",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    "1107": {
+      "stats": {
+        "ATK": 3400,
+        "CR": 0.8,
+        "CD": 1.2
+      },
+      "note": "한국 커뮤니티 이잘키 시트(4.6V) 기준. 공격력은 물리 피해 구체 기준. 시트에 치명타 68 / 120 줄도 있음(시인 세트 관련 표기). \"어그로 보존 캐릭터와 조합 금지\". Game8(영문)은 치확 70%+, 치피 140%+, 공격력 2500+.",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "클라라 종결 세팅·스킬·육성 재료 | 붕괴 스타레일 | 이잘키 (ejk.gg)",
+          "url": "https://www.ejk.gg/hsr/characters/clara",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "Clara Best Builds and Teams | Honkai: Star Rail - Game8",
+          "url": "https://game8.co/games/Honkai-Star-Rail/archives/405769",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    "1112": {
+      "stats": {
+        "ATK": 2500,
+        "SPD": 133.4,
+        "CR": 1,
+        "CD": 1.3
+      },
+      "note": "한국 커뮤니티 이잘키 시트(4.6V) 기준. \"속신, 화염구체, 공매듭 기준\".",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "토파즈&복순이 종결 세팅·스킬·육성 재료 | 붕괴 스타레일 | 이잘키 (ejk.gg)",
+          "url": "https://www.ejk.gg/hsr/characters/topaz-numby",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    "1203": {
+      "stats": {
+        "SPD": 135
+      },
+      "note": "한국 커뮤니티 이잘키 시트(4.6V) 기준. \"거목셋 속도 최소 135. 목표 160 이상\". Game8(영문 권장 스탯)은 공격력 2400+.",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "나찰 종결 세팅·스킬·육성 재료 | 붕괴 스타레일 | 이잘키 (ejk.gg)",
+          "url": "https://www.ejk.gg/hsr/characters/luocha",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "Luocha Best Builds and Teams | Honkai: Star Rail - Game8",
+          "url": "https://game8.co/games/Honkai-Star-Rail/archives/405764",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    "1205": {
+      "stats": {
+        "HP": 7000,
+        "SPD": 133.4,
+        "CR": 0.8,
+        "CD": 1.4
+      },
+      "note": "한국 커뮤니티 이잘키 시트(4.6V) 기준. 치명타 수치는 \"선데이 사용 기준. 2돌일 경우 65%\". 속도는 \"선데이, 브로냐보다 속도 빠르게\". \"도발 및 실드 캐릭터와 조합 금지\".",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "블레이드 종결 세팅·스킬·육성 재료 | 붕괴 스타레일 | 이잘키 (ejk.gg)",
+          "url": "https://www.ejk.gg/hsr/characters/blade",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    "1208": {
+      "stats": {
+        "HP": 8000,
+        "SPD": 133.4
+      },
+      "note": "한국 커뮤니티 이잘키 시트(4.6V) 기준. 광추 \"우주 시장 동향\"은 \"아케론 등 디버프 필요 조합에서 사용\".",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "부현 종결 세팅·스킬·육성 재료 | 붕괴 스타레일 | 이잘키 (ejk.gg)",
+          "url": "https://www.ejk.gg/hsr/characters/fu-xuan",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    "1209": {
+      "stats": {
+        "ATK": 3000,
+        "CR": 0.8,
+        "CD": 1.6
+      },
+      "note": "한국 커뮤니티 이잘키 시트(4.6V) 기준.",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "연경 종결 세팅·스킬·육성 재료 | 붕괴 스타레일 | 이잘키 (ejk.gg)",
+          "url": "https://www.ejk.gg/hsr/characters/yanqing",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    "1211": {
+      "stats": {
+        "HP": 6000,
+        "SPD": 160
+      },
+      "note": "한국 커뮤니티 이잘키 시트(4.6V) 기준.",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "백로 종결 세팅·스킬·육성 재료 | 붕괴 스타레일 | 이잘키 (ejk.gg)",
+          "url": "https://www.ejk.gg/hsr/characters/bailu",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    "1217": {
+      "stats": {
+        "HP": 6000,
+        "SPD": 160
+      },
+      "note": "한국 커뮤니티 이잘키 시트(4.6V) 기준. Game8(영문 권장 스탯)은 HP 6000+, 속도 135 또는 속도 구간.",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "곽향 종결 세팅·스킬·육성 재료 | 붕괴 스타레일 | 이잘키 (ejk.gg)",
+          "url": "https://www.ejk.gg/hsr/characters/huohuo",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "Huohuo Best Builds and Teams | Honkai: Star Rail - Game8",
+          "url": "https://game8.co/games/Honkai-Star-Rail/archives/427878",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    "1218": {
+      "stats": {
+        "SPD": 166.7,
+        "EHR": 1.778
+      },
+      "note": "한국 커뮤니티 이잘키 시트(4.6V) 기준. 속도는 \"매셋 기준\", 효과 명중 177.8%는 \"아케론 조합 기준. 다른 조합 사용시 66.7%\".",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    "1220": {
+      "stats": {
+        "ATK": 3000,
+        "SPD": 133.4,
+        "CR": 1,
+        "CD": 1.2
+      },
+      "note": "한국 커뮤니티 이잘키 시트(4.6V) 기준. 공격력은 \"공신, 바람구체 기준\", 속도는 \"용맹셋 기준. 매셋은 속도 중요도 낮음\".",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    "1302": {
+      "stats": {
+        "ATK": 3600,
+        "CR": 0.75,
+        "CD": 1.5
+      },
+      "note": "한국 커뮤니티 이잘키 시트(4.6V) 기준. 광역 딜러 세팅. 메모: \"승격 치확 25%\". 더 헤르타 파티 필살기 발사대 세팅은 파티별 세팅 참고.",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    "1303": {
+      "stats": {
+        "SPD": 120,
+        "BE": 1.6
+      },
+      "note": "한국 커뮤니티 이잘키 시트(4.6V) 기준. 범용 서포터 세팅. 메모: \"바커공 사용 시 120 이상. 6돌 미만은 저속 권장\", \"추가능력으로 20% 받으면 180%로 가피증 버프 최대치\". 격파 파티용은 \"격특 최대한\".",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    "1304": {
+      "stats": {
+        "DEF": 4500,
+        "SPD": 133.4
+      },
+      "note": "한국 커뮤니티 이잘키 시트(4.6V) 기준.",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    "1305": {
+      "stats": {
+        "ATK": 3500,
+        "CR": 0.875,
+        "CD": 1.3
+      },
+      "note": "한국 커뮤니티 이잘키 시트(4.6V) 기준. 메모: \"귀납 치확 최대 12.5, 치피 30\".",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    "1306": {
+      "stats": {
+        "SPD": 133.4,
+        "CD": 2
+      },
+      "note": "한국 커뮤니티 이잘키 시트(4.6V) 기준. 기본(사제) 세팅. 3행동 167.4 세팅은 파티별 세팅 참고.",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    "1307": {
+      "stats": {
+        "EHR": 1.565,
+        "ATK": 2400,
+        "SPD": 133.4
+      },
+      "note": "한국 커뮤니티 이잘키 시트(4.6V) 기준. 메모: \"효명 최소 120%\", \"전투 내 공격력 3600 + (중요)\".",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    "1308": {
+      "stats": {
+        "ATK": 3400,
+        "SPD": 133.4,
+        "CR": 0.84,
+        "CD": 1.6
+      },
+      "note": "한국 커뮤니티 이잘키 시트(4.6V) 기준. 메모: \"전투 내에서 얻는 치확: 1돌 18%, 이즈모 12%, 선구자 4%\". 종말용 매 세팅은 파티별 세팅 참고.",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    "1309": {
+      "stats": {
+        "ATK": 4500
+      },
+      "note": "한국 커뮤니티 이잘키 시트(4.6V) 기준. 속도: \"1돌 이하 오토로 돌릴 경우. 딜러 속도 134 기준\" 117+, 바커공 기준 120.",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    "1310": {
+      "stats": {
+        "BE": 2,
+        "ATK": 2200
+      },
+      "note": "한국 커뮤니티 이잘키 시트(4.6V) 기준. 메모: \"전투 내 격특 250% 목표\". 속도는 최소치가 아니라 상한: \"달리아 조합에서 궁 종료 후 즉시 재변신 가능한 최대 속도컷 178.0\", \"파이논 전광 착용 시 최대 177.4\". Game8(영문 권장 스탯)은 격특 360%+(전투 중), 공격력 2600+.",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "Firefly Best Builds and Teams | Honkai: Star Rail - Game8",
+          "url": "https://game8.co/games/Honkai-Star-Rail/archives/437263",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    "1401": {
+      "stats": {
+        "SPD": 133.4,
+        "ATK": 3000,
+        "CR": 0.88,
+        "CD": 1.2
+      },
+      "note": "한국 커뮤니티 이잘키 시트(4.6V) 기준. 공격력 3000은 얼음 피해 구체 기준.",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "더 헤르타 종결 세팅·스킬·육성 재료 | 붕괴 스타레일 | 이잘키 (ejk.gg)",
+          "url": "https://www.ejk.gg/hsr/characters/the-herta",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    "1403": {
+      "stats": {
+        "HP": 6000,
+        "CR": 0.68,
+        "CD": 2
+      },
+      "note": "한국 커뮤니티 이잘키 시트(4.6V) 기준. 시인 세트 기준(속도 95 미만 유지). 매 세트 속도 세팅은 파티별 세팅 참고.",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "트리비 종결 세팅·스킬·육성 재료 | 붕괴 스타레일 | 이잘키 (ejk.gg)",
+          "url": "https://www.ejk.gg/hsr/characters/tribbie",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    "1406": {
+      "stats": {
+        "SPD": 170,
+        "CR": 0.5,
+        "CD": 1
+      },
+      "note": "한국 커뮤니티 이잘키 시트(4.6V) 기준. 메모: \"종결은 200 이상\". 명장 세트는 \"전광, 땀방울 착용 시\".",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "사이퍼 종결 세팅·스킬·육성 재료 | 붕괴 스타레일 | 이잘키 (ejk.gg)",
+          "url": "https://www.ejk.gg/hsr/characters/cipher",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    "1414": {
+      "stats": {
+        "SPD": 133.4,
+        "ATK": 4000
+      },
+      "note": "한국 커뮤니티 이잘키 시트(4.6V) 기준. 보호막 탱커 세팅. 공격력 4000은 \"전광 + 공속공에 기준. 공훈광추는 2700\". 카프카 파티용 지속딜 탱커 세팅은 별도(파티별 세팅 참고).",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "단항•등황 종결 세팅·스킬·육성 재료 | 붕괴 스타레일 | 이잘키 (ejk.gg)",
+          "url": "https://www.ejk.gg/hsr/characters/dan-heng-permansor-terrae",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    "1501": {
+      "stats": {
+        "CR": 1,
+        "CD": 1.4
+      },
+      "note": "한국 커뮤니티 이잘키 시트(4.6V) 기준. 공격력 3600은 전투 중 기준이라 수치에서 뺌. 속도는 \"아하+0.1\"(아하 타임 속도보다 0.1 빠르게). 메모: \"효광 전광 치확10\", \"2돌 미만 아하타임 속도보다 높게 세팅\".",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "스파키 종결 세팅·스킬·육성 재료 | 붕괴 스타레일 | 이잘키 (ejk.gg)",
+          "url": "https://www.ejk.gg/hsr/characters/sparxie",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    "1502": {
+      "stats": {
+        "SPD": 200,
+        "CR": 1
+      },
+      "note": "한국 커뮤니티 이잘키 시트(4.6V) 기준. 메모: \"효광 전광 치확10, 점술가 치확 18\", \"2돌 시 속도 -12\", \"속도 200 우선\".",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "효광 종결 세팅·스킬·육성 재료 | 붕괴 스타레일 | 이잘키 (ejk.gg)",
+          "url": "https://www.ejk.gg/hsr/characters/yao-guang",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    "1503": {
+      "stats": {
+        "DEF": 2400,
+        "SPD": 168
+      },
+      "note": "한국 커뮤니티 이잘키 시트(4.6V) 기준. 메모: \"속도 우선\", \"환락도 보너스 방어력 최소 2400, 최대 6000 까지\".",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "펄 종결 세팅·스킬·육성 재료 | 붕괴 스타레일 | 이잘키 (ejk.gg)",
+          "url": "https://www.ejk.gg/hsr/characters/pearl",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    "1506": {
+      "stats": {
+        "SPD": 200,
+        "CR": 0.84
+      },
+      "note": "한국 커뮤니티 이잘키 시트(4.6V) 기준. 메모: \"속도 230 이후에는 치피올리기\", \"속도 최대 260\", \"효광전광 치확 10\", \"곽1 or 앰포히아킨 활용해서 속도높이기\".",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "은랑 LV.999 종결 세팅·스킬·육성 재료 | 붕괴 스타레일 | 이잘키 (ejk.gg)",
+          "url": "https://www.ejk.gg/hsr/characters/silver-wolf-lv-999",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    "1508": {
+      "stats": {
+        "ATK": 2500,
+        "SPD": 134,
+        "CR": 1,
+        "CD": 1.2
+      },
+      "note": "한국 커뮤니티 이잘키 시트(4.6V) 기준. 아처 연계 딜러 세팅. 메모: \"스파클 전광 치확 10\", \"본인 속도 버프 20.4\".",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "토오사카 린 종결 세팅·스킬·육성 재료 | 붕괴 스타레일 | 이잘키 (ejk.gg)",
+          "url": "https://www.ejk.gg/hsr/characters/rin-tohsaka",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    "8010": {
+      "stats": {
+        "SPD": 160,
+        "CR": 0.85
+      },
+      "note": "한국 커뮤니티 이잘키 시트(4.6V) 기준. 공격력 2200은 전투 중 기준이라 수치에서 뺌. 매+바커공 세팅이면 속도 157. 시트 메모: \"효광 전광 치확10, 점술가 치확 18\", \"점술가 중복 불가능 주의\".",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "개척자•환락 종결 세팅·스킬·육성 재료 | 붕괴 스타레일 | 이잘키 (ejk.gg)",
+          "url": "https://www.ejk.gg/hsr/characters/trailblazer-elation",
+          "checked": "2026-10-30"
+        }
+      ]
+    }
+  },
+  "teamBuilds": [
+    {
+      "charId": "1308",
+      "when": "종말의 환영 아케론 (+천야•블레이드, 애쉬베일)",
+      "relicSets": [
+        [
+          "110",
+          "110"
+        ]
+      ],
+      "ornamentSets": [
+        "314"
+      ],
+      "mains": {
+        "FOOT": [
+          "SPD"
+        ]
+      },
+      "note": "파티원 전원 매 세트. 목표 공격력 2700, 속도 133.4, 치확 84. 속도 순서: 천야•블레이드 → 아케론 → 애쉬베일.",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "charId": "1308",
+      "when": "천야•블레이드 2돌 이상과 함께",
+      "relicSets": [
+        [
+          "115",
+          "115"
+        ]
+      ],
+      "note": "평소 선구자 세트 대신 대공 세트(시트 표기: \"천야 블레이드 2돌 이상\").",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "charId": "1302",
+      "when": "더 헤르타 파티 필살기 발사대",
+      "relicSets": [
+        [
+          "110",
+          "110"
+        ]
+      ],
+      "ornamentSets": [
+        "317"
+      ],
+      "mains": {
+        "FOOT": [
+          "SPD"
+        ],
+        "OBJECT": [
+          "ERR"
+        ]
+      },
+      "note": "딜러 세팅 대신 3성 광추 \"영험한 열쇠\" + 매 세트로 속도 166.7+. 몸통·구체는 아무거나.",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "charId": "1414",
+      "when": "파이논 파티",
+      "relicSets": [
+        [
+          "121",
+          "121"
+        ]
+      ],
+      "mains": {
+        "FOOT": [
+          "ATK_P"
+        ],
+        "OBJECT": [
+          "ATK_P"
+        ]
+      },
+      "note": "평소 은둔자 세트·속도 신발·에너지 매듭 대신 사제 세트, 공격력 신발, 공격력 매듭(시트 \"파이논 파티 기준\").",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "단항•등황 종결 세팅·스킬·육성 재료 | 붕괴 스타레일 | 이잘키 (ejk.gg)",
+          "url": "https://www.ejk.gg/hsr/characters/dan-heng-permansor-terrae",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "charId": "1414",
+      "when": "카프카 파티 (지속딜 탱커)",
+      "relicSets": [
+        [
+          "128",
+          "128"
+        ]
+      ],
+      "ornamentSets": [
+        "317"
+      ],
+      "mains": {
+        "BODY": [
+          "ATK_P",
+          "EHR"
+        ],
+        "FOOT": [
+          "SPD"
+        ],
+        "NECK": [
+          "ATK_P"
+        ],
+        "OBJECT": [
+          "ERR"
+        ]
+      },
+      "note": "목표 효과 명중 75%, 속도 155+ (\"카프카 사용 기준\"). 광추 \"우주 시장 동향\" 착용 시 효과 명중 몸통.",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "단항•등황 종결 세팅·스킬·육성 재료 | 붕괴 스타레일 | 이잘키 (ejk.gg)",
+          "url": "https://www.ejk.gg/hsr/characters/dan-heng-permansor-terrae",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "charId": "1005",
+      "when": "죄수 세팅 (광추 \"필요한 건 기다림뿐\")",
+      "relicSets": [
+        [
+          "116",
+          "116"
+        ]
+      ],
+      "ornamentSets": [
+        "322"
+      ],
+      "note": "매 + 루샤카 대신 죄수 + 일각. 목표 속도 160+, 효과 명중 75%. 시트는 대부분의 경우 매 + 초임시 세팅이 우위라고 적음. Game8은 이 세팅(DPS 빌드)에서 카프카를 다른 지속 피해 캐릭터보다 느리게 하라고 설명.",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "Kafka Best Builds and Teams | Honkai: Star Rail - Game8",
+          "url": "https://game8.co/games/Honkai-Star-Rail/archives/405755",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "charId": "1306",
+      "when": "3행동 세팅 (댄스! 댄스! 댄스!)",
+      "relicSets": [
+        [
+          "110",
+          "110"
+        ]
+      ],
+      "mains": {
+        "FOOT": [
+          "SPD"
+        ]
+      },
+      "note": "사제 세트 대신 매 세트로 속도 167.4+ (\"167.4속 3행동 세팅 시 댄댄 필수\"). 1돌 + 매 + 전광 사용 시 속도 168.3 이상.",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "charId": "1101",
+      "when": "매 세팅 (댄스! 댄스! 댄스!)",
+      "relicSets": [
+        [
+          "110",
+          "110"
+        ]
+      ],
+      "ornamentSets": [
+        "308",
+        "317"
+      ],
+      "mains": {
+        "FOOT": [
+          "SPD"
+        ]
+      },
+      "note": "사제 세트 저속 세팅 대신 매 세트로 속도 167.4+, 치명타 피해는 최대한.",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "브로냐 종결 세팅·스킬·육성 재료 | 붕괴 스타레일 | 이잘키 (ejk.gg)",
+          "url": "https://www.ejk.gg/hsr/characters/bronya",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "charId": "1403",
+      "when": "매 세트 속도 세팅 (댄스! 댄스! 댄스!)",
+      "relicSets": [
+        [
+          "110",
+          "110"
+        ]
+      ],
+      "ornamentSets": [
+        "308"
+      ],
+      "mains": {
+        "BODY": [
+          "CR",
+          "HP_P"
+        ],
+        "FOOT": [
+          "SPD"
+        ],
+        "NECK": [
+          "HP_P"
+        ],
+        "OBJECT": [
+          "ERR"
+        ]
+      },
+      "note": "시인 세트(속도 95 미만) 대신 매 세트. 속도 134.7(\"매+댄댄 기준 필살기 2회 3행동\") 또는 140.7(\"매+바커+댄댄 기준 필살기 1회 3행동\"), 치명타 80 / 120.",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "트리비 종결 세팅·스킬·육성 재료 | 붕괴 스타레일 | 이잘키 (ejk.gg)",
+          "url": "https://www.ejk.gg/hsr/characters/tribbie",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "charId": "1508",
+      "when": "아처 서포터 세팅 (스파클과 함께)",
+      "relicSets": [
+        [
+          "110",
+          "110"
+        ]
+      ],
+      "ornamentSets": [
+        "326"
+      ],
+      "mains": {
+        "FOOT": [
+          "SPD"
+        ],
+        "OBJECT": [
+          "ERR",
+          "ATK_P"
+        ]
+      },
+      "note": "학자/천재 딜러 세팅 대신 매 세트, 속도 158+, 치확 100. \"매댄댄바커공 속도 158+ 스파클 사용\", \"스파클 - 린 - 스파클 - 린...이 되도록 속도 세팅\".",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "토오사카 린 종결 세팅·스킬·육성 재료 | 붕괴 스타레일 | 이잘키 (ejk.gg)",
+          "url": "https://www.ejk.gg/hsr/characters/rin-tohsaka",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "charId": "8010",
+      "when": "매 + 바커공 세팅",
+      "relicSets": [
+        [
+          "110",
+          "110"
+        ]
+      ],
+      "ornamentSets": [
+        "308"
+      ],
+      "mains": {
+        "FOOT": [
+          "SPD"
+        ]
+      },
+      "note": "목표 속도가 160+ 대신 157. 점술가 세트는 \"점술가 중복 불가능 주의\".",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "개척자•환락 종결 세팅·스킬·육성 재료 | 붕괴 스타레일 | 이잘키 (ejk.gg)",
+          "url": "https://www.ejk.gg/hsr/characters/trailblazer-elation",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "charId": "1401",
+      "when": "2돌 이상",
+      "mains": {
+        "FOOT": [
+          "ATK_P"
+        ]
+      },
+      "note": "속도 신발 대신 공격력 신발 가능(시트 신발 주옵 \"공격력\"에 \"2돌 이상\" 표기).",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "더 헤르타 종결 세팅·스킬·육성 재료 | 붕괴 스타레일 | 이잘키 (ejk.gg)",
+          "url": "https://www.ejk.gg/hsr/characters/the-herta",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "charId": "1309",
+      "when": "히아킨·곽향 등 아군 대상 스킬을 자주 쓰는 캐릭터와 함께",
+      "relicSets": [
+        [
+          "126",
+          "126"
+        ]
+      ],
+      "note": "공격력 2+2 대신 선장 세트(\"히아킨, 곽향 등 선턴으로 아군 대상 스킬 2회 발동 가능 캐릭터와 조합\").",
+      "sources": [
+        {
+          "title": "붕괴 : 스타레일 세팅 4.6V (커뮤니티 이잘키 세팅 시트)",
+          "url": "https://docs.google.com/spreadsheets/d/1kRQjQrHsgIDqPdnyDCVXG59Ge8AaKm0dyJvj6Vp2AY4/edit?gid=0#gid=0",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "charId": "1107",
+      "when": "팅윈 또는 곽향이 있는 파티",
+      "mains": {
+        "OBJECT": [
+          "ATK_P"
+        ]
+      },
+      "note": "평소 에너지 회복효율 매듭 대신 공격력 매듭(\"use ATK if you have Tingyun or Huohuo in the party\").",
+      "sources": [
+        {
+          "title": "Clara Best Builds and Teams | Honkai: Star Rail - Game8",
+          "url": "https://game8.co/games/Honkai-Star-Rail/archives/405769",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "charId": "1102",
+      "when": "2돌 이상",
+      "ornamentSets": [
+        "311"
+      ],
+      "note": "Game8: 창공 전선 그라모스가 \"best Ornament if you have her at E2\" (기본은 뭇별 경기장).",
+      "sources": [
+        {
+          "title": "Seele Best Builds and Teams | Honkai: Star Rail - Game8",
+          "url": "https://game8.co/games/Honkai-Star-Rail/archives/405758",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "charId": "1205",
+      "when": "높은 성혼",
+      "ornamentSets": [
+        "306"
+      ],
+      "note": "Game8: 회전을 멈춘 살소토가 높은 성혼에서 뭇별 경기장보다 낫고, 뭇별 경기장은 0돌에서 최선.",
+      "sources": [
+        {
+          "title": "Blade Best Builds and Teams | Honkai: Star Rail - Game8",
+          "url": "https://game8.co/games/Honkai-Star-Rail/archives/405762",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "charId": "1006",
+      "when": "1돌 이상",
+      "mains": {
+        "OBJECT": [
+          "ATK_P"
+        ]
+      },
+      "note": "Game8: 1돌에서는 에너지 회복효율 대신 공격력 매듭 가능.",
+      "sources": [
+        {
+          "title": "Silver Wolf Best Builds and Teams | Honkai: Star Rail - Game8",
+          "url": "https://game8.co/games/Honkai-Star-Rail/archives/405757",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "charId": "1203",
+      "when": "광추 \"수술 후의 대화\" 착용 시",
+      "mains": {
+        "OBJECT": [
+          "ATK_P"
+        ]
+      },
+      "note": "Game8: 수술 후의 대화를 쓰면 에너지 회복효율 대신 공격력 매듭 가능.",
+      "sources": [
+        {
+          "title": "Luocha Best Builds and Teams | Honkai: Star Rail - Game8",
+          "url": "https://game8.co/games/Honkai-Star-Rail/archives/405764",
+          "checked": "2026-10-30"
+        }
+      ]
+    }
+  ],
+  "buildPriority": [
+    {
+      "charId": "1503",
+      "modes": [
+        "moc",
+        "pf",
+        "as"
+      ],
+      "reason": "4.6 신규 환락 캐릭터. 혼돈 기간 효과가 환락 스킬·아하 보너스 턴 중심이고, 허구 노드 2(청아한 웃음소리)와 종말 전반·후반 추천 파티 대부분에 펄이 들어감.",
+      "sources": [
+        {
+          "title": "붕괴: 스타레일/혼돈의 기억 - 나무위키",
+          "url": "https://namu.wiki/w/%EB%B6%95%EA%B4%B4:%20%EC%8A%A4%ED%83%80%EB%A0%88%EC%9D%BC/%ED%98%BC%EB%8F%88%EC%9D%98%20%EA%B8%B0%EC%96%B5",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "HSR Pure Fiction 4.6 (Imagined Words) - Timesaver",
+          "url": "https://timesaver.gg/blog/hsr-pure-fiction",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "Honkai: Star Rail 4.6 Apocalyptic Shadow Starward Mode Guide - The Phrase Maker",
+          "url": "https://thephrasemaker.com/2026/10/11/honkai-star-rail-4-6-apocalyptic-shadow-starward-mode-guide-strategy-best-teams-more/",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "Apocalyptic Shadow Guide for Version 4.6 - Game8",
+          "url": "https://game8.co/games/Honkai-Star-Rail/archives/457411",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "charId": "1506",
+      "modes": [
+        "moc",
+        "pf",
+        "as"
+      ],
+      "reason": "혼돈 12층 노드 1, 허구 노드 2, 종말 전반·후반 환락 추천 파티의 메인 딜러.",
+      "sources": [
+        {
+          "title": "Honkai Star Rail 4.6 Memory of Chaos 12 Starward Mode explained - allthings.how",
+          "url": "https://allthings.how/honkai-star-rail-4-6-memory-of-chaos-12-starward-mode-explained/",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "HSR Pure Fiction 4.6 (Imagined Words) - Timesaver",
+          "url": "https://timesaver.gg/blog/hsr-pure-fiction",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "Apocalyptic Shadow Guide for Version 4.6 - Game8",
+          "url": "https://game8.co/games/Honkai-Star-Rail/archives/457411",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "Honkai: Star Rail 4.6 Apocalyptic Shadow Starward Mode Guide - The Phrase Maker",
+          "url": "https://thephrasemaker.com/2026/10/11/honkai-star-rail-4-6-apocalyptic-shadow-starward-mode-guide-strategy-best-teams-more/",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "charId": "1502",
+      "modes": [
+        "moc",
+        "pf",
+        "as"
+      ],
+      "reason": "환락 파티(은랑 LV.999, 스파키, 에바네시아) 추천 구성에 공통으로 들어가는 서포터.",
+      "sources": [
+        {
+          "title": "Honkai Star Rail 4.6 Memory of Chaos 12 Starward Mode explained - allthings.how",
+          "url": "https://allthings.how/honkai-star-rail-4-6-memory-of-chaos-12-starward-mode-explained/",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "HSR Pure Fiction 4.6 (Imagined Words) - Timesaver",
+          "url": "https://timesaver.gg/blog/hsr-pure-fiction",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "Apocalyptic Shadow Guide for Version 4.6 - Game8",
+          "url": "https://game8.co/games/Honkai-Star-Rail/archives/457411",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "Honkai: Star Rail 4.6 Apocalyptic Shadow Starward Mode Guide - The Phrase Maker",
+          "url": "https://thephrasemaker.com/2026/10/11/honkai-star-rail-4-6-apocalyptic-shadow-starward-mode-guide-strategy-best-teams-more/",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "charId": "1501",
+      "modes": [
+        "moc",
+        "pf",
+        "as"
+      ],
+      "reason": "Game8 혼돈 10층 'Sparxie DPS', 허구 노드 2와 종말 전반·후반 환락 파티 추천에 포함.",
+      "sources": [
+        {
+          "title": "Memory of Chaos Stage 10 Guide for Version 4.6 - Game8",
+          "url": "https://game8.co/games/Honkai-Star-Rail/archives/415655",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "HSR Pure Fiction 4.6 (Imagined Words) - Timesaver",
+          "url": "https://timesaver.gg/blog/hsr-pure-fiction",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "Apocalyptic Shadow Guide for Version 4.6 - Game8",
+          "url": "https://game8.co/games/Honkai-Star-Rail/archives/457411",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "Honkai: Star Rail 4.6 Apocalyptic Shadow Starward Mode Guide - The Phrase Maker",
+          "url": "https://thephrasemaker.com/2026/10/11/honkai-star-rail-4-6-apocalyptic-shadow-starward-mode-guide-strategy-best-teams-more/",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "charId": "8010",
+      "modes": [
+        "moc",
+        "pf",
+        "as"
+      ],
+      "reason": "환락 개척자: 혼돈 12층 노드 1 환락 파티, 허구 노드 2·종말 '마법 시간' 에바네시아 파티의 고정 멤버.",
+      "sources": [
+        {
+          "title": "Honkai Star Rail 4.6 Memory of Chaos 12 Starward Mode explained - allthings.how",
+          "url": "https://allthings.how/honkai-star-rail-4-6-memory-of-chaos-12-starward-mode-explained/",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "HSR Pure Fiction 4.6 (Imagined Words) - Timesaver",
+          "url": "https://timesaver.gg/blog/hsr-pure-fiction",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "Apocalyptic Shadow Guide for Version 4.6 - Game8",
+          "url": "https://game8.co/games/Honkai-Star-Rail/archives/457411",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "charId": "1414",
+      "modes": [
+        "moc",
+        "pf",
+        "as"
+      ],
+      "reason": "혼돈 12층 노드 3 노바 파티, 허구 노드 3(스타라이즈), 종말 노바·파이논·아케론 파티에 생존 담당으로 반복 등장.",
+      "sources": [
+        {
+          "title": "Honkai Star Rail 4.6 Memory of Chaos 12 Starward Mode explained - allthings.how",
+          "url": "https://allthings.how/honkai-star-rail-4-6-memory-of-chaos-12-starward-mode-explained/",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "HSR Pure Fiction 4.6 (Imagined Words) - Timesaver",
+          "url": "https://timesaver.gg/blog/hsr-pure-fiction",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "Honkai: Star Rail 4.6 Apocalyptic Shadow Starward Mode Guide - The Phrase Maker",
+          "url": "https://thephrasemaker.com/2026/10/11/honkai-star-rail-4-6-apocalyptic-shadow-starward-mode-guide-strategy-best-teams-more/",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "charId": "1306",
+      "modes": [
+        "moc",
+        "pf",
+        "as"
+      ],
+      "reason": "허구 노드 3 노바 파티, Game8 혼돈 10층 스파키·노바 파티, 종말 스타라이즈 아처 파티에 포함.",
+      "sources": [
+        {
+          "title": "HSR Pure Fiction 4.6 (Imagined Words) - Timesaver",
+          "url": "https://timesaver.gg/blog/hsr-pure-fiction",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "Memory of Chaos Stage 10 Guide for Version 4.6 - Game8",
+          "url": "https://game8.co/games/Honkai-Star-Rail/archives/415655",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "Honkai: Star Rail 4.6 Apocalyptic Shadow Starward Mode Guide - The Phrase Maker",
+          "url": "https://thephrasemaker.com/2026/10/11/honkai-star-rail-4-6-apocalyptic-shadow-starward-mode-guide-strategy-best-teams-more/",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "charId": "1015",
+      "modes": [
+        "as"
+      ],
+      "reason": "종말 스타라이즈(질풍신뢰의 늑대 주인)는 단일 대상 전투라 The Phrase Maker가 아처 하이퍼캐리(스파클·토오사카 린)를 추천.",
+      "sources": [
+        {
+          "title": "Honkai: Star Rail 4.6 Apocalyptic Shadow Starward Mode Guide - The Phrase Maker",
+          "url": "https://thephrasemaker.com/2026/10/11/honkai-star-rail-4-6-apocalyptic-shadow-starward-mode-guide-strategy-best-teams-more/",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "charId": "1508",
+      "modes": [
+        "as"
+      ],
+      "reason": "종말 스타라이즈 아처 하이퍼캐리의 서브딜러.",
+      "sources": [
+        {
+          "title": "Honkai: Star Rail 4.6 Apocalyptic Shadow Starward Mode Guide - The Phrase Maker",
+          "url": "https://thephrasemaker.com/2026/10/11/honkai-star-rail-4-6-apocalyptic-shadow-starward-mode-guide-strategy-best-teams-more/",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "Best Team Comps | Honkai: Star Rail - Game8",
+          "url": "https://game8.co/games/Honkai-Star-Rail/archives/409824",
+          "checked": "2026-10-30"
+        }
+      ]
+    },
+    {
+      "charId": "1005",
+      "modes": [
+        "pf",
+        "as"
+      ],
+      "reason": "허구 '푸가' 버프와 종말 후반의 디버프 기믹(디버프 시 추가 강인도·고정 피해)에 맞는 지속 피해 파티 멤버. 블랙 스완(1307)도 같은 파티.",
+      "sources": [
+        {
+          "title": "HSR Pure Fiction 4.6 (Imagined Words) - Timesaver",
+          "url": "https://timesaver.gg/blog/hsr-pure-fiction",
+          "checked": "2026-10-30"
+        },
+        {
+          "title": "Honkai: Star Rail 4.6 Apocalyptic Shadow Starward Mode Guide - The Phrase Maker",
+          "url": "https://thephrasemaker.com/2026/10/11/honkai-star-rail-4-6-apocalyptic-shadow-starward-mode-guide-strategy-best-teams-more/",
+          "checked": "2026-10-30"
+        }
+      ]
+    }
+  ]
 }

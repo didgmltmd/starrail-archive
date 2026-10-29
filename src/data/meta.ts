@@ -76,8 +76,8 @@ export const meta: Meta = { ...(raw as unknown as Meta) };
 
 export function applyRemoteMeta(next: Meta) {
   if (next?.version !== 1) return false;
-  // Keep the newer of the bundled and downloaded copies
-  if ((next.updatedAt ?? "") < (meta.updatedAt ?? "")) return true;
+  // Only replace when the downloaded copy is strictly newer than what we have
+  if ((next.updatedAt ?? "") <= (meta.updatedAt ?? "")) return true;
   Object.assign(meta, next);
   return true;
 }
