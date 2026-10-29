@@ -1,0 +1,38 @@
+# Refreshes game data (characters, light cones, relics) and recommended builds every day.
+# Installed apps download these files at startup, so new characters show up without an app update.
+name: refresh-data
+
+on:
+  schedule:
+    - cron: "0 19 * * *" # every day 04:00 KST
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - run: node scripts/sync-gamedata.mjs
+      - run: node scripts/sync-builds.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit if changed
+        run: |
+          if git diff --quiet -- src/data; then
+            echo "No changes"
+            exit 0
+          fi
+          git config user.name "data-bot"
+          git config user.email "data-bot@users.noreply.github.com"
+          git add src/data/game.json src/data/builds.json
+          git commit -m "data: refresh game data and builds"
+          git push

@@ -1,0 +1,3221 @@
+{
+ "source": "https://github.com/fribbels/hsr-optimizer",
+ "builds": {
+  "1001": {
+   "weights": {
+    "DEF": 1,
+    "DEF_P": 1,
+    "SPD": 1,
+    "EHR": 1,
+    "RES": 0.5
+   },
+   "mains": {
+    "BODY": [
+     "DEF_P",
+     "EHR"
+    ],
+    "FOOT": [
+     "DEF_P",
+     "SPD"
+    ],
+    "NECK": [
+     "DEF_P"
+    ],
+    "OBJECT": [
+     "DEF_P",
+     "ERR"
+    ]
+   },
+   "relicSets": [],
+   "ornamentSets": []
+  },
+  "1002": {
+   "weights": {
+    "ATK": 0.75,
+    "ATK_P": 0.75,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD",
+     "EHR"
+    ],
+    "FOOT": [
+     "ATK_P",
+     "SPD"
+    ],
+    "NECK": [
+     "ATK_P",
+     "Wind_DMG"
+    ],
+    "OBJECT": [
+     "ATK_P"
+    ]
+   },
+   "relicSets": [
+    [
+     "122",
+     "122"
+    ],
+    [
+     "117",
+     "117"
+    ]
+   ],
+   "ornamentSets": [
+    "309"
+   ]
+  },
+  "1003": {
+   "weights": {
+    "ATK": 0.75,
+    "ATK_P": 0.75,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CD",
+     "CR",
+     "EHR"
+    ],
+    "FOOT": [
+     "ATK_P",
+     "SPD"
+    ],
+    "NECK": [
+     "ATK_P",
+     "Fire_DMG"
+    ],
+    "OBJECT": [
+     "ATK_P"
+    ]
+   },
+   "relicSets": [
+    [
+     "115",
+     "115"
+    ]
+   ],
+   "ornamentSets": [
+    "315"
+   ]
+  },
+  "1004": {
+   "weights": {
+    "ATK": 0.75,
+    "ATK_P": 0.75,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1,
+    "EHR": 1
+   },
+   "mains": {
+    "BODY": [
+     "CD",
+     "CR",
+     "EHR"
+    ],
+    "FOOT": [
+     "ATK_P",
+     "SPD"
+    ],
+    "NECK": [
+     "ATK_P",
+     "Imaginary_DMG"
+    ],
+    "OBJECT": [
+     "ATK_P",
+     "ERR"
+    ]
+   },
+   "relicSets": [],
+   "ornamentSets": []
+  },
+  "1005": {
+   "weights": {
+    "ATK": 1,
+    "ATK_P": 1,
+    "SPD": 1,
+    "EHR": 0.5
+   },
+   "mains": {
+    "BODY": [
+     "ATK_P",
+     "EHR"
+    ],
+    "FOOT": [
+     "SPD",
+     "ATK_P"
+    ],
+    "NECK": [
+     "ATK_P",
+     "Thunder_DMG"
+    ],
+    "OBJECT": [
+     "ATK_P"
+    ]
+   },
+   "relicSets": [],
+   "ornamentSets": []
+  },
+  "1006": {
+   "weights": {
+    "SPD": 1,
+    "EHR": 1,
+    "RES": 0.25
+   },
+   "mains": {
+    "BODY": [
+     "CD",
+     "CR",
+     "EHR"
+    ],
+    "FOOT": [
+     "SPD"
+    ],
+    "NECK": [
+     "Quantum_DMG",
+     "ATK_P",
+     "HP_P",
+     "DEF_P"
+    ],
+    "OBJECT": [
+     "ERR",
+     "ATK_P",
+     "BE"
+    ]
+   },
+   "relicSets": [],
+   "ornamentSets": []
+  },
+  "1008": {
+   "weights": {
+    "ATK": 0.75,
+    "ATK_P": 0.75,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD",
+     "EHR"
+    ],
+    "FOOT": [
+     "ATK_P",
+     "SPD"
+    ],
+    "NECK": [
+     "ATK_P",
+     "Thunder_DMG"
+    ],
+    "OBJECT": [
+     "ATK_P"
+    ]
+   },
+   "relicSets": [
+    [
+     "122",
+     "122"
+    ]
+   ],
+   "ornamentSets": [
+    "309"
+   ]
+  },
+  "1009": {
+   "weights": {
+    "DEF": 0.25,
+    "DEF_P": 0.25,
+    "HP": 0.25,
+    "HP_P": 0.25,
+    "SPD": 1,
+    "RES": 0.25
+   },
+   "mains": {
+    "BODY": [],
+    "FOOT": [
+     "SPD"
+    ],
+    "NECK": [],
+    "OBJECT": [
+     "ATK_P",
+     "ERR"
+    ]
+   },
+   "relicSets": [],
+   "ornamentSets": []
+  },
+  "1013": {
+   "weights": {
+    "ATK": 0.75,
+    "ATK_P": 0.75,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD",
+     "EHR"
+    ],
+    "FOOT": [
+     "ATK_P",
+     "SPD"
+    ],
+    "NECK": [
+     "ATK_P",
+     "Ice_DMG"
+    ],
+    "OBJECT": [
+     "ATK_P",
+     "ERR"
+    ]
+   },
+   "relicSets": [
+    [
+     "115",
+     "115"
+    ],
+    [
+     "122",
+     "122"
+    ],
+    [
+     "104",
+     "104"
+    ]
+   ],
+   "ornamentSets": [
+    "315"
+   ]
+  },
+  "1014": {
+   "weights": {
+    "ATK": 0.75,
+    "ATK_P": 0.75,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD",
+     "ATK_P",
+     "EHR"
+    ],
+    "FOOT": [
+     "ATK_P",
+     "SPD"
+    ],
+    "NECK": [
+     "ATK_P",
+     "Wind_DMG"
+    ],
+    "OBJECT": [
+     "ATK_P",
+     "ERR"
+    ]
+   },
+   "relicSets": [
+    [
+     "126",
+     "126"
+    ],
+    [
+     "122",
+     "122"
+    ]
+   ],
+   "ornamentSets": [
+    "306",
+    "311"
+   ]
+  },
+  "1015": {
+   "weights": {
+    "ATK": 0.75,
+    "ATK_P": 0.75,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD",
+     "ATK_P",
+     "EHR"
+    ],
+    "FOOT": [
+     "ATK_P",
+     "SPD"
+    ],
+    "NECK": [
+     "ATK_P",
+     "Quantum_DMG"
+    ],
+    "OBJECT": [
+     "ATK_P",
+     "ERR"
+    ]
+   },
+   "relicSets": [
+    [
+     "126",
+     "126"
+    ],
+    [
+     "108",
+     "108"
+    ]
+   ],
+   "ornamentSets": [
+    "309",
+    "324"
+   ]
+  },
+  "1101": {
+   "weights": {
+    "SPD": 1,
+    "CD": 1,
+    "RES": 0.25
+   },
+   "mains": {
+    "BODY": [
+     "CD"
+    ],
+    "FOOT": [
+     "SPD"
+    ],
+    "NECK": [],
+    "OBJECT": [
+     "ERR"
+    ]
+   },
+   "relicSets": [],
+   "ornamentSets": []
+  },
+  "1102": {
+   "weights": {
+    "ATK": 0.75,
+    "ATK_P": 0.75,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD",
+     "EHR"
+    ],
+    "FOOT": [
+     "ATK_P",
+     "SPD"
+    ],
+    "NECK": [
+     "ATK_P",
+     "Quantum_DMG"
+    ],
+    "OBJECT": [
+     "ATK_P"
+    ]
+   },
+   "relicSets": [],
+   "ornamentSets": []
+  },
+  "1103": {
+   "weights": {
+    "ATK": 0.75,
+    "ATK_P": 0.75,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CD",
+     "CR",
+     "EHR"
+    ],
+    "FOOT": [
+     "SPD",
+     "ATK_P"
+    ],
+    "NECK": [
+     "ATK_P",
+     "Thunder_DMG"
+    ],
+    "OBJECT": [
+     "ATK_P",
+     "ERR"
+    ]
+   },
+   "relicSets": [
+    [
+     "117",
+     "117"
+    ],
+    [
+     "122",
+     "122"
+    ],
+    [
+     "109",
+     "109"
+    ],
+    [
+     "110",
+     "110"
+    ]
+   ],
+   "ornamentSets": [
+    "311",
+    "309",
+    "308"
+   ]
+  },
+  "1104": {
+   "weights": {
+    "DEF": 1,
+    "DEF_P": 1,
+    "SPD": 1,
+    "EHR": 0.75,
+    "RES": 0.5
+   },
+   "mains": {
+    "BODY": [
+     "DEF_P"
+    ],
+    "FOOT": [
+     "DEF_P",
+     "SPD"
+    ],
+    "NECK": [
+     "DEF_P"
+    ],
+    "OBJECT": [
+     "DEF_P",
+     "ERR"
+    ]
+   },
+   "relicSets": [],
+   "ornamentSets": []
+  },
+  "1105": {
+   "weights": {
+    "HP": 1,
+    "HP_P": 1,
+    "SPD": 1,
+    "RES": 0.5
+   },
+   "mains": {
+    "BODY": [
+     "HP_P",
+     "OHB"
+    ],
+    "FOOT": [
+     "HP_P",
+     "SPD"
+    ],
+    "NECK": [
+     "HP_P"
+    ],
+    "OBJECT": [
+     "HP_P",
+     "ERR"
+    ]
+   },
+   "relicSets": [],
+   "ornamentSets": []
+  },
+  "1106": {
+   "weights": {
+    "DEF": 0.25,
+    "DEF_P": 0.25,
+    "HP": 0.25,
+    "HP_P": 0.25,
+    "SPD": 1,
+    "EHR": 1,
+    "RES": 0.25
+   },
+   "mains": {
+    "BODY": [
+     "EHR",
+     "HP_P",
+     "DEF_P"
+    ],
+    "FOOT": [
+     "SPD"
+    ],
+    "NECK": [
+     "HP_P",
+     "DEF_P",
+     "Ice_DMG"
+    ],
+    "OBJECT": [
+     "ERR"
+    ]
+   },
+   "relicSets": [],
+   "ornamentSets": []
+  },
+  "1107": {
+   "weights": {
+    "ATK": 0.75,
+    "ATK_P": 0.75,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD",
+     "EHR"
+    ],
+    "FOOT": [
+     "ATK_P",
+     "SPD"
+    ],
+    "NECK": [
+     "ATK_P",
+     "Physical_DMG"
+    ],
+    "OBJECT": [
+     "ATK_P"
+    ]
+   },
+   "relicSets": [
+    [
+     "105",
+     "105"
+    ]
+   ],
+   "ornamentSets": [
+    "315"
+   ]
+  },
+  "1108": {
+   "weights": {
+    "ATK": 1,
+    "ATK_P": 1,
+    "SPD": 1,
+    "EHR": 1
+   },
+   "mains": {
+    "BODY": [
+     "ATK_P",
+     "EHR"
+    ],
+    "FOOT": [
+     "SPD",
+     "ATK_P"
+    ],
+    "NECK": [
+     "ATK_P",
+     "Wind_DMG"
+    ],
+    "OBJECT": [
+     "ERR",
+     "ATK_P",
+     "BE"
+    ]
+   },
+   "relicSets": [
+    [
+     "116",
+     "116"
+    ]
+   ],
+   "ornamentSets": [
+    "322",
+    "311"
+   ]
+  },
+  "1109": {
+   "weights": {
+    "ATK": 0.75,
+    "ATK_P": 0.75,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD",
+     "EHR"
+    ],
+    "FOOT": [
+     "ATK_P",
+     "SPD"
+    ],
+    "NECK": [
+     "ATK_P",
+     "Fire_DMG"
+    ],
+    "OBJECT": [
+     "ATK_P"
+    ]
+   },
+   "relicSets": [
+    [
+     "117",
+     "117"
+    ],
+    [
+     "122",
+     "122"
+    ]
+   ],
+   "ornamentSets": [
+    "309",
+    "311"
+   ]
+  },
+  "1110": {
+   "weights": {
+    "HP": 1,
+    "HP_P": 1,
+    "SPD": 1,
+    "RES": 0.5
+   },
+   "mains": {
+    "BODY": [
+     "HP_P",
+     "OHB"
+    ],
+    "FOOT": [
+     "HP_P",
+     "SPD"
+    ],
+    "NECK": [
+     "HP_P"
+    ],
+    "OBJECT": [
+     "HP_P",
+     "ERR"
+    ]
+   },
+   "relicSets": [],
+   "ornamentSets": []
+  },
+  "1111": {
+   "weights": {
+    "ATK": 1,
+    "ATK_P": 1,
+    "SPD": 1,
+    "EHR": 1,
+    "BE": 1
+   },
+   "mains": {
+    "BODY": [
+     "ATK_P",
+     "EHR"
+    ],
+    "FOOT": [
+     "SPD",
+     "ATK_P"
+    ],
+    "NECK": [
+     "ATK_P",
+     "Physical_DMG"
+    ],
+    "OBJECT": [
+     "ATK_P",
+     "BE"
+    ]
+   },
+   "relicSets": [
+    [
+     "116",
+     "116"
+    ]
+   ],
+   "ornamentSets": [
+    "307",
+    "311",
+    "322"
+   ]
+  },
+  "1112": {
+   "weights": {
+    "ATK": 0.75,
+    "ATK_P": 0.75,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD",
+     "EHR"
+    ],
+    "FOOT": [
+     "ATK_P",
+     "SPD"
+    ],
+    "NECK": [
+     "Fire_DMG",
+     "ATK_P"
+    ],
+    "OBJECT": [
+     "ATK_P",
+     "ERR"
+    ]
+   },
+   "relicSets": [
+    [
+     "115",
+     "115"
+    ]
+   ],
+   "ornamentSets": [
+    "315",
+    "318"
+   ]
+  },
+  "1201": {
+   "weights": {
+    "ATK": 0.75,
+    "ATK_P": 0.75,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD",
+     "EHR"
+    ],
+    "FOOT": [
+     "ATK_P",
+     "SPD"
+    ],
+    "NECK": [
+     "ATK_P",
+     "Quantum_DMG"
+    ],
+    "OBJECT": [
+     "ATK_P"
+    ]
+   },
+   "relicSets": [
+    [
+     "122",
+     "122"
+    ],
+    [
+     "108",
+     "108"
+    ],
+    [
+     "124",
+     "124"
+    ],
+    [
+     "121",
+     "121"
+    ]
+   ],
+   "ornamentSets": [
+    "309",
+    "324"
+   ]
+  },
+  "1202": {
+   "weights": {
+    "ATK": 0.75,
+    "ATK_P": 0.75,
+    "DEF": 0.25,
+    "DEF_P": 0.25,
+    "HP": 0.25,
+    "HP_P": 0.25,
+    "SPD": 1,
+    "RES": 0.25
+   },
+   "mains": {
+    "BODY": [
+     "ATK_P",
+     "HP_P",
+     "DEF_P",
+     "EHR"
+    ],
+    "FOOT": [
+     "SPD"
+    ],
+    "NECK": [
+     "HP_P",
+     "DEF_P",
+     "ATK_P"
+    ],
+    "OBJECT": [
+     "ERR"
+    ]
+   },
+   "relicSets": [],
+   "ornamentSets": []
+  },
+  "1203": {
+   "weights": {
+    "ATK": 1,
+    "ATK_P": 1,
+    "SPD": 1,
+    "RES": 0.5
+   },
+   "mains": {
+    "BODY": [
+     "OHB",
+     "ATK_P",
+     "EHR"
+    ],
+    "FOOT": [
+     "SPD",
+     "ATK_P"
+    ],
+    "NECK": [
+     "ATK_P",
+     "HP_P",
+     "DEF_P"
+    ],
+    "OBJECT": [
+     "ERR"
+    ]
+   },
+   "relicSets": [],
+   "ornamentSets": []
+  },
+  "1204": {
+   "weights": {
+    "ATK": 0.75,
+    "ATK_P": 0.75,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD",
+     "EHR"
+    ],
+    "FOOT": [
+     "ATK_P",
+     "SPD"
+    ],
+    "NECK": [
+     "ATK_P",
+     "Thunder_DMG"
+    ],
+    "OBJECT": [
+     "ATK_P"
+    ]
+   },
+   "relicSets": [
+    [
+     "115",
+     "115"
+    ]
+   ],
+   "ornamentSets": [
+    "318",
+    "306"
+   ]
+  },
+  "1205": {
+   "weights": {
+    "ATK": 0.25,
+    "ATK_P": 0.25,
+    "HP": 1,
+    "HP_P": 1,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CD",
+     "CR"
+    ],
+    "FOOT": [
+     "SPD",
+     "HP_P"
+    ],
+    "NECK": [
+     "Wind_DMG",
+     "HP_P"
+    ],
+    "OBJECT": [
+     "HP_P"
+    ]
+   },
+   "relicSets": [],
+   "ornamentSets": []
+  },
+  "1206": {
+   "weights": {
+    "ATK": 0.75,
+    "ATK_P": 0.75,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD",
+     "EHR"
+    ],
+    "FOOT": [
+     "ATK_P",
+     "SPD"
+    ],
+    "NECK": [
+     "ATK_P",
+     "Physical_DMG"
+    ],
+    "OBJECT": [
+     "ATK_P",
+     "BE"
+    ]
+   },
+   "relicSets": [
+    [
+     "122",
+     "122"
+    ],
+    [
+     "105",
+     "105"
+    ],
+    [
+     "119",
+     "119"
+    ]
+   ],
+   "ornamentSets": [
+    "311",
+    "307",
+    "309"
+   ]
+  },
+  "1207": {
+   "weights": {
+    "ATK": 0.75,
+    "ATK_P": 0.75,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD",
+     "EHR"
+    ],
+    "FOOT": [
+     "SPD"
+    ],
+    "NECK": [
+     "ATK_P",
+     "Imaginary_DMG"
+    ],
+    "OBJECT": [
+     "ERR",
+     "ATK_P"
+    ]
+   },
+   "relicSets": [],
+   "ornamentSets": []
+  },
+  "1208": {
+   "weights": {
+    "DEF": 0.75,
+    "DEF_P": 0.75,
+    "HP": 1,
+    "HP_P": 1,
+    "SPD": 1,
+    "RES": 0.5
+   },
+   "mains": {
+    "BODY": [
+     "HP_P",
+     "DEF_P"
+    ],
+    "FOOT": [
+     "HP_P",
+     "DEF_P",
+     "SPD"
+    ],
+    "NECK": [
+     "HP_P",
+     "DEF_P"
+    ],
+    "OBJECT": [
+     "HP_P",
+     "DEF_P",
+     "ERR"
+    ]
+   },
+   "relicSets": [],
+   "ornamentSets": []
+  },
+  "1209": {
+   "weights": {
+    "ATK": 0.75,
+    "ATK_P": 0.75,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD",
+     "EHR"
+    ],
+    "FOOT": [
+     "ATK_P",
+     "SPD"
+    ],
+    "NECK": [
+     "ATK_P",
+     "Ice_DMG"
+    ],
+    "OBJECT": [
+     "ATK_P"
+    ]
+   },
+   "relicSets": [
+    [
+     "122",
+     "122"
+    ],
+    [
+     "104",
+     "104"
+    ]
+   ],
+   "ornamentSets": [
+    "309",
+    "311"
+   ]
+  },
+  "1210": {
+   "weights": {
+    "ATK": 0.5,
+    "ATK_P": 0.5,
+    "DEF": 0.25,
+    "DEF_P": 0.25,
+    "HP": 0.25,
+    "HP_P": 0.25,
+    "SPD": 1,
+    "EHR": 1,
+    "RES": 0.25
+   },
+   "mains": {
+    "BODY": [
+     "ATK_P",
+     "EHR"
+    ],
+    "FOOT": [
+     "SPD"
+    ],
+    "NECK": [
+     "ATK_P",
+     "Fire_DMG"
+    ],
+    "OBJECT": [
+     "ERR",
+     "ATK_P"
+    ]
+   },
+   "relicSets": [],
+   "ornamentSets": []
+  },
+  "1211": {
+   "weights": {
+    "HP": 1,
+    "HP_P": 1,
+    "SPD": 1,
+    "RES": 0.5
+   },
+   "mains": {
+    "BODY": [
+     "OHB"
+    ],
+    "FOOT": [
+     "SPD",
+     "HP_P"
+    ],
+    "NECK": [
+     "HP_P"
+    ],
+    "OBJECT": [
+     "HP_P",
+     "ERR"
+    ]
+   },
+   "relicSets": [],
+   "ornamentSets": []
+  },
+  "1212": {
+   "weights": {
+    "ATK": 0.75,
+    "ATK_P": 0.75,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD",
+     "EHR"
+    ],
+    "FOOT": [
+     "ATK_P",
+     "SPD"
+    ],
+    "NECK": [
+     "ATK_P",
+     "Ice_DMG"
+    ],
+    "OBJECT": [
+     "ATK_P",
+     "ERR"
+    ]
+   },
+   "relicSets": [],
+   "ornamentSets": []
+  },
+  "1213": {
+   "weights": {
+    "ATK": 0.75,
+    "ATK_P": 0.75,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD",
+     "EHR"
+    ],
+    "FOOT": [
+     "ATK_P",
+     "SPD"
+    ],
+    "NECK": [
+     "ATK_P",
+     "Imaginary_DMG"
+    ],
+    "OBJECT": [
+     "ATK_P"
+    ]
+   },
+   "relicSets": [
+    [
+     "102",
+     "102"
+    ],
+    [
+     "108",
+     "108"
+    ],
+    [
+     "112",
+     "112"
+    ]
+   ],
+   "ornamentSets": [
+    "309",
+    "324"
+   ]
+  },
+  "1214": {
+   "weights": {
+    "ATK": 0.75,
+    "ATK_P": 0.75,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1,
+    "BE": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD",
+     "EHR"
+    ],
+    "FOOT": [
+     "ATK_P",
+     "SPD"
+    ],
+    "NECK": [
+     "Quantum_DMG",
+     "ATK_P"
+    ],
+    "OBJECT": [
+     "ATK_P",
+     "BE"
+    ]
+   },
+   "relicSets": [
+    [
+     "108",
+     "108"
+    ],
+    [
+     "124",
+     "124"
+    ]
+   ],
+   "ornamentSets": [
+    "307",
+    "306",
+    "301",
+    "311"
+   ]
+  },
+  "1215": {
+   "weights": {
+    "DEF": 0.25,
+    "DEF_P": 0.25,
+    "HP": 0.25,
+    "HP_P": 0.25,
+    "SPD": 1,
+    "RES": 0.25
+   },
+   "mains": {
+    "BODY": [],
+    "FOOT": [
+     "SPD"
+    ],
+    "NECK": [],
+    "OBJECT": [
+     "ERR"
+    ]
+   },
+   "relicSets": [],
+   "ornamentSets": []
+  },
+  "1217": {
+   "weights": {
+    "HP": 1,
+    "HP_P": 1,
+    "SPD": 1,
+    "RES": 0.5
+   },
+   "mains": {
+    "BODY": [
+     "HP_P",
+     "OHB"
+    ],
+    "FOOT": [
+     "SPD",
+     "HP_P"
+    ],
+    "NECK": [
+     "HP_P"
+    ],
+    "OBJECT": [
+     "HP_P",
+     "ERR"
+    ]
+   },
+   "relicSets": [],
+   "ornamentSets": []
+  },
+  "1218": {
+   "weights": {
+    "ATK": 0.5,
+    "ATK_P": 0.5,
+    "SPD": 1,
+    "EHR": 1,
+    "RES": 0.25
+   },
+   "mains": {
+    "BODY": [
+     "EHR"
+    ],
+    "FOOT": [
+     "SPD"
+    ],
+    "NECK": [],
+    "OBJECT": [
+     "ATK_P",
+     "ERR"
+    ]
+   },
+   "relicSets": [],
+   "ornamentSets": []
+  },
+  "1220": {
+   "weights": {
+    "ATK": 0.75,
+    "ATK_P": 0.75,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD",
+     "EHR"
+    ],
+    "FOOT": [
+     "ATK_P",
+     "SPD"
+    ],
+    "NECK": [
+     "ATK_P",
+     "Wind_DMG"
+    ],
+    "OBJECT": [
+     "ATK_P"
+    ]
+   },
+   "relicSets": [
+    [
+     "120",
+     "120"
+    ],
+    [
+     "115",
+     "115"
+    ],
+    [
+     "110",
+     "110"
+    ]
+   ],
+   "ornamentSets": [
+    "315"
+   ]
+  },
+  "1221": {
+   "weights": {
+    "ATK": 0.75,
+    "ATK_P": 0.75,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD",
+     "EHR"
+    ],
+    "FOOT": [
+     "ATK_P",
+     "SPD"
+    ],
+    "NECK": [
+     "ATK_P",
+     "Physical_DMG"
+    ],
+    "OBJECT": [
+     "ATK_P",
+     "ERR"
+    ]
+   },
+   "relicSets": [
+    [
+     "120",
+     "120"
+    ]
+   ],
+   "ornamentSets": [
+    "315"
+   ]
+  },
+  "1222": {
+   "weights": {
+    "ATK": 1,
+    "ATK_P": 1,
+    "SPD": 1,
+    "RES": 0.5,
+    "BE": 1
+   },
+   "mains": {
+    "BODY": [
+     "ATK_P",
+     "OHB",
+     "DEF_P",
+     "HP_P",
+     "EHR"
+    ],
+    "FOOT": [
+     "SPD"
+    ],
+    "NECK": [
+     "ATK_P",
+     "DEF_P",
+     "HP_P",
+     "Fire_DMG"
+    ],
+    "OBJECT": [
+     "BE",
+     "ERR",
+     "ATK_P"
+    ]
+   },
+   "relicSets": [],
+   "ornamentSets": []
+  },
+  "1223": {
+   "weights": {
+    "ATK": 0.75,
+    "ATK_P": 0.75,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD",
+     "EHR"
+    ],
+    "FOOT": [
+     "ATK_P",
+     "SPD"
+    ],
+    "NECK": [
+     "ATK_P",
+     "Thunder_DMG"
+    ],
+    "OBJECT": [
+     "ATK_P",
+     "ERR"
+    ]
+   },
+   "relicSets": [
+    [
+     "117",
+     "117"
+    ],
+    [
+     "115",
+     "115"
+    ]
+   ],
+   "ornamentSets": [
+    "315",
+    "314"
+   ]
+  },
+  "1224": {
+   "weights": {
+    "SPD": 1,
+    "BE": 1
+   },
+   "mains": {
+    "BODY": [],
+    "FOOT": [
+     "SPD",
+     "ATK_P"
+    ],
+    "NECK": [],
+    "OBJECT": [
+     "BE"
+    ]
+   },
+   "relicSets": [
+    [
+     "119",
+     "119"
+    ],
+    [
+     "102",
+     "102"
+    ],
+    [
+     "112",
+     "112"
+    ]
+   ],
+   "ornamentSets": [
+    "307",
+    "316",
+    "309",
+    "314"
+   ]
+  },
+  "1225": {
+   "weights": {
+    "SPD": 1,
+    "EHR": 1,
+    "BE": 1
+   },
+   "mains": {
+    "BODY": [],
+    "FOOT": [
+     "SPD"
+    ],
+    "NECK": [],
+    "OBJECT": [
+     "ERR",
+     "BE"
+    ]
+   },
+   "relicSets": [
+    [
+     "111",
+     "111"
+    ],
+    [
+     "110",
+     "110"
+    ]
+   ],
+   "ornamentSets": [
+    "316",
+    "307"
+   ]
+  },
+  "1301": {
+   "weights": {
+    "SPD": 1,
+    "RES": 0.5,
+    "BE": 1
+   },
+   "mains": {
+    "BODY": [
+     "OHB"
+    ],
+    "FOOT": [
+     "SPD"
+    ],
+    "NECK": [],
+    "OBJECT": [
+     "ERR",
+     "BE"
+    ]
+   },
+   "relicSets": [],
+   "ornamentSets": []
+  },
+  "1302": {
+   "weights": {
+    "ATK": 0.75,
+    "ATK_P": 0.75,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD",
+     "EHR"
+    ],
+    "FOOT": [
+     "ATK_P",
+     "SPD"
+    ],
+    "NECK": [
+     "Physical_DMG",
+     "ATK_P"
+    ],
+    "OBJECT": [
+     "ATK_P",
+     "ERR"
+    ]
+   },
+   "relicSets": [
+    [
+     "122",
+     "122"
+    ],
+    [
+     "105",
+     "105"
+    ]
+   ],
+   "ornamentSets": [
+    "306",
+    "311"
+   ]
+  },
+  "1303": {
+   "weights": {
+    "SPD": 1,
+    "RES": 0.25,
+    "BE": 1
+   },
+   "mains": {
+    "BODY": [],
+    "FOOT": [],
+    "NECK": [],
+    "OBJECT": [
+     "ERR",
+     "BE"
+    ]
+   },
+   "relicSets": [],
+   "ornamentSets": []
+  },
+  "1304": {
+   "weights": {
+    "DEF": 1,
+    "DEF_P": 1,
+    "SPD": 1,
+    "CR": 0.25,
+    "CD": 0.25
+   },
+   "mains": {
+    "BODY": [
+     "DEF_P",
+     "CR",
+     "CD"
+    ],
+    "FOOT": [
+     "DEF_P",
+     "SPD"
+    ],
+    "NECK": [
+     "Imaginary_DMG",
+     "DEF_P"
+    ],
+    "OBJECT": [
+     "DEF_P",
+     "ERR"
+    ]
+   },
+   "relicSets": [],
+   "ornamentSets": []
+  },
+  "1305": {
+   "weights": {
+    "ATK": 0.75,
+    "ATK_P": 0.75,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD",
+     "EHR"
+    ],
+    "FOOT": [
+     "ATK_P",
+     "SPD"
+    ],
+    "NECK": [
+     "ATK_P",
+     "Imaginary_DMG"
+    ],
+    "OBJECT": [
+     "ATK_P"
+    ]
+   },
+   "relicSets": [
+    [
+     "117",
+     "117"
+    ]
+   ],
+   "ornamentSets": [
+    "315",
+    "314"
+   ]
+  },
+  "1306": {
+   "weights": {
+    "SPD": 1,
+    "CD": 1,
+    "RES": 0.25
+   },
+   "mains": {
+    "BODY": [
+     "CD"
+    ],
+    "FOOT": [
+     "SPD"
+    ],
+    "NECK": [],
+    "OBJECT": [
+     "ERR"
+    ]
+   },
+   "relicSets": [],
+   "ornamentSets": []
+  },
+  "1307": {
+   "weights": {
+    "ATK": 1,
+    "ATK_P": 1,
+    "SPD": 1,
+    "EHR": 1
+   },
+   "mains": {
+    "BODY": [
+     "ATK_P",
+     "EHR"
+    ],
+    "FOOT": [
+     "SPD",
+     "ATK_P"
+    ],
+    "NECK": [
+     "Wind_DMG",
+     "ATK_P"
+    ],
+    "OBJECT": [
+     "ATK_P"
+    ]
+   },
+   "relicSets": [],
+   "ornamentSets": []
+  },
+  "1308": {
+   "weights": {
+    "ATK": 0.75,
+    "ATK_P": 0.75,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD",
+     "ATK_P",
+     "EHR"
+    ],
+    "FOOT": [
+     "ATK_P",
+     "SPD"
+    ],
+    "NECK": [
+     "Thunder_DMG",
+     "ATK_P"
+    ],
+    "OBJECT": [
+     "ATK_P"
+    ]
+   },
+   "relicSets": [
+    [
+     "117",
+     "117"
+    ]
+   ],
+   "ornamentSets": [
+    "314"
+   ]
+  },
+  "1309": {
+   "weights": {
+    "ATK": 1,
+    "ATK_P": 1,
+    "SPD": 1,
+    "RES": 0.25
+   },
+   "mains": {
+    "BODY": [
+     "ATK_P",
+     "EHR"
+    ],
+    "FOOT": [
+     "ATK_P",
+     "SPD"
+    ],
+    "NECK": [
+     "ATK_P",
+     "Physical_DMG"
+    ],
+    "OBJECT": [
+     "ATK_P",
+     "ERR"
+    ]
+   },
+   "relicSets": [],
+   "ornamentSets": []
+  },
+  "1310": {
+   "weights": {
+    "ATK": 0.5,
+    "ATK_P": 0.5,
+    "SPD": 1,
+    "BE": 1
+   },
+   "mains": {
+    "BODY": [
+     "ATK_P",
+     "EHR"
+    ],
+    "FOOT": [
+     "ATK_P",
+     "SPD"
+    ],
+    "NECK": [
+     "ATK_P"
+    ],
+    "OBJECT": [
+     "BE"
+    ]
+   },
+   "relicSets": [],
+   "ornamentSets": []
+  },
+  "1312": {
+   "weights": {
+    "ATK": 0.75,
+    "ATK_P": 0.75,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD",
+     "EHR"
+    ],
+    "FOOT": [
+     "ATK_P",
+     "SPD"
+    ],
+    "NECK": [
+     "ATK_P",
+     "Ice_DMG"
+    ],
+    "OBJECT": [
+     "ATK_P"
+    ]
+   },
+   "relicSets": [
+    [
+     "122",
+     "122"
+    ],
+    [
+     "117",
+     "117"
+    ]
+   ],
+   "ornamentSets": [
+    "309",
+    "311",
+    "306"
+   ]
+  },
+  "1313": {
+   "weights": {
+    "SPD": 1,
+    "CD": 1,
+    "RES": 0.25
+   },
+   "mains": {
+    "BODY": [
+     "CD"
+    ],
+    "FOOT": [],
+    "NECK": [],
+    "OBJECT": [
+     "ERR"
+    ]
+   },
+   "relicSets": [],
+   "ornamentSets": []
+  },
+  "1314": {
+   "weights": {
+    "ATK": 0.75,
+    "ATK_P": 0.75,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD",
+     "EHR"
+    ],
+    "FOOT": [
+     "ATK_P",
+     "SPD"
+    ],
+    "NECK": [
+     "ATK_P",
+     "Quantum_DMG"
+    ],
+    "OBJECT": [
+     "ATK_P"
+    ]
+   },
+   "relicSets": [
+    [
+     "115",
+     "115"
+    ],
+    [
+     "108",
+     "108"
+    ],
+    [
+     "124",
+     "124"
+    ],
+    [
+     "121",
+     "121"
+    ]
+   ],
+   "ornamentSets": [
+    "315",
+    "314"
+   ]
+  },
+  "1315": {
+   "weights": {
+    "ATK": 0.25,
+    "ATK_P": 0.25,
+    "SPD": 1,
+    "CR": 0.25,
+    "CD": 0.25,
+    "BE": 1
+   },
+   "mains": {
+    "BODY": [],
+    "FOOT": [
+     "SPD"
+    ],
+    "NECK": [],
+    "OBJECT": [
+     "BE"
+    ]
+   },
+   "relicSets": [
+    [
+     "111",
+     "118"
+    ],
+    [
+     "119",
+     "119"
+    ]
+   ],
+   "ornamentSets": [
+    "307"
+   ]
+  },
+  "1317": {
+   "weights": {
+    "ATK": 0.5,
+    "ATK_P": 0.5,
+    "SPD": 1,
+    "BE": 1
+   },
+   "mains": {
+    "BODY": [],
+    "FOOT": [
+     "SPD"
+    ],
+    "NECK": [],
+    "OBJECT": [
+     "BE"
+    ]
+   },
+   "relicSets": [
+    [
+     "119",
+     "119"
+    ],
+    [
+     "110",
+     "110"
+    ]
+   ],
+   "ornamentSets": [
+    "307"
+   ]
+  },
+  "1321": {
+   "weights": {
+    "SPD": 1,
+    "BE": 1
+   },
+   "mains": {
+    "BODY": [],
+    "FOOT": [
+     "SPD"
+    ],
+    "NECK": [],
+    "OBJECT": [
+     "ERR",
+     "BE"
+    ]
+   },
+   "relicSets": [
+    [
+     "119",
+     "119"
+    ],
+    [
+     "111",
+     "111"
+    ]
+   ],
+   "ornamentSets": [
+    "316"
+   ]
+  },
+  "1401": {
+   "weights": {
+    "ATK": 0.75,
+    "ATK_P": 0.75,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD",
+     "EHR"
+    ],
+    "FOOT": [
+     "ATK_P",
+     "SPD"
+    ],
+    "NECK": [
+     "ATK_P",
+     "Ice_DMG"
+    ],
+    "OBJECT": [
+     "ATK_P",
+     "ERR"
+    ]
+   },
+   "relicSets": [
+    [
+     "122",
+     "122"
+    ]
+   ],
+   "ornamentSets": [
+    "314",
+    "309"
+   ]
+  },
+  "1402": {
+   "weights": {
+    "ATK": 0.5,
+    "ATK_P": 0.5,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD",
+     "EHR"
+    ],
+    "FOOT": [
+     "ATK_P",
+     "SPD"
+    ],
+    "NECK": [
+     "ATK_P",
+     "Thunder_DMG"
+    ],
+    "OBJECT": [
+     "ATK_P",
+     "ERR"
+    ]
+   },
+   "relicSets": [
+    [
+     "123",
+     "123"
+    ]
+   ],
+   "ornamentSets": [
+    "318",
+    "309"
+   ]
+  },
+  "1403": {
+   "weights": {
+    "HP": 1,
+    "HP_P": 1,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CD",
+     "CR",
+     "HP_P"
+    ],
+    "FOOT": [
+     "SPD",
+     "HP_P"
+    ],
+    "NECK": [
+     "Quantum_DMG",
+     "HP_P"
+    ],
+    "OBJECT": [
+     "HP_P",
+     "ERR"
+    ]
+   },
+   "relicSets": [
+    [
+     "108",
+     "108"
+    ],
+    [
+     "113",
+     "113"
+    ],
+    [
+     "124",
+     "124"
+    ]
+   ],
+   "ornamentSets": [
+    "319"
+   ]
+  },
+  "1404": {
+   "weights": {
+    "HP": 1,
+    "HP_P": 1,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CD",
+     "CR",
+     "HP_P"
+    ],
+    "FOOT": [
+     "SPD",
+     "HP_P"
+    ],
+    "NECK": [
+     "Imaginary_DMG",
+     "HP_P"
+    ],
+    "OBJECT": [
+     "HP_P"
+    ]
+   },
+   "relicSets": [
+    [
+     "122",
+     "122"
+    ]
+   ],
+   "ornamentSets": [
+    "319",
+    "309"
+   ]
+  },
+  "1405": {
+   "weights": {
+    "ATK": 1,
+    "ATK_P": 1,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD",
+     "ATK_P",
+     "EHR"
+    ],
+    "FOOT": [
+     "ATK_P",
+     "SPD"
+    ],
+    "NECK": [
+     "ATK_P",
+     "Wind_DMG"
+    ],
+    "OBJECT": [
+     "ATK_P",
+     "ERR"
+    ]
+   },
+   "relicSets": [
+    [
+     "122",
+     "122"
+    ],
+    [
+     "108",
+     "108"
+    ],
+    [
+     "117",
+     "117"
+    ]
+   ],
+   "ornamentSets": [
+    "309",
+    "311",
+    "314",
+    "301"
+   ]
+  },
+  "1406": {
+   "weights": {
+    "ATK": 0.75,
+    "ATK_P": 0.75,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1,
+    "EHR": 0.5
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD",
+     "EHR"
+    ],
+    "FOOT": [
+     "ATK_P",
+     "SPD"
+    ],
+    "NECK": [
+     "ATK_P",
+     "Quantum_DMG"
+    ],
+    "OBJECT": [
+     "ATK_P",
+     "ERR"
+    ]
+   },
+   "relicSets": [
+    [
+     "117",
+     "117"
+    ],
+    [
+     "108",
+     "108"
+    ]
+   ],
+   "ornamentSets": [
+    "306",
+    "315",
+    "311"
+   ]
+  },
+  "1407": {
+   "weights": {
+    "HP": 1,
+    "HP_P": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD",
+     "HP_P"
+    ],
+    "FOOT": [
+     "HP_P"
+    ],
+    "NECK": [
+     "HP_P",
+     "Quantum_DMG"
+    ],
+    "OBJECT": [
+     "HP_P"
+    ]
+   },
+   "relicSets": [
+    [
+     "124",
+     "124"
+    ]
+   ],
+   "ornamentSets": [
+    "319"
+   ]
+  },
+  "1408": {
+   "weights": {
+    "ATK": 0.75,
+    "ATK_P": 0.75,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD",
+     "ATK_P",
+     "EHR"
+    ],
+    "FOOT": [
+     "ATK_P",
+     "SPD"
+    ],
+    "NECK": [
+     "ATK_P",
+     "Physical_DMG"
+    ],
+    "OBJECT": [
+     "ATK_P"
+    ]
+   },
+   "relicSets": [
+    [
+     "126",
+     "126"
+    ]
+   ],
+   "ornamentSets": [
+    "309"
+   ]
+  },
+  "1409": {
+   "weights": {
+    "HP": 1,
+    "HP_P": 1,
+    "SPD": 1,
+    "CD": 1,
+    "RES": 0.5
+   },
+   "mains": {
+    "BODY": [
+     "CD",
+     "HP_P",
+     "OHB"
+    ],
+    "FOOT": [
+     "SPD",
+     "HP_P"
+    ],
+    "NECK": [
+     "HP_P",
+     "Wind_DMG"
+    ],
+    "OBJECT": [
+     "HP_P",
+     "ERR"
+    ]
+   },
+   "relicSets": [
+    [
+     "125",
+     "125"
+    ],
+    [
+     "127",
+     "127"
+    ],
+    [
+     "123",
+     "123"
+    ],
+    [
+     "110",
+     "110"
+    ],
+    [
+     "114",
+     "114"
+    ]
+   ],
+   "ornamentSets": [
+    "320",
+    "319",
+    "321"
+   ]
+  },
+  "1410": {
+   "weights": {
+    "ATK": 1,
+    "ATK_P": 1,
+    "SPD": 1,
+    "EHR": 1
+   },
+   "mains": {
+    "BODY": [
+     "ATK_P",
+     "EHR"
+    ],
+    "FOOT": [
+     "SPD",
+     "ATK_P"
+    ],
+    "NECK": [
+     "Physical_DMG",
+     "ATK_P"
+    ],
+    "OBJECT": [
+     "ATK_P",
+     "ERR"
+    ]
+   },
+   "relicSets": [
+    [
+     "116",
+     "116"
+    ]
+   ],
+   "ornamentSets": [
+    "322",
+    "303"
+   ]
+  },
+  "1412": {
+   "weights": {
+    "ATK": 1,
+    "ATK_P": 1,
+    "SPD": 1,
+    "CD": 0.75,
+    "RES": 0.25
+   },
+   "mains": {
+    "BODY": [
+     "ATK_P"
+    ],
+    "FOOT": [
+     "SPD",
+     "ATK_P"
+    ],
+    "NECK": [
+     "ATK_P",
+     "Wind_DMG"
+    ],
+    "OBJECT": [
+     "ATK_P",
+     "ERR"
+    ]
+   },
+   "relicSets": [],
+   "ornamentSets": []
+  },
+  "1413": {
+   "weights": {
+    "HP": 1,
+    "HP_P": 1,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD",
+     "HP_P"
+    ],
+    "FOOT": [
+     "HP_P",
+     "SPD"
+    ],
+    "NECK": [
+     "HP_P",
+     "Ice_DMG"
+    ],
+    "OBJECT": [
+     "HP_P"
+    ]
+   },
+   "relicSets": [
+    [
+     "127",
+     "127"
+    ],
+    [
+     "124",
+     "124"
+    ]
+   ],
+   "ornamentSets": [
+    "319",
+    "321"
+   ]
+  },
+  "1414": {
+   "weights": {
+    "ATK": 1,
+    "ATK_P": 1,
+    "SPD": 1,
+    "RES": 0.25
+   },
+   "mains": {
+    "BODY": [
+     "ATK_P",
+     "EHR"
+    ],
+    "FOOT": [
+     "SPD",
+     "ATK_P"
+    ],
+    "NECK": [
+     "ATK_P"
+    ],
+    "OBJECT": [
+     "ERR",
+     "ATK_P"
+    ]
+   },
+   "relicSets": [],
+   "ornamentSets": []
+  },
+  "1415": {
+   "weights": {
+    "HP": 1,
+    "HP_P": 1,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "HP_P",
+     "CR",
+     "CD"
+    ],
+    "FOOT": [
+     "SPD",
+     "HP_P"
+    ],
+    "NECK": [
+     "HP_P",
+     "Ice_DMG"
+    ],
+    "OBJECT": [
+     "HP_P"
+    ]
+   },
+   "relicSets": [
+    [
+     "127",
+     "127"
+    ]
+   ],
+   "ornamentSets": [
+    "319",
+    "323",
+    "321"
+   ]
+  },
+  "1501": {
+   "weights": {
+    "ATK": 0.75,
+    "ATK_P": 0.75,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD"
+    ],
+    "FOOT": [
+     "SPD",
+     "ATK_P"
+    ],
+    "NECK": [
+     "Fire_DMG",
+     "ATK_P"
+    ],
+    "OBJECT": [
+     "ATK_P",
+     "ERR"
+    ]
+   },
+   "relicSets": [
+    [
+     "129",
+     "129"
+    ]
+   ],
+   "ornamentSets": [
+    "324",
+    "325",
+    "309",
+    "314"
+   ]
+  },
+  "1502": {
+   "weights": {
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD"
+    ],
+    "FOOT": [
+     "SPD"
+    ],
+    "NECK": [],
+    "OBJECT": [
+     "ERR"
+    ]
+   },
+   "relicSets": [
+    [
+     "129",
+     "129"
+    ],
+    [
+     "130",
+     "130"
+    ]
+   ],
+   "ornamentSets": [
+    "324",
+    "325"
+   ]
+  },
+  "1503": {
+   "weights": {
+    "DEF": 1,
+    "DEF_P": 1,
+    "SPD": 1,
+    "RES": 0.5
+   },
+   "mains": {
+    "BODY": [
+     "DEF_P",
+     "OHB"
+    ],
+    "FOOT": [
+     "SPD",
+     "DEF_P"
+    ],
+    "NECK": [
+     "DEF_P"
+    ],
+    "OBJECT": [
+     "ERR",
+     "DEF_P"
+    ]
+   },
+   "relicSets": [],
+   "ornamentSets": []
+  },
+  "1504": {
+   "weights": {
+    "ATK": 0.75,
+    "ATK_P": 0.75,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD"
+    ],
+    "FOOT": [
+     "ATK_P",
+     "SPD"
+    ],
+    "NECK": [
+     "ATK_P",
+     "Thunder_DMG"
+    ],
+    "OBJECT": [
+     "ATK_P",
+     "ERR"
+    ]
+   },
+   "relicSets": [
+    [
+     "115",
+     "115"
+    ],
+    [
+     "117",
+     "117"
+    ]
+   ],
+   "ornamentSets": [
+    "326",
+    "315",
+    "314"
+   ]
+  },
+  "1505": {
+   "weights": {
+    "ATK": 0.25,
+    "ATK_P": 0.25,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD"
+    ],
+    "FOOT": [],
+    "NECK": [],
+    "OBJECT": [
+     "ATK_P",
+     "ERR"
+    ]
+   },
+   "relicSets": [
+    [
+     "129",
+     "129"
+    ]
+   ],
+   "ornamentSets": [
+    "325",
+    "324"
+   ]
+  },
+  "1506": {
+   "weights": {
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD"
+    ],
+    "FOOT": [
+     "SPD"
+    ],
+    "NECK": [],
+    "OBJECT": []
+   },
+   "relicSets": [
+    [
+     "129",
+     "129"
+    ]
+   ],
+   "ornamentSets": [
+    "325"
+   ]
+  },
+  "1507": {
+   "weights": {
+    "HP": 1,
+    "HP_P": 1,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CD",
+     "CR",
+     "HP_P"
+    ],
+    "FOOT": [
+     "SPD",
+     "HP_P"
+    ],
+    "NECK": [
+     "Fire_DMG",
+     "HP_P"
+    ],
+    "OBJECT": [
+     "HP_P",
+     "ERR"
+    ]
+   },
+   "relicSets": [
+    [
+     "132",
+     "132"
+    ],
+    [
+     "106",
+     "106"
+    ]
+   ],
+   "ornamentSets": [
+    "319"
+   ]
+  },
+  "1508": {
+   "weights": {
+    "ATK": 0.75,
+    "ATK_P": 0.75,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD",
+     "ATK_P"
+    ],
+    "FOOT": [
+     "ATK_P",
+     "SPD"
+    ],
+    "NECK": [
+     "ATK_P",
+     "Quantum_DMG"
+    ],
+    "OBJECT": [
+     "ATK_P",
+     "ERR"
+    ]
+   },
+   "relicSets": [
+    [
+     "108",
+     "108"
+    ]
+   ],
+   "ornamentSets": [
+    "324"
+   ]
+  },
+  "1509": {
+   "weights": {
+    "ATK": 0.75,
+    "ATK_P": 0.75,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD",
+     "ATK_P"
+    ],
+    "FOOT": [
+     "ATK_P",
+     "SPD"
+    ],
+    "NECK": [
+     "ATK_P",
+     "Thunder_DMG"
+    ],
+    "OBJECT": [
+     "ATK_P",
+     "ERR"
+    ]
+   },
+   "relicSets": [
+    [
+     "122",
+     "122"
+    ]
+   ],
+   "ornamentSets": [
+    "328"
+   ]
+  },
+  "1510": {
+   "weights": {
+    "ATK": 0.75,
+    "ATK_P": 0.75,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD",
+     "ATK_P"
+    ],
+    "FOOT": [
+     "ATK_P",
+     "SPD"
+    ],
+    "NECK": [
+     "ATK_P",
+     "Fire_DMG"
+    ],
+    "OBJECT": [
+     "ATK_P",
+     "ERR"
+    ]
+   },
+   "relicSets": [
+    [
+     "131",
+     "131"
+    ]
+   ],
+   "ornamentSets": [
+    "327"
+   ]
+  },
+  "1511": {
+   "weights": {
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD"
+    ],
+    "FOOT": [
+     "SPD"
+    ],
+    "NECK": [],
+    "OBJECT": []
+   },
+   "relicSets": [
+    [
+     "129",
+     "129"
+    ],
+    [
+     "133",
+     "133"
+    ],
+    [
+     "130",
+     "130"
+    ],
+    [
+     "121",
+     "121"
+    ]
+   ],
+   "ornamentSets": [
+    "329"
+   ]
+  },
+  "1512": {
+   "weights": {
+    "HP": 1,
+    "HP_P": 1,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD",
+     "HP_P"
+    ],
+    "FOOT": [
+     "SPD",
+     "HP_P"
+    ],
+    "NECK": [
+     "HP_P",
+     "Wind_DMG"
+    ],
+    "OBJECT": [
+     "HP_P",
+     "ERR"
+    ]
+   },
+   "relicSets": [
+    [
+     "127",
+     "127"
+    ]
+   ],
+   "ornamentSets": [
+    "323"
+   ]
+  },
+  "1513": {
+   "weights": {
+    "ATK": 0.25,
+    "ATK_P": 0.25,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD"
+    ],
+    "FOOT": [
+     "ATK_P",
+     "SPD"
+    ],
+    "NECK": [],
+    "OBJECT": [
+     "ATK_P",
+     "ERR"
+    ]
+   },
+   "relicSets": [
+    [
+     "129",
+     "129"
+    ]
+   ],
+   "ornamentSets": [
+    "325"
+   ]
+  },
+  "8001": {
+   "weights": {
+    "ATK": 0.75,
+    "ATK_P": 0.75,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD",
+     "EHR"
+    ],
+    "FOOT": [
+     "ATK_P",
+     "SPD"
+    ],
+    "NECK": [
+     "ATK_P",
+     "Physical_DMG"
+    ],
+    "OBJECT": [
+     "ATK_P",
+     "BE"
+    ]
+   },
+   "relicSets": [
+    [
+     "122",
+     "122"
+    ]
+   ],
+   "ornamentSets": [
+    "309",
+    "311"
+   ]
+  },
+  "8003": {
+   "weights": {
+    "DEF": 1,
+    "DEF_P": 1,
+    "SPD": 1,
+    "EHR": 0.75,
+    "RES": 0.5
+   },
+   "mains": {
+    "BODY": [
+     "DEF_P"
+    ],
+    "FOOT": [
+     "DEF_P",
+     "SPD"
+    ],
+    "NECK": [
+     "DEF_P"
+    ],
+    "OBJECT": [
+     "DEF_P",
+     "ERR"
+    ]
+   },
+   "relicSets": [],
+   "ornamentSets": []
+  },
+  "8005": {
+   "weights": {
+    "SPD": 1,
+    "RES": 0.25,
+    "BE": 1
+   },
+   "mains": {
+    "BODY": [],
+    "FOOT": [
+     "SPD"
+    ],
+    "NECK": [],
+    "OBJECT": [
+     "BE",
+     "ERR"
+    ]
+   },
+   "relicSets": [],
+   "ornamentSets": []
+  },
+  "8007": {
+   "weights": {
+    "SPD": 1,
+    "CD": 1,
+    "RES": 0.25
+   },
+   "mains": {
+    "BODY": [
+     "CD",
+     "OHB"
+    ],
+    "FOOT": [
+     "ATK_P",
+     "SPD"
+    ],
+    "NECK": [],
+    "OBJECT": [
+     "ATK_P",
+     "ERR"
+    ]
+   },
+   "relicSets": [],
+   "ornamentSets": []
+  },
+  "8009": {
+   "weights": {
+    "ATK": 0.25,
+    "ATK_P": 0.25,
+    "SPD": 1,
+    "CR": 0.25,
+    "CD": 0.25
+   },
+   "mains": {
+    "BODY": [],
+    "FOOT": [
+     "SPD"
+    ],
+    "NECK": [],
+    "OBJECT": [
+     "ERR"
+    ]
+   },
+   "relicSets": [],
+   "ornamentSets": []
+  }
+ }
+}

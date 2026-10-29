@@ -1,0 +1,64 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "StarRail Archive",
+  "version": "0.1.0",
+  "identifier": "com.starrail.relichelper",
+  "build": {
+    "beforeDevCommand": "pnpm dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "pnpm build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "StarRail Archive",
+        "width": 1440,
+        "height": 860,
+        "minWidth": 1180,
+        "minHeight": 720,
+        "center": true,
+        "decorations": false,
+        "backgroundColor": "#06070c"
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": [
+      "nsis"
+    ],
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "createUpdaterArtifacts": true,
+    "windows": {
+      "nsis": {
+        "languages": [
+          "Korean",
+          "English"
+        ],
+        "displayLanguageSelector": false
+      }
+    }
+  },
+  "plugins": {
+    "updater": {
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IERFRDA2NUM4NDU0MzVBRTIKUldUaVdrTkZ5R1hRM3ZjMk9BbUxaRG13N1ZBNFFOSStCZHJWVFFJYjRDV25xQTFpSHBObmhKa3QK",
+      "endpoints": [
+        "https://github.com/didgmltmd/starrail-archive/releases/latest/download/latest.json"
+      ],
+      "windows": {
+        "installMode": "passive"
+      }
+    }
+  }
+}

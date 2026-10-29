@@ -1,0 +1,437 @@
+.friends-page {
+  display: flex;
+  gap: 24px;
+  padding: calc(var(--topbar-h) + 14px) 40px 24px calc(var(--rail-w) + 40px);
+  z-index: 5;
+}
+.friends-page.center {
+  align-items: center;
+  justify-content: center;
+}
+
+.pill-btn.small {
+  height: 34px;
+  padding: 0 18px;
+  font-size: 13px;
+}
+
+/* ---------- Friend list ---------- */
+
+.friends-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.friends-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.add-friend {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 4px 4px 16px;
+  border-radius: 22px;
+  background: rgba(10, 12, 18, 0.7);
+  border: 1px solid var(--line);
+}
+.add-friend input {
+  width: 160px;
+  background: none;
+  border: 0;
+  outline: none;
+  color: var(--text);
+  font-size: 18px;
+  letter-spacing: 0.06em;
+  user-select: text;
+}
+.add-friend input::placeholder {
+  font-family: var(--font);
+  font-size: 13px;
+  letter-spacing: 0;
+  color: var(--text-faint);
+}
+.add-msg {
+  position: absolute;
+  left: 16px;
+  top: calc(100% + 6px);
+  font-size: 12px;
+  color: #f2a46c;
+  white-space: nowrap;
+}
+
+.friends-error {
+  margin-bottom: 14px;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #f2a46c;
+  background: rgba(242, 164, 108, 0.08);
+  border: 1px solid rgba(242, 164, 108, 0.3);
+}
+
+.friends-empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  text-align: center;
+  color: var(--text-dim);
+  line-height: 1.8;
+}
+.friends-empty svg {
+  width: 56px;
+  height: 56px;
+  color: var(--text-faint);
+}
+.friends-empty b {
+  color: var(--gold);
+}
+
+.friend-grid {
+  flex: 1;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 14px;
+  align-content: start;
+  padding: 2px 6px 20px 2px;
+}
+
+.friend-card {
+  position: relative;
+  padding: 16px 16px 14px;
+  border-radius: 4px 18px 4px 4px;
+  background: linear-gradient(180deg, rgba(14, 16, 24, 0.82), rgba(8, 9, 14, 0.9));
+  border: 1px solid var(--line);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    transform 0.15s;
+}
+.friend-card::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 14px;
+  width: 44px;
+  height: 2px;
+  background: var(--gold);
+}
+.friend-card:hover {
+  border-color: rgba(239, 232, 214, 0.55);
+  transform: translateY(-2px);
+}
+.friend-card.pending {
+  cursor: default;
+  opacity: 0.75;
+}
+.friend-card.pending:hover {
+  transform: none;
+  border-color: var(--line);
+}
+
+.friend-remove {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: var(--text-faint);
+  opacity: 0;
+  transition: all 0.15s;
+}
+.friend-remove svg {
+  width: 14px;
+  height: 14px;
+}
+.friend-card:hover .friend-remove {
+  opacity: 1;
+}
+.friend-remove:hover {
+  color: #111;
+  background: var(--cream);
+}
+
+.friend-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.friend-head img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1.5px solid var(--line-strong);
+  background: linear-gradient(160deg, #3d2c18, #7d5a2c);
+}
+.friend-name {
+  font-size: 16px;
+  font-weight: 700;
+}
+.friend-meta {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.friend-avatars {
+  display: flex;
+  gap: 6px;
+  margin: 14px 0 12px;
+}
+.friend-avatars img {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--line);
+}
+
+.friend-foot {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+.friend-foot b {
+  color: var(--text);
+  font-size: 15px;
+}
+
+.friend-pending {
+  margin: 12px 0 0;
+  min-height: 34px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--text-faint);
+}
+
+/* ---------- Floating bar while viewing a friend ---------- */
+
+.friend-bar {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  translate: -50% 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 5px 16px 5px 5px;
+  border-radius: 22px;
+  background: rgba(8, 9, 14, 0.88);
+  border: 1px solid var(--line-strong);
+  backdrop-filter: blur(10px);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.friend-back {
+  height: 32px;
+  padding: 0 14px;
+  border-radius: 16px;
+  background: var(--cream);
+  color: #15161c;
+  font-weight: 700;
+  font-size: 13px;
+}
+.friend-back:hover {
+  box-shadow: 0 0 14px rgba(239, 232, 214, 0.35);
+}
+
+/* ---------- My share panel ---------- */
+
+.share-panel {
+  width: 330px;
+  flex: none;
+  align-self: flex-start;
+  padding: 20px 20px 22px;
+  border-radius: 4px 22px 4px 4px;
+  background: linear-gradient(180deg, rgba(12, 14, 22, 0.82), rgba(8, 9, 14, 0.9));
+  border: 1px solid var(--line);
+  backdrop-filter: blur(14px);
+}
+
+.share-uid {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  background: var(--row-alt);
+}
+.share-uid span {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+.share-uid b {
+  flex: 1;
+  font-size: 20px;
+  letter-spacing: 0.05em;
+  user-select: text;
+}
+
+.share-hint,
+.share-note {
+  margin: 8px 2px 0;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--text-faint);
+}
+
+.share-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+  padding: 12px;
+  border-radius: 6px;
+  background: var(--row);
+  border: 1px solid var(--line);
+  font-weight: 600;
+  text-align: left;
+  transition: border-color 0.15s;
+}
+.share-toggle:hover:not(:disabled) {
+  border-color: var(--line-strong);
+}
+.share-toggle:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.switch {
+  position: relative;
+  width: 40px;
+  height: 22px;
+  flex: none;
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.12);
+  transition: background 0.2s;
+}
+.switch i {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--text-dim);
+  transition: all 0.2s;
+}
+.share-toggle.on .switch {
+  background: rgba(220, 188, 124, 0.5);
+}
+.share-toggle.on .switch i {
+  left: 21px;
+  background: var(--cream);
+}
+
+.share-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 14px 2px 12px;
+  font-size: 13px;
+  color: var(--text-dim);
+}
+.share-row b {
+  color: var(--text);
+}
+
+.share-publish {
+  width: 100%;
+}
+
+.share-msg {
+  margin: 12px 2px 0;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.share-msg.ok {
+  color: var(--bonus);
+}
+.share-msg.err {
+  color: #f2a46c;
+}
+
+/* ---------- Not configured ---------- */
+
+.friends-setup {
+  position: relative;
+  width: min(540px, 80vw);
+  padding: 40px 44px 34px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(12, 14, 22, 0.82), rgba(8, 9, 14, 0.9));
+  border: 1px solid var(--line);
+  border-radius: 4px 26px 4px 26px;
+  backdrop-filter: blur(14px);
+}
+.friends-setup h2 {
+  margin: 4px 0 12px;
+  font-size: 24px;
+}
+.friends-setup p {
+  margin: 0 0 18px;
+  color: var(--text-dim);
+  line-height: 1.8;
+}
+.setup-emblem {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin-bottom: 12px;
+  color: var(--cream);
+  border: 1px solid var(--line-strong);
+  background: radial-gradient(circle, rgba(220, 188, 124, 0.2), transparent 70%);
+}
+.setup-emblem svg {
+  width: 32px;
+  height: 32px;
+}
+.setup-doc {
+  font-size: 12px;
+  color: var(--gold);
+  padding: 4px 12px;
+  border: 1px solid rgba(220, 188, 124, 0.4);
+  border-radius: 12px;
+}
+
+.friend-endgame {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 8px 0 2px;
+  padding: 7px 10px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line);
+  transition: all 0.15s;
+}
+.friend-endgame:hover {
+  border-color: rgba(220, 188, 124, 0.5);
+}
+.friend-endgame-go {
+  font-size: 11px;
+  color: var(--text-faint);
+}
+.friend-endgame:hover .friend-endgame-go {
+  color: var(--gold);
+}
