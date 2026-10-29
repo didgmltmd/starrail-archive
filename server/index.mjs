@@ -242,7 +242,7 @@ async function publishAddress(url) {
   const content = Buffer.from(JSON.stringify({ url, updatedAt: new Date().toISOString() }, null, 1) + "\n").toString("base64");
   await gh(
     ["api", "-X", "PUT", `repos/${REPO}/contents/server.json`, "--input", "-"],
-    JSON.stringify({ message: "server: update address", content, branch: BRANCH, ...(sha ? { sha } : {}) }),
+    JSON.stringify({ message: "chore(server): 친구 서버 주소 갱신", content, branch: BRANCH, ...(sha ? { sha } : {}) }),
   );
   log(`published address ${url}`);
 }
