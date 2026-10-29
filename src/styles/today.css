@@ -1,0 +1,255 @@
+.today-grid {
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) minmax(260px, 1fr) minmax(280px, 1fr);
+  gap: 14px;
+  align-items: start;
+}
+.today-side {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ---------- Trailblaze Power ---------- */
+
+.stamina-card {
+  --glow: rgba(150, 130, 255, 0.45);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.stamina-ring {
+  position: relative;
+  width: 210px;
+  height: 210px;
+  margin: 4px auto 14px;
+}
+.stamina-ring svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+.stamina-ring circle {
+  fill: none;
+  stroke-width: 10;
+}
+.stamina-ring .track {
+  stroke: rgba(255, 255, 255, 0.08);
+}
+.stamina-ring .arc {
+  stroke-linecap: round;
+  stroke: var(--ring);
+  filter: drop-shadow(0 0 8px var(--ring));
+}
+.stamina-ring.low {
+  --ring: #8fe3c4;
+}
+.stamina-ring.mid {
+  --ring: #f0cf86;
+}
+.stamina-ring.high {
+  --ring: #f39a6b;
+}
+.stamina-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+.stamina-text b {
+  font-size: 64px;
+}
+.stamina-text span {
+  margin-top: 4px;
+  font-size: 18px;
+  color: var(--text-faint);
+}
+
+.stamina-facts {
+  margin: 0 0 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.stamina-facts div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.stamina-facts dt {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+.stamina-facts dd {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.stamina-facts b {
+  font-size: 18px;
+}
+.stamina-facts b.full {
+  font-size: 14px;
+  color: #f39a6b;
+}
+.stamina-facts small {
+  font-size: 12px;
+  color: var(--text-faint);
+}
+.meter.reserve {
+  --meter: #b495e8;
+}
+
+/* ---------- Chores ---------- */
+
+.chores {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.chore-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 5px;
+  font-size: 13px;
+}
+.chore-head .num {
+  font-size: 13px;
+  color: var(--text-faint);
+}
+.chore-head b {
+  font-size: 16px;
+  color: var(--text);
+}
+.chore .meter {
+  --meter: var(--gold);
+}
+.chore.done .meter {
+  --meter: #8fe3c4;
+}
+.chore small {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  color: var(--text-faint);
+}
+
+/* ---------- Dispatch ---------- */
+
+.dispatch {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.dispatch li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+}
+.dispatch img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+}
+.dispatch .name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.dispatch .left {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+.dispatch .left.done {
+  color: #8fe3c4;
+  font-weight: 700;
+}
+
+/* ---------- Check-in ---------- */
+
+.checkin-body {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.award {
+  position: relative;
+  flex-shrink: 0;
+  width: 62px;
+  height: 62px;
+  border-radius: 10px 10px 10px 2px;
+  background: linear-gradient(160deg, #3d2c18, #7d5a2c);
+  display: grid;
+  place-items: center;
+}
+.award img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+.award span {
+  position: absolute;
+  right: 4px;
+  bottom: 2px;
+  font-size: 12px;
+  text-shadow: 0 1px 3px #000;
+}
+.award.got::after {
+  content: "✓";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 26px;
+  font-weight: 700;
+  color: #8fe3c4;
+  border-radius: inherit;
+  background: rgba(6, 7, 12, 0.55);
+}
+.checkin-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+.checkin-text b {
+  font-size: 15px;
+  color: var(--text);
+}
+.checkin-text .warn {
+  color: #f0b07a;
+  line-height: 1.5;
+}
+.checkin-actions {
+  margin-top: 12px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 1320px) {
+  .today-grid {
+    grid-template-columns: minmax(260px, 1fr) minmax(260px, 1fr);
+  }
+  .today-grid > .today-side:last-child {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}

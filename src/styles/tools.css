@@ -1,0 +1,226 @@
+/* Shared layout for the tool pages: 오늘, 월간 수입, 육성 계산, 파티 시뮬 */
+
+.tool-page {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: calc(var(--topbar-h) + 14px) 40px 24px calc(var(--rail-w) + 40px);
+  overflow-y: auto;
+  z-index: 5;
+}
+
+.tool-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 34px;
+}
+.tool-status {
+  flex: 1;
+  min-width: 0;
+  font-size: 12px;
+  color: var(--text-faint);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.tool-status.error {
+  color: #f08a7a;
+}
+
+.tool-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 14px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  border: 1px solid var(--line-strong);
+  background: rgba(10, 12, 18, 0.6);
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+.tool-btn:hover:not(:disabled) {
+  border-color: var(--cream);
+}
+.tool-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.tool-btn svg {
+  width: 15px;
+  height: 15px;
+}
+.tool-btn svg.spin {
+  animation: spin 1s linear infinite;
+}
+.tool-btn.primary {
+  color: #15161c;
+  background: var(--cream);
+  border-color: var(--cream);
+}
+.tool-btn.small {
+  height: 26px;
+  padding: 0 10px;
+  font-size: 11px;
+}
+
+.tool-card {
+  position: relative;
+  padding: 16px 18px;
+  border-radius: 4px 18px 4px 4px;
+  background: linear-gradient(160deg, rgba(20, 22, 32, 0.85), rgba(8, 9, 14, 0.9));
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+.tool-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.32;
+  pointer-events: none;
+  background: radial-gradient(circle at 100% 0%, var(--glow, rgba(220, 188, 124, 0.4)), transparent 60%);
+}
+.tool-card > * {
+  position: relative;
+}
+.tool-card h3 {
+  margin: 0 0 12px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--text-dim);
+}
+.tool-card h3 small {
+  margin-left: 8px;
+  font-weight: 500;
+  color: var(--text-faint);
+}
+
+.tool-empty {
+  margin: 60px auto 0;
+  max-width: 460px;
+  text-align: center;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+.tool-empty h2 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  color: var(--text);
+}
+.tool-empty .tool-btn {
+  margin-top: 16px;
+}
+
+.tool-note {
+  font-size: 12px;
+  color: var(--text-faint);
+  line-height: 1.6;
+}
+
+/* Bar meter */
+.meter {
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+.meter i {
+  display: block;
+  height: 100%;
+  border-radius: 3px;
+  background: var(--meter, var(--cream));
+}
+
+/* Toggle switch */
+.opt {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 0;
+  font-size: 13px;
+  cursor: pointer;
+}
+.opt + .opt {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+.opt small {
+  display: block;
+  margin-top: 2px;
+  font-size: 11px;
+  color: var(--text-faint);
+}
+.opt input[type="checkbox"] {
+  appearance: none;
+  flex-shrink: 0;
+  position: relative;
+  width: 34px;
+  height: 20px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.14);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.opt input[type="checkbox"]::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--text);
+  transition: transform 0.15s;
+}
+.opt input[type="checkbox"]:checked {
+  background: var(--gold);
+}
+.opt input[type="checkbox"]:checked::after {
+  transform: translateX(14px);
+  background: #1a1408;
+}
+
+.num-input {
+  width: 64px;
+  height: 28px;
+  padding: 0 8px;
+  border-radius: 6px;
+  font: 600 14px var(--font-num);
+  color: var(--text);
+  text-align: right;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--line-strong);
+  user-select: text;
+}
+.num-input:focus {
+  outline: none;
+  border-color: var(--cream);
+}
+
+/* Segmented control */
+.tseg {
+  display: inline-flex;
+  padding: 3px;
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--line);
+}
+.tseg button {
+  height: 26px;
+  padding: 0 12px;
+  border-radius: 13px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+.tseg button.on {
+  color: #15161c;
+  background: var(--cream);
+}

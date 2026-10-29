@@ -711,3 +711,47 @@ img {
 .slot-sub.dead .rolls.num {
   color: inherit;
 }
+
+/* ---------- Rail on shorter windows (12 tabs) ---------- */
+
+@media (max-height: 900px) {
+  .rail {
+    gap: 7px;
+  }
+  .rail-item,
+  .rail-dot,
+  .account-chip,
+  .account-chip > img {
+    width: 42px;
+    height: 42px;
+  }
+  .rail-dot svg {
+    width: 20px;
+    height: 20px;
+  }
+  .rail-divider {
+    margin: 0;
+  }
+}
+
+@media (max-height: 800px) {
+  .rail {
+    gap: 4px;
+    top: calc(var(--topbar-h) + 6px);
+    bottom: 12px;
+  }
+  .rail-item,
+  .rail-dot,
+  .account-chip,
+  .account-chip > img {
+    width: 37px;
+    height: 37px;
+  }
+  .rail-dot svg {
+    width: 18px;
+    height: 18px;
+  }
+  .rail-label {
+    left: 46px;
+  }
+}

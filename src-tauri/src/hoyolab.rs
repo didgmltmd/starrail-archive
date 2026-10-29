@@ -20,11 +20,16 @@ const RECORD_API: &str = "https://bbs-api-os.hoyolab.com/game_record/hkrpg/api";
 const ROLES_API: &str =
     "https://api-account-os.hoyolab.com/account/binding/api/getUserGameRolesByCookie?game_biz=hkrpg_global";
 
+/// Extra HoYoLAB cookies some event pages need (the monthly income page checks the account cookies).
+const EXTRA_COOKIES: [&str; 3] = ["cookie_token_v2", "account_id_v2", "account_mid_v2"];
+
 #[derive(Serialize, Deserialize, Clone)]
-struct Credentials {
+pub(crate) struct Credentials {
     ltuid_v2: String,
     ltoken_v2: String,
     ltmid_v2: Option<String>,
+    #[serde(default)]
+    extra: Vec<(String, String)>,
 }
 
 impl Credentials {
@@ -32,6 +37,9 @@ impl Credentials {
         let mut s = format!("ltuid_v2={}; ltoken_v2={}", self.ltuid_v2, self.ltoken_v2);
         if let Some(mid) = &self.ltmid_v2 {
             s.push_str(&format!("; ltmid_v2={mid}"));
+        }
+        for (k, v) in &self.extra {
+            s.push_str(&format!("; {k}={v}"));
         }
         s
     }
@@ -41,7 +49,7 @@ fn entry() -> Result<keyring::Entry, String> {
     keyring::Entry::new(KEYRING_SERVICE, KEYRING_USER).map_err(|e| e.to_string())
 }
 
-fn load_creds() -> Option<Credentials> {
+pub(crate) fn load_creds() -> Option<Credentials> {
     let raw = entry().ok()?.get_password().ok()?;
     serde_json::from_str(&raw).ok()
 }
@@ -110,7 +118,8 @@ pub async fn hoyolab_login(app: AppHandle) -> Result<(), String> {
                     .map(|c| c.value().to_string())
             };
             if let (Some(ltuid_v2), Some(ltoken_v2)) = (get("ltuid_v2"), get("ltoken_v2")) {
-                let creds = Credentials { ltuid_v2: ltuid_v2.clone(), ltoken_v2, ltmid_v2: get("ltmid_v2") };
+                let extra = EXTRA_COOKIES.iter().filter_map(|k| get(k).map(|v| (k.to_string(), v))).collect();
+                let creds = Credentials { ltuid_v2: ltuid_v2.clone(), ltoken_v2, ltmid_v2: get("ltmid_v2"), extra };
                 match save_creds(&creds) {
                     Ok(()) => {
                         let _ = app2.emit("hoyolab://linked", ltuid_v2);
@@ -159,7 +168,7 @@ fn ds() -> String {
     format!("{t},{r},{h:x}")
 }
 
-fn client() -> Result<reqwest::Client, String> {
+pub(crate) fn client() -> Result<reqwest::Client, String> {
     reqwest::Client::builder()
         .user_agent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36")
         .timeout(Duration::from_secs(20))
@@ -185,15 +194,48 @@ async fn call_lang(
     body: Option<Value>,
     lang: &str,
 ) -> Result<Value, String> {
+    request(http, creds, method, url, body, lang, true, &[]).await
+}
+
+/// Event pages on sg-public-api.hoyolab.com (income, check-in, calculator) are called like the
+/// HoYoLAB web pages do: no DS header.
+pub(crate) async fn call_event(
+    http: &reqwest::Client,
+    creds: &Credentials,
+    method: reqwest::Method,
+    url: &str,
+    body: Option<Value>,
+    headers: &[(&str, &str)],
+) -> Result<Value, String> {
+    request(http, creds, method, url, body, "ko-kr", false, headers).await
+}
+
+#[allow(clippy::too_many_arguments)]
+async fn request(
+    http: &reqwest::Client,
+    creds: &Credentials,
+    method: reqwest::Method,
+    url: &str,
+    body: Option<Value>,
+    lang: &str,
+    with_ds: bool,
+    headers: &[(&str, &str)],
+) -> Result<Value, String> {
     let mut req = http
         .request(method, url)
         .header("Cookie", creds.cookie_header())
-        .header("DS", ds())
+        .header("x-rpc-lang", lang)
         .header("x-rpc-app_version", "1.5.0")
         .header("x-rpc-client_type", "5")
         .header("x-rpc-language", lang)
         .header("Origin", "https://act.hoyolab.com")
         .header("Referer", "https://act.hoyolab.com/");
+    if with_ds {
+        req = req.header("DS", ds());
+    }
+    for (k, v) in headers {
+        req = req.header(*k, *v);
+    }
     if let Some(b) = body {
         req = req.json(&b);
     }
@@ -212,8 +254,63 @@ async fn call_lang(
         -100 | 10001 | -101 => "LOGIN_EXPIRED: HoYoLAB 로그인이 만료됐어요. 다시 연동해 주세요.".into(),
         10102 => "PRIVATE: HoYoLAB 전적에서 '캐릭터 상세 정보'가 비공개예요. HoYoLAB 앱 > 전적 > 설정에서 공개로 바꿔 주세요.".into(),
         10101 | 10103 => format!("HoYoLAB 요청 제한에 걸렸어요. 잠시 후 다시 시도해 주세요. ({code} {msg})"),
-        _ => format!("HoYoLAB 오류 {code}: {msg}"),
+        _ => format!("HOYOLAB_{}: HoYoLAB 오류 {code}: {msg}", code.unsigned_abs()),
     })
+}
+
+/// The account's Star Rail roles and the one to use (the given uid, else the highest level).
+pub(crate) async fn roles(
+    http: &reqwest::Client,
+    creds: &Credentials,
+    uid: Option<&str>,
+) -> Result<(Vec<Value>, Value), String> {
+    let roles = call(http, creds, reqwest::Method::GET, ROLES_API, None).await?;
+    let list = roles["list"].as_array().cloned().unwrap_or_default();
+    let role = match uid {
+        Some(u) => list.iter().find(|r| r["game_uid"].as_str() == Some(u)).cloned(),
+        None => list.iter().max_by_key(|r| r["level"].as_i64().unwrap_or(0)).cloned(),
+    }
+    .ok_or("NO_ROLE: 이 HoYoLAB 계정에 연결된 붕괴: 스타레일 계정이 없어요.")?;
+    Ok((list, role))
+}
+
+/// Linked login, with the account cookies picked up from the app's browser storage when the
+/// login predates them (they were not saved by older versions).
+pub(crate) async fn creds_with_extra(app: &AppHandle) -> Result<Credentials, String> {
+    let mut creds = load_creds().ok_or("LOGIN_REQUIRED: HoYoLAB 연동이 필요해요.")?;
+    if creds.extra.len() < EXTRA_COOKIES.len() {
+        if let Some(main) = app.get_webview_window("main") {
+            let url: Url = "https://www.hoyolab.com/".parse().unwrap();
+            if let Ok(cookies) = main.cookies_for_url(url) {
+                let found: Vec<(String, String)> = EXTRA_COOKIES
+                    .iter()
+                    .filter_map(|k| {
+                        cookies
+                            .iter()
+                            .find(|c| c.name() == *k && !c.value().is_empty())
+                            .map(|c| (k.to_string(), c.value().to_string()))
+                    })
+                    .collect();
+                if found.len() > creds.extra.len() {
+                    creds.extra = found;
+                    let _ = save_creds(&creds);
+                }
+            }
+        }
+    }
+    Ok(creds)
+}
+
+/// Server and role id query for game record requests.
+pub(crate) fn role_query(role: &Value) -> (String, String) {
+    (
+        role["region"].as_str().unwrap_or_default().to_string(),
+        role["game_uid"].as_str().unwrap_or_default().to_string(),
+    )
+}
+
+pub(crate) async fn record(http: &reqwest::Client, creds: &Credentials, path_query: &str) -> Result<Value, String> {
+    call_lang(http, creds, reqwest::Method::GET, &format!("{RECORD_API}/{path_query}"), None, "ko-kr").await
 }
 
 /// Fetches the linked account's Star Rail roles and full character details.
@@ -224,13 +321,7 @@ pub async fn hoyolab_fetch(app: AppHandle, uid: Option<String>) -> Result<Value,
     let creds = load_creds().ok_or("LOGIN_REQUIRED: HoYoLAB 연동이 필요해요.")?;
     let http = client()?;
 
-    let roles = call(&http, &creds, reqwest::Method::GET, ROLES_API, None).await?;
-    let list = roles["list"].as_array().cloned().unwrap_or_default();
-    let role = match &uid {
-        Some(u) => list.iter().find(|r| r["game_uid"].as_str() == Some(u.as_str())).cloned(),
-        None => list.iter().max_by_key(|r| r["level"].as_i64().unwrap_or(0)).cloned(),
-    }
-    .ok_or("NO_ROLE: 이 HoYoLAB 계정에 연결된 붕괴: 스타레일 계정이 없어요.")?;
+    let (list, role) = roles(&http, &creds, uid.as_deref()).await?;
 
     let server = role["region"].as_str().unwrap_or_default().to_string();
     let role_id = role["game_uid"].as_str().unwrap_or_default().to_string();
@@ -281,3 +372,4 @@ pub async fn hoyolab_fetch(app: AppHandle, uid: Option<String>) -> Result<Value,
     }
     Ok(out)
 }
+

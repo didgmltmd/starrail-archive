@@ -41,7 +41,7 @@ export async function onLoginEvents(handlers: {
 /** Error from the Rust side, with a machine-readable code when there is one. */
 export function describeError(e: unknown): { code?: string; message: string } {
   const raw = typeof e === "string" ? e : e instanceof Error ? e.message : String(e);
-  const m = /^([A-Z_]+): (.*)$/s.exec(raw);
+  const m = /^([A-Z0-9_]+): (.*)$/s.exec(raw);
   return m ? { code: m[1], message: m[2] } : { message: raw };
 }
 

@@ -1,0 +1,355 @@
+.presets {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.presets .tool-note {
+  margin-right: 4px;
+}
+
+/* ---------- Slots ---------- */
+
+.ts-slots {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+.ts-slot {
+  display: flex;
+  gap: 12px;
+  padding: 12px 14px;
+  overflow: visible;
+  z-index: 2;
+}
+.ts-slot::before {
+  border-radius: inherit;
+}
+.ts-slot.empty {
+  opacity: 0.7;
+}
+.ts-face {
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  border: 1.5px solid var(--line-strong);
+  background: rgba(0, 0, 0, 0.35);
+  font-size: 26px;
+  color: var(--text-faint);
+  transition: border-color 0.15s;
+}
+.ts-face:hover {
+  border-color: var(--cream);
+}
+.ts-face img {
+  width: 100%;
+  height: 100%;
+}
+.ts-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.ts-name {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+.ts-name b {
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ts-x {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  color: var(--text-faint);
+  font-size: 15px;
+  line-height: 1;
+}
+.ts-x:hover {
+  color: var(--text);
+  background: var(--row-alt);
+}
+.ts-spd {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+.ts-spd b {
+  font-size: 28px;
+  color: var(--text);
+  line-height: 1;
+}
+.ts-spd label {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.ts-spd .num-input {
+  width: 52px;
+  height: 24px;
+  font-size: 13px;
+}
+.ts-foot {
+  font-size: 12px;
+  color: var(--text-dim);
+  line-height: 1.55;
+}
+.ts-foot b {
+  color: var(--text);
+  font-size: 14px;
+}
+.ts-foot .bp {
+  display: block;
+  color: var(--text-faint);
+}
+.ts-foot .bp b {
+  color: var(--gold);
+}
+
+.picker {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  max-height: 340px;
+  overflow-y: auto;
+  padding: 6px;
+  border-radius: 10px;
+  background: rgba(8, 9, 14, 0.97);
+  border: 1px solid var(--line-strong);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+  z-index: 30;
+}
+.picker button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 8px;
+  border-radius: 6px;
+  text-align: left;
+  font-size: 13px;
+}
+.picker button:hover {
+  background: var(--row-alt);
+}
+.picker button.in {
+  opacity: 0.45;
+}
+.picker img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+.picker span {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.picker b {
+  font-size: 15px;
+}
+
+/* ---------- Timeline ---------- */
+
+.timeline-card {
+  z-index: 1;
+}
+.timeline {
+  --tl-left: 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.tl-axis {
+  position: relative;
+  height: 20px;
+  margin-left: var(--tl-left);
+}
+.tl-cycle {
+  position: absolute;
+  top: 0;
+  height: 20px;
+  display: grid;
+  place-items: center;
+  font: 600 12px var(--font-num);
+  color: var(--text-faint);
+  border-radius: 4px;
+}
+.tl-cycle:nth-child(odd) {
+  background: rgba(255, 255, 255, 0.04);
+}
+.tl-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.tl-row img {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.tl-track {
+  position: relative;
+  flex: 1;
+  height: 34px;
+  border-radius: 17px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--line);
+}
+.tl-line {
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  width: 1px;
+  background: rgba(220, 188, 124, 0.35);
+}
+.tl-dot {
+  position: absolute;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  margin: -7px 0 0 -7px;
+  border-radius: 50%;
+  border: 2px solid rgba(6, 7, 12, 0.85);
+  box-shadow: 0 0 8px currentColor;
+  cursor: default;
+}
+
+/* ---------- Bottom ---------- */
+
+.teamsim-bottom {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr) minmax(0, 0.9fr);
+  gap: 14px;
+  align-items: start;
+}
+
+.cycle-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.cycle-table th {
+  padding: 4px 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-faint);
+  text-align: center;
+}
+.cycle-table td {
+  padding: 6px;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+.cycle-table td.who {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-align: left;
+  white-space: nowrap;
+}
+.cycle-table td.who img {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+}
+.cycle-table td.num {
+  font-size: 16px;
+}
+.cycle-table td.n0 {
+  color: var(--text-faint);
+}
+.cycle-table td.n2 {
+  color: var(--gold);
+}
+.cycle-table td.n3 {
+  color: #8fe3c4;
+}
+.cycle-table td.total {
+  font-weight: 700;
+}
+
+.order {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.order li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  width: 44px;
+}
+.order img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid var(--line-strong);
+}
+.order li.c1 img {
+  border-color: rgba(220, 188, 124, 0.6);
+}
+.order .idx {
+  position: absolute;
+  top: -4px;
+  left: 0;
+  font-size: 11px;
+  min-width: 16px;
+  padding: 0 3px;
+  border-radius: 8px;
+  background: rgba(8, 9, 14, 0.9);
+  border: 1px solid var(--line);
+}
+.order .av {
+  font-size: 11px;
+  color: var(--text-faint);
+}
+
+.bp-list {
+  list-style: none;
+  margin: 0 0 10px;
+  padding: 0;
+}
+.bp-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 13px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.bp-list b {
+  font-size: 16px;
+  color: var(--gold);
+}
+
+@media (max-width: 1320px) {
+  .teamsim-bottom {
+    grid-template-columns: 1fr 1fr;
+  }
+  .teamsim-bottom > :first-child {
+    grid-column: 1 / -1;
+  }
+}
