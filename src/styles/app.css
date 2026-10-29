@@ -695,3 +695,19 @@ img {
   color: var(--gold);
   border-color: rgba(220, 188, 124, 0.5);
 }
+
+/* Sub stat upgrade count: "+2" = upgraded twice */
+.rolls.num {
+  min-width: 22px;
+  font-size: 13px;
+  text-align: right;
+  color: var(--gold);
+  opacity: 0.9;
+}
+.rolls.num i {
+  display: none;
+}
+
+.slot-sub.dead .rolls.num {
+  color: inherit;
+}

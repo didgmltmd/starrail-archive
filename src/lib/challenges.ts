@@ -36,14 +36,18 @@ interface HyFloor {
   node_2?: HyNode | null;
   node_3?: HyNode | null;
 }
+interface HyBoss {
+  name_mi18n?: string;
+  icon?: string;
+}
 interface HyGroup {
   name_mi18n?: string;
   status?: string;
   begin_time?: HyTime;
   end_time?: HyTime;
-  upper_boss?: { name_mi18n?: string } | null;
-  lower_boss?: { name_mi18n?: string } | null;
-  tierce_boss?: { name_mi18n?: string } | null;
+  upper_boss?: HyBoss | null;
+  lower_boss?: HyBoss | null;
+  tierce_boss?: HyBoss | null;
 }
 export interface HyChallenge {
   star_num?: number | string;
@@ -101,8 +105,13 @@ function period(kind: ChallengeKind, raw: HyChallenge | null | undefined, which:
     maxFloor: clean(raw.max_floor),
     hasData: !!raw.has_data && floors.length > 0,
     floors,
-    bosses: [g?.upper_boss, g?.lower_boss, g?.tierce_boss].map((b) => clean(b?.name_mi18n)).filter(Boolean),
+    bosses: bossList(g).map((b) => clean(b.name_mi18n)),
+    bossIcons: bossList(g).map((b) => (/^https:\/\//.test(b.icon ?? "") ? b.icon! : "")),
   };
+}
+
+function bossList(g?: HyGroup): HyBoss[] {
+  return [g?.upper_boss, g?.lower_boss, g?.tierce_boss].filter((b): b is HyBoss => !!b?.name_mi18n);
 }
 
 export function mapChallenges(raw?: Record<string, HyChallenge | null>): ChallengeRecords | undefined {

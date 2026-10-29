@@ -129,11 +129,21 @@ function ModeCard({
   const left = showDays ? daysLeft(period) : null;
   const max = period ? maxStars(period) : 0;
   return (
-    <button className={`mode-card mode-${kind} ${active ? "on" : ""}`} onClick={onClick}>
+    <button
+      className={`mode-card mode-${kind} ${active ? "on" : ""} ${period?.bossIcons?.some(Boolean) ? "has-bosses" : ""}`}
+      onClick={onClick}
+    >
       <div className="mode-head">
         <span className="mode-kind">{CHALLENGE_NAMES[kind]}</span>
         {left !== null && <span className="mode-days num">D-{left}</span>}
       </div>
+      {period?.bossIcons?.some(Boolean) && (
+        <div className="mode-bosses">
+          {period.bossIcons.map((icon, i) =>
+            icon ? <img key={i} src={icon} alt="" title={period.bosses[i]} referrerPolicy="no-referrer" /> : null,
+          )}
+        </div>
+      )}
       <div className="mode-name">{period?.name ?? "-"}</div>
       <div className="mode-dates num">{period?.begin ? `${fmtDate(period.begin)} ~ ${fmtDate(period.end)}` : ""}</div>
       <div className="mode-progress">
@@ -212,8 +222,9 @@ function PeriodDetail({ period }: { period: ChallengePeriod }) {
           <>
             <h3 className="section-title">보스</h3>
             <div className="side-chips">
-              {period.bosses.map((b) => (
-                <span key={b} className="chip">
+              {period.bosses.map((b, i) => (
+                <span key={b} className="chip boss-chip">
+                  {period.bossIcons?.[i] && <img src={period.bossIcons[i]} alt="" referrerPolicy="no-referrer" />}
                   {b}
                 </span>
               ))}

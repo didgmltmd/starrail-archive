@@ -13,6 +13,8 @@ AI 에이전트가 매주 이 지침대로 조사해서 `src/data/meta.json`을 
 5. 성유물 세트는 `game.json`의 `relicSets` ID(예: "117"), 스탯은 아래 키를 쓴다.
 6. 기존 `meta.json`에서 출처가 여전히 유효한 항목은 유지하고, 기간이 끝난 로테이션 정보는 교체한다.
 7. 한국어로 쓴다 (게임 내 한국어 명칭 우선).
+8. `note`, `reason`, `summary`는 앱 화면에 그대로 보이는 설명이다. **출처 사이트 이름(Game8, Prydwen 등)이나 "~에 따르면" 같은 말은 쓰지 않는다.**
+   플레이어에게 필요한 정보만 짧게 쓴다 (예: "허구 노드 1(푸가 버프) 추천. 종말 후반 기믹에도 유리."). 출처는 `sources`에만 둔다.
 
 스탯 키: `HP, ATK, DEF, SPD, HP_P, ATK_P, DEF_P, CR, CD, BE, OHB, ERR, EHR, RES, Physical_DMG, Fire_DMG, Ice_DMG, Thunder_DMG, Wind_DMG, Quantum_DMG, Imaginary_DMG`
 퍼센트 스탯은 비율로 쓴다 (치명타 확률 70% → `0.7`, 속도는 그대로 `134`).

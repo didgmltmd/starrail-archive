@@ -226,7 +226,7 @@
         "pf",
         "as"
       ],
-      "note": "Game8 종말 가이드의 'Silver Wolf Lv.999 DPS' 파티. The Phrase Maker는 종말 전반·후반 모두에 추천하고, Timesaver는 허구 노드 2(청아한 웃음소리 버프)에 추천.",
+      "note": "종말 전반·후반, 허구 노드 2(청아한 웃음소리)에 추천되는 환락 메인 파티.",
       "sources": [
         {
           "title": "Apocalyptic Shadow Guide for Version 4.6 - Game8",
@@ -257,7 +257,7 @@
       "modes": [
         "moc"
       ],
-      "note": "혼돈의 기억 12층 스타라이즈 노드 1(스파키 축제@Official) 추천 파티(환락 중심).",
+      "note": "혼돈 12층 노드 1 추천. 환락 중심 구성.",
       "sources": [
         {
           "title": "Honkai Star Rail 4.6 Memory of Chaos 12 Starward Mode explained - allthings.how",
@@ -284,7 +284,7 @@
         "pf",
         "as"
       ],
-      "note": "Game8 종말 가이드의 'Magic Time' 파티. The Phrase Maker 종말 전반·후반, Timesaver 허구 노드 2에도 같은 구성.",
+      "note": "종말 '마법 시간' 버프에 맞는 환락 파티. 종말 전반·후반, 허구 노드 2에 추천.",
       "sources": [
         {
           "title": "Apocalyptic Shadow Guide for Version 4.6 - Game8",
@@ -315,7 +315,7 @@
       "modes": [
         "moc"
       ],
-      "note": "Game8 혼돈의 기억 10층(4.6) 추천 파티 목록의 'Sparxie DPS'.",
+      "note": "혼돈 10층 추천 파티.",
       "sources": [
         {
           "title": "Memory of Chaos Stage 10 Guide for Version 4.6 - Game8",
@@ -342,7 +342,7 @@
         "moc",
         "pf"
       ],
-      "note": "Timesaver 허구 노드 3(스타라이즈) 추천 구성, Game8 Best Team Comps의 노바 'Verdict' 파티. 혼돈 12층 노드 3은 스파클 대신 선데이(allthings.how), Game8 혼돈 10층은 노바·선데이·스파클·단항•등황.",
+      "note": "허구 노드 3(스타라이즈), 혼돈 10층 추천. 혼돈 12층 노드 3에서는 스파클 대신 선데이.",
       "sources": [
         {
           "title": "HSR Pure Fiction 4.6 (Imagined Words) - Timesaver",
@@ -387,7 +387,7 @@
       "modes": [
         "as"
       ],
-      "note": "The Phrase Maker 종말 전반·스타라이즈 추천. Game8 종말 'Himeko Nova DPS'는 노바·천야•블레이드·웰트·곽향.",
+      "note": "종말 전반·스타라이즈 추천. 노바·천야•블레이드·웰트·곽향 구성도 있음.",
       "sources": [
         {
           "title": "Honkai: Star Rail 4.6 Apocalyptic Shadow Starward Mode Guide - The Phrase Maker",
@@ -419,7 +419,7 @@
       "modes": [
         "as"
       ],
-      "note": "The Phrase Maker 종말 스타라이즈(단일 대상 보스) 'Archer Hypercarry'. Game8 Best Team Comps에도 린을 아처 서브딜로 쓰는 파티(린·아처·스파클·단항•등황)가 있음.",
+      "note": "종말 스타라이즈(단일 보스) 추천. 린이 아처의 서브 딜러 역할.",
       "sources": [
         {
           "title": "Honkai: Star Rail 4.6 Apocalyptic Shadow Starward Mode Guide - The Phrase Maker",
@@ -455,7 +455,7 @@
       "modes": [
         "as"
       ],
-      "note": "Game8 종말 스타라이즈 'Comic Relief'(아케론·천야•블레이드·사이퍼·곽향). The Phrase Maker는 종말 후반에 아케론·천야•블레이드·웰트·히아킨 / 로빈•서머레토·단항•등황 구성 추천.",
+      "note": "종말 스타라이즈 추천. 종말 후반에는 웰트·히아킨 또는 로빈•서머레토·단항•등황과 함께 쓰는 구성도 추천됨.",
       "sources": [
         {
           "title": "Apocalyptic Shadow Guide for Version 4.6 - Game8",
@@ -490,7 +490,7 @@
         "moc",
         "as"
       ],
-      "note": "Game8 혼돈 10층·종말 후반 추천 'Firefly DPS'. The Phrase Maker는 종말 전반에 반디·달리아·망귀인(또는 화합 개척자)·완•매 추천.",
+      "note": "혼돈 10층, 종말 후반 추천. 종말 전반에는 달리아·망귀인(또는 화합 개척자)·완•매와 함께.",
       "sources": [
         {
           "title": "Memory of Chaos Stage 10 Guide for Version 4.6 - Game8",
@@ -528,7 +528,7 @@
         "moc",
         "as"
       ],
-      "note": "Game8 혼돈 10층 'Ashveil DPS', The Phrase Maker 종말 전반·후반 'AshBlade'. 디버프가 많은 종말 후반 판정자전에 유리하다고 설명.",
+      "note": "혼돈 10층, 종말 전반·후반 추천. 디버프가 많은 종말 후반 판정자전에 유리.",
       "sources": [
         {
           "title": "Memory of Chaos Stage 10 Guide for Version 4.6 - Game8",
@@ -561,7 +561,7 @@
         "pf",
         "as"
       ],
-      "note": "혼돈 12층 노드 2 추천(allthings.how), Game8 혼돈 10층 'Castorice DPS'. 허구 노드 1(Timesaver)과 종말 후반(Game8)에서는 키레네 대신 로빈•서머레토.",
+      "note": "혼돈 12층 노드 2, 혼돈 10층 추천. 허구 노드 1과 종말 후반에서는 키레네 대신 로빈•서머레토.",
       "sources": [
         {
           "title": "Honkai Star Rail 4.6 Memory of Chaos 12 Starward Mode explained - allthings.how",
@@ -603,7 +603,7 @@
         "pf",
         "as"
       ],
-      "note": "Timesaver 허구 노드 1 추천(푸가 버프가 지속 피해 파티용). The Phrase Maker 종말 후반 'DoT' — 디버프로 추가 강인도·고정 피해를 주는 기믹에 유리.",
+      "note": "허구 노드 1(푸가 버프) 추천. 디버프로 추가 강인도·고정 피해를 주는 종말 후반 기믹에도 유리.",
       "sources": [
         {
           "title": "HSR Pure Fiction 4.6 (Imagined Words) - Timesaver",
@@ -637,7 +637,7 @@
       "modes": [
         "moc"
       ],
-      "note": "Game8 혼돈 10층 'The Herta DPS'. Game8 Best Team Comps의 프리미엄 구성은 더 헤르타·아낙사·트리비·단항•등황.",
+      "note": "혼돈 10층 추천. 상위 구성은 더 헤르타·아낙사·트리비·단항•등황.",
       "sources": [
         {
           "title": "Memory of Chaos Stage 10 Guide for Version 4.6 - Game8",
@@ -671,7 +671,7 @@
       "modes": [
         "pf"
       ],
-      "note": "Timesaver 허구 노드 1 추천(토카타 버프). 대체 구성은 어벤츄린•웨이브·트리비·곽향·천야•블레이드.",
+      "note": "허구 노드 1(토카타 버프) 추천. 곽향·천야•블레이드를 넣은 대체 구성도 있음.",
       "sources": [
         {
           "title": "HSR Pure Fiction 4.6 (Imagined Words) - Timesaver",
@@ -698,7 +698,7 @@
       "modes": [
         "as"
       ],
-      "note": "The Phrase Maker 종말 후반·스타라이즈 'Phainon Hypercarry/Sustainless'.",
+      "note": "종말 후반·스타라이즈 추천. 생존 캐릭터 없이도 운용 가능.",
       "sources": [
         {
           "title": "Honkai: Star Rail 4.6 Apocalyptic Shadow Starward Mode Guide - The Phrase Maker",
@@ -1804,7 +1804,7 @@
         "pf",
         "as"
       ],
-      "reason": "4.6 신규 환락 캐릭터. 혼돈 기간 효과가 환락 스킬·아하 보너스 턴 중심이고, 허구 노드 2(청아한 웃음소리)와 종말 전반·후반 추천 파티 대부분에 펄이 들어감.",
+      "reason": "4.6 신규 환락 캐릭터. 이번 혼돈 기간 효과가 환락 중심이고, 허구 노드 2와 종말 전반·후반 추천 파티 대부분에 들어감.",
       "sources": [
         {
           "title": "붕괴: 스타레일/혼돈의 기억 - 나무위키",
@@ -1835,7 +1835,7 @@
         "pf",
         "as"
       ],
-      "reason": "혼돈 12층 노드 1, 허구 노드 2, 종말 전반·후반 환락 추천 파티의 메인 딜러.",
+      "reason": "혼돈 12층 노드 1, 허구 노드 2, 종말 전반·후반 환락 파티의 메인 딜러.",
       "sources": [
         {
           "title": "Honkai Star Rail 4.6 Memory of Chaos 12 Starward Mode explained - allthings.how",
@@ -1866,7 +1866,7 @@
         "pf",
         "as"
       ],
-      "reason": "환락 파티(은랑 LV.999, 스파키, 에바네시아) 추천 구성에 공통으로 들어가는 서포터.",
+      "reason": "환락 파티(은랑 LV.999, 스파키, 에바네시아)에 공통으로 들어가는 서포터.",
       "sources": [
         {
           "title": "Honkai Star Rail 4.6 Memory of Chaos 12 Starward Mode explained - allthings.how",
@@ -1897,7 +1897,7 @@
         "pf",
         "as"
       ],
-      "reason": "Game8 혼돈 10층 'Sparxie DPS', 허구 노드 2와 종말 전반·후반 환락 파티 추천에 포함.",
+      "reason": "혼돈 10층, 허구 노드 2, 종말 전반·후반 환락 파티에 포함.",
       "sources": [
         {
           "title": "Memory of Chaos Stage 10 Guide for Version 4.6 - Game8",
@@ -1928,7 +1928,7 @@
         "pf",
         "as"
       ],
-      "reason": "환락 개척자: 혼돈 12층 노드 1 환락 파티, 허구 노드 2·종말 '마법 시간' 에바네시아 파티의 고정 멤버.",
+      "reason": "혼돈 12층 노드 1 환락 파티, 허구 노드 2·종말 '마법 시간' 파티의 고정 멤버.",
       "sources": [
         {
           "title": "Honkai Star Rail 4.6 Memory of Chaos 12 Starward Mode explained - allthings.how",
@@ -1954,7 +1954,7 @@
         "pf",
         "as"
       ],
-      "reason": "혼돈 12층 노드 3 노바 파티, 허구 노드 3(스타라이즈), 종말 노바·파이논·아케론 파티에 생존 담당으로 반복 등장.",
+      "reason": "혼돈 12층 노드 3 노바 파티, 허구 노드 3, 종말 노바·파이논·아케론 파티에 생존 담당으로 반복 등장.",
       "sources": [
         {
           "title": "Honkai Star Rail 4.6 Memory of Chaos 12 Starward Mode explained - allthings.how",
@@ -1980,7 +1980,7 @@
         "pf",
         "as"
       ],
-      "reason": "허구 노드 3 노바 파티, Game8 혼돈 10층 스파키·노바 파티, 종말 스타라이즈 아처 파티에 포함.",
+      "reason": "허구 노드 3 노바 파티, 혼돈 10층 스파키·노바 파티, 종말 스타라이즈 아처 파티에 포함.",
       "sources": [
         {
           "title": "HSR Pure Fiction 4.6 (Imagined Words) - Timesaver",
@@ -2004,7 +2004,7 @@
       "modes": [
         "as"
       ],
-      "reason": "종말 스타라이즈(질풍신뢰의 늑대 주인)는 단일 대상 전투라 The Phrase Maker가 아처 하이퍼캐리(스파클·토오사카 린)를 추천.",
+      "reason": "종말 스타라이즈(질풍신뢰의 늑대 주인)는 단일 대상 전투라 아처 하이퍼캐리(스파클·토오사카 린)가 추천됨.",
       "sources": [
         {
           "title": "Honkai: Star Rail 4.6 Apocalyptic Shadow Starward Mode Guide - The Phrase Maker",
@@ -2018,7 +2018,7 @@
       "modes": [
         "as"
       ],
-      "reason": "종말 스타라이즈 아처 하이퍼캐리의 서브딜러.",
+      "reason": "종말 스타라이즈 아처 하이퍼캐리의 서브 딜러.",
       "sources": [
         {
           "title": "Honkai: Star Rail 4.6 Apocalyptic Shadow Starward Mode Guide - The Phrase Maker",
@@ -2038,7 +2038,7 @@
         "pf",
         "as"
       ],
-      "reason": "허구 '푸가' 버프와 종말 후반의 디버프 기믹(디버프 시 추가 강인도·고정 피해)에 맞는 지속 피해 파티 멤버. 블랙 스완(1307)도 같은 파티.",
+      "reason": "허구 '푸가' 버프와 종말 후반 디버프 기믹에 맞는 지속 피해 파티 멤버. 블랙 스완도 같은 파티.",
       "sources": [
         {
           "title": "HSR Pure Fiction 4.6 (Imagined Words) - Timesaver",

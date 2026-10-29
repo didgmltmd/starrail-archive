@@ -1,4 +1,3 @@
-import { Sources } from "../components/MetaBits";
 import { asset, game } from "../data/game";
 import { meta, hasMeta, type MetaTeam } from "../data/meta";
 import { auditCharacter } from "../lib/audit";
@@ -28,8 +27,8 @@ export function StrategyPanel({ kind, account }: { kind: ChallengeKind; account:
     <div className="strategy">
       <div className="strategy-main">
         <div className="strategy-meta-line">
-          조사 기준일 <b className="num">{meta.updatedAt}</b>
-          {meta.gameVersion && <> · 버전 {meta.gameVersion}</>} · 매주 자동 갱신 · 모든 항목에 출처가 있어요
+          {meta.gameVersion && <>{meta.gameVersion} 버전 · </>}
+          <span className="num">{meta.updatedAt.slice(5).replace("-", ".")}</span> 기준
         </div>
 
         <h3 className="section-title">추천 파티 · {CHALLENGE_NAMES[kind]}</h3>
@@ -61,7 +60,6 @@ export function StrategyPanel({ kind, account }: { kind: ChallengeKind; account:
                 {s.enemies?.length ? <div className="side-enemies">{s.enemies.join(", ")}</div> : null}
               </div>
             ))}
-            <Sources sources={rotation.sources} />
           </div>
         ) : (
           <div className="strategy-empty small">이번 기간 약점 정보가 아직 없어요</div>
@@ -83,7 +81,6 @@ export function StrategyPanel({ kind, account }: { kind: ChallengeKind; account:
                         {audit ? <GradeBadge grade={audit.grade} size="sm" /> : <span className="not-owned">미보유</span>}
                       </div>
                       <p>{p.reason}</p>
-                      <Sources sources={p.sources} />
                     </div>
                   </div>
                 );
@@ -92,13 +89,6 @@ export function StrategyPanel({ kind, account }: { kind: ChallengeKind; account:
           </>
         )}
 
-        {meta.notes?.length ? (
-          <div className="meta-notes">
-            {meta.notes.map((n, i) => (
-              <p key={i}>※ {n}</p>
-            ))}
-          </div>
-        ) : null}
       </aside>
     </div>
   );
@@ -137,7 +127,6 @@ function TeamCard({ team, have, owned }: { team: MetaTeam; have: number; owned: 
         })}
       </div>
       {team.note && <p className="team-note">{team.note}</p>}
-      <Sources sources={team.sources} />
     </div>
   );
 }

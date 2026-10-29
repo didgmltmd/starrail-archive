@@ -298,11 +298,7 @@ function AuditDetail({
                       <div key={sub.key} className={`slot-sub ${w >= 0.75 ? "good" : w === 0 ? "dead" : ""}`}>
                         <img src={asset(STATS[sub.key].icon)} alt="" />
                         <span className="sub-name">{statName(sub.key)}</span>
-                        <span className="rolls">
-                          {Array.from({ length: sub.rolls }, (_, i) => (
-                            <i key={i} />
-                          ))}
-                        </span>
+                        <span className="rolls num" title="강화로 이 부옵에 붙은 횟수">{sub.rolls > 1 ? `+${sub.rolls - 1}` : ""}</span>
                         <b className="num">{formatStat(sub.key, sub.value)}</b>
                       </div>
                     );

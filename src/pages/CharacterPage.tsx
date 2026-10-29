@@ -291,11 +291,7 @@ function RelicsView({ character }: { character: OwnedCharacter }) {
             <div key={s.key} className={`relic-sub ${w >= 0.75 ? "good" : w === 0 ? "useless" : ""}`}>
               <img src={asset(STATS[s.key].icon)} alt="" />
               <span>{STATS[s.key].name}</span>
-              <span className="rolls">
-                {Array.from({ length: s.rolls }, (_, i) => (
-                  <i key={i} />
-                ))}
-              </span>
+              <span className="rolls num" title="강화로 이 부옵에 붙은 횟수">{s.rolls > 1 ? `+${s.rolls - 1}` : ""}</span>
               <b className="num">{formatStat(s.key, s.value)}</b>
             </div>
             );

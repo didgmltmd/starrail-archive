@@ -99,6 +99,8 @@ export interface ChallengePeriod {
   floors: ChallengeFloor[];
   /** Apocalyptic Shadow bosses */
   bosses: string[];
+  /** Boss portraits (same order as bosses), when HoYoLAB provides them */
+  bossIcons?: string[];
 }
 
 export interface ChallengeRecords {
