@@ -3,6 +3,9 @@
 //  - "advance X%" shortens the remaining gauge by 10000 × X
 //  - SPD% buffs scale base SPD, flat buffs add to it
 //  - in end-game modes the first cycle lasts 150 action value, every later cycle 100
+//  - with Elation characters in the party, Aha joins the action bar. Its SPD is
+//    80 + the 1st/2nd/3rd/4th fastest Elation ally's SPD ÷ 5/10/20/40, and its turn
+//    (Aha Instant) is when Elation characters use their Elation Skills
 // Kit effects come from data/speedkits.json (game text values).
 import { game } from "../data/game";
 import { speedKits, type SpeedEffect } from "../data/speedkits";
@@ -10,6 +13,8 @@ import type { OwnedCharacter } from "../types";
 import { computeStats } from "./stats";
 
 export const FIRST_CYCLE = 150;
+/** Key of Aha's events */
+export const AHA = "aha";
 export const CYCLE = 100;
 const GAUGE = 10000;
 
@@ -111,11 +116,13 @@ export interface SimEvent {
   cycle: number;
   /** Turn number of the unit */
   n: number;
-  type: "skill" | "basic";
+  type: "skill" | "basic" | "aha";
   ult: boolean;
   spd: number;
   /** Robin-style countdown ended right before this turn */
   afterCountdown?: boolean;
+  /** Extra turn: no gauge used */
+  extra?: boolean;
 }
 
 interface Buff {
@@ -169,6 +176,27 @@ export function simulate(units: UnitSetup[], cycles: number): SimEvent[] {
   const byKey = new Map(us.map((u) => [u.s.key, u]));
   const elation = us.filter((u) => u.s.path === "Elation").length;
   let actor: State | null = null;
+  const events: SimEvent[] = [];
+  let t = 0;
+
+  // Aha is not an ally character, so party buffs and action advance do not reach it
+  const aha = { on: elation > 0, d: GAUGE, n: 0, bonus: 0 };
+  const ahaSpd = () => {
+    const s = us
+      .filter((u) => u.s.path === "Elation")
+      .map(spdOf)
+      .sort((a, b) => b - a);
+    return 80 + (s[0] ?? 0) / 5 + (s[1] ?? 0) / 10 + (s[2] ?? 0) / 20 + (s[3] ?? 0) / 40 + aha.bonus;
+  };
+  const ahaTurn = (extra: boolean) => {
+    aha.n++;
+    events.push({ key: AHA, av: t, cycle: cycleOf(t), n: aha.n, type: "aha", ult: false, spd: ahaSpd(), extra });
+    if (extra) return;
+    aha.bonus = 0;
+    aha.d = GAUGE;
+  };
+  // Owners whose ally actions raise Aha's SPD (only when they are the sole Elation character)
+  const ahaPerAction: { owner: State; v: number }[] = [];
 
   const targets = (owner: State, to: SpeedEffect["to"]): State[] => {
     if (to === "self") return [owner];
@@ -189,6 +217,14 @@ export function simulate(units: UnitSetup[], cycles: number): SimEvent[] {
       owner.used.add(a.id);
     }
     const v = typeof a.value === "number" ? a.value : a.value[0];
+    if (e.kind === "ahaExtraTurn") {
+      if (aha.on) ahaTurn(true);
+      return;
+    }
+    if (e.kind === "ahaSpdPerAllyAttack") {
+      if (aha.on && elation === 1) ahaPerAction.push({ owner, v });
+      return;
+    }
     for (const t of targets(owner, e.to)) {
       if (e.notPath && t.s.path === e.notPath) continue;
       switch (e.kind) {
@@ -233,8 +269,6 @@ export function simulate(units: UnitSetup[], cycles: number): SimEvent[] {
   for (const u of us) fire(u, "passive");
   for (const u of us) fire(u, "start");
 
-  const events: SimEvent[] = [];
-  let t = 0;
   for (let guard = 0; guard < 3000; guard++) {
     let u = us[0];
     let best = Infinity;
@@ -245,11 +279,19 @@ export function simulate(units: UnitSetup[], cycles: number): SimEvent[] {
         u = v;
       }
     }
+    const aSpd = aha.on ? ahaSpd() : 0;
+    const ahaNext = aha.on && aha.d / aSpd < best - 1e-9;
+    if (ahaNext) best = aha.d / aSpd;
     if (!us.length || t + best > end + 1e-9) break;
     const speeds = us.map(spdOf);
     us.forEach((v, i) => (v.d = Math.max(0, v.d - speeds[i] * best)));
-    u.d = 0;
+    if (aha.on) aha.d = Math.max(0, aha.d - aSpd * best);
     t += best;
+    if (ahaNext) {
+      ahaTurn(false);
+      continue;
+    }
+    u.d = 0;
     actor = u;
 
     let afterCountdown = false;
@@ -285,6 +327,7 @@ export function simulate(units: UnitSetup[], cycles: number): SimEvent[] {
 
     u.d = GAUGE * (1 - u.next);
     u.next = 0;
+    for (const p of ahaPerAction) if (p.owner !== u) aha.bonus += p.v;
     if (u.turns >= u.nextUlt) {
       ev.ult = true;
       u.nextUlt += u.s.ultEvery;

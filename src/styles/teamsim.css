@@ -461,3 +461,35 @@
   color: #1a1408;
   background: var(--gold);
 }
+
+/* ---------- Aha ---------- */
+
+.aha-face {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 700;
+  color: #2a0f1d;
+  background: radial-gradient(circle at 35% 30%, #ffd1e6, #ef7fb4 70%);
+  box-shadow: 0 0 10px rgba(239, 127, 180, 0.45);
+}
+.cycle-table td.who .aha-face {
+  width: 26px;
+  height: 26px;
+  font-size: 9px;
+}
+.order .aha-face {
+  width: 36px;
+  height: 36px;
+}
+.tl-row.aha .tl-track {
+  background: rgba(239, 127, 180, 0.08);
+}
+.tl-dot.extra {
+  background: transparent !important;
+  border: 2px solid currentColor;
+}

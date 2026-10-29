@@ -81,7 +81,7 @@ for (const [i, p] of (meta.buildPriority ?? []).entries()) {
 // speedkits.json: speed effects used by the team speed simulator
 const kits = JSON.parse(readFileSync(new URL("../src/data/speedkits.json", import.meta.url), "utf8"));
 const ON = new Set(["start", "passive", "skill", "basic", "ult"]);
-const KINDS = new Set(["advance", "nextAdvance", "spdPct", "spdFlat", "spdOfCaster", "countdown", "advanceByElation"]);
+const KINDS = new Set(["advance", "nextAdvance", "spdPct", "spdFlat", "spdOfCaster", "countdown", "advanceByElation", "ahaExtraTurn", "ahaSpdPerAllyAttack"]);
 const PATHS = new Set(Object.keys(game.paths));
 function effect(w, e) {
   if (!ON.has(e.on)) bad(w, `bad on ${e.on}`);

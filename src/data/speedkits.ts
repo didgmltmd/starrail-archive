@@ -6,7 +6,7 @@ import raw from "./speedkits.json";
 export type Trigger = "start" | "passive" | "skill" | "basic" | "ult";
 /** self, the chosen single ally, everyone, everyone else, or party members of a path ("path:Mage") */
 export type Target = "self" | "ally" | "team" | "others" | `path:${string}`;
-export type Kind = "advance" | "nextAdvance" | "spdPct" | "spdFlat" | "spdOfCaster" | "countdown" | "advanceByElation";
+export type Kind = "advance" | "nextAdvance" | "spdPct" | "spdFlat" | "spdOfCaster" | "countdown" | "advanceByElation" | "ahaExtraTurn" | "ahaSpdPerAllyAttack";
 
 export interface SpeedEffect {
   on: Trigger;

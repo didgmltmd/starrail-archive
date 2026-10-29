@@ -3,6 +3,7 @@ import { useMemo, useState } from "react";
 import { asset, ELEMENT_COLORS, game } from "../data/game";
 import { statTotal } from "../lib/stats";
 import {
+  AHA,
   availableEffects,
   baseSpd,
   BREAKPOINTS,
@@ -12,6 +13,7 @@ import {
   simulate,
   ultEstimate,
   type Applied,
+  type SimEvent,
   type UnitSetup,
 } from "../lib/teamsim";
 import type { Account, OwnedCharacter } from "../types";
@@ -56,12 +58,19 @@ const icon = (id: string) => {
   const p = game.characters[id]?.icon;
   return p ? asset(p) : "";
 };
-const nameOf = (id: string) => game.characters[id]?.name ?? id;
+const nameOf = (id: string) => (id === AHA ? "아하" : game.characters[id]?.name ?? id);
 const colorOf = (id: string) => {
+  if (id === AHA) return "#ef7fb4";
   const el = game.characters[id]?.element;
   return el ? ELEMENT_COLORS[el] : "#dcbc7c";
 };
 const fmt = (v: number) => (Math.round(v * 10) / 10).toFixed(1);
+/** Character portrait, or a badge for Aha (no portrait in the game data) */
+const Face = ({ id }: { id: string }) => (id === AHA ? <span className="aha-face">아하</span> : <img src={icon(id)} alt="" />);
+const dotTitle = (e: SimEvent) =>
+  e.key === AHA
+    ? `아하 타임${e.extra ? " (보너스 턴)" : ""} · 행동치 ${fmt(e.av)} · ${e.cycle}사이클 · 아하 속도 ${fmt(e.spd)}`
+    : `${e.n}번째 행동 · 행동치 ${fmt(e.av)} · ${e.cycle}사이클 · ${e.type === "skill" ? "전투 스킬" : "일반 공격"}${e.ult ? " + 필살기" : ""} · 속도 ${fmt(e.spd)}`;
 
 /** Teams the player used in end-game content, newest first, keeping only owned characters. */
 function recentTeams(account: Account, owned: Set<string>) {
@@ -154,6 +163,8 @@ export function TeamSimPage({ account }: { account: Account }) {
     [JSON.stringify(units), cycles],
   );
   const end = cycleEnd(cycles - 1);
+  // Timeline rows: party members, then Aha when Elation characters bring it in
+  const rows = [...units.map((u) => u.key), ...(events.some((e) => e.key === AHA) ? [AHA] : [])];
 
   if (!chars.length) {
     return (
@@ -350,7 +361,7 @@ export function TeamSimPage({ account }: { account: Account }) {
         <>
           <div className="tool-card timeline-card">
             <h3>
-              행동 타임라인 <small>첫 사이클 150 · 이후 사이클마다 100 행동치 · ◆ 필살기</small>
+              행동 타임라인 <small>첫 사이클 150 · 이후 사이클마다 100 행동치 · ◆ 필살기{rows.includes(AHA) ? " · ○ 아하 보너스 턴" : ""}</small>
             </h3>
             <div className="timeline">
               <div className="tl-axis">
@@ -364,24 +375,24 @@ export function TeamSimPage({ account }: { account: Account }) {
                   </div>
                 ))}
               </div>
-              {units.map((u) => (
-                <div key={u.key} className="tl-row">
-                  <img src={icon(u.key)} alt="" />
+              {rows.map((key) => (
+                <div key={key} className={`tl-row ${key === AHA ? "aha" : ""}`}>
+                  <Face id={key} />
                   <div className="tl-track">
                     {Array.from({ length: cycles - 1 }, (_, c) => (
                       <i key={c} className="tl-line" style={{ left: `${(cycleEnd(c) / end) * 100}%` }} />
                     ))}
                     {events
-                      .filter((e) => e.key === u.key)
+                      .filter((e) => e.key === key)
                       .map((e) => (
                         <motion.span
                           key={e.n}
-                          className={`tl-dot ${e.ult ? "ult" : ""}`}
+                          className={`tl-dot ${e.ult ? "ult" : ""} ${e.extra ? "extra" : ""}`}
                           initial={{ scale: 0 }}
                           animate={{ scale: 1 }}
                           transition={{ delay: Math.min(e.n, 20) * 0.02 }}
-                          style={{ left: `${(e.av / end) * 100}%`, background: colorOf(u.key), color: colorOf(u.key), rotate: e.ult ? 45 : 0 }}
-                          title={`${e.n}번째 행동 · 행동치 ${fmt(e.av)} · ${e.cycle}사이클 · ${e.type === "skill" ? "전투 스킬" : "일반 공격"}${e.ult ? " + 필살기" : ""} · 속도 ${fmt(e.spd)}`}
+                          style={{ left: `${(e.av / end) * 100}%`, background: colorOf(key), color: colorOf(key), rotate: e.ult ? 45 : 0 }}
+                          title={dotTitle(e)}
                         />
                       ))}
                   </div>
@@ -406,13 +417,13 @@ export function TeamSimPage({ account }: { account: Account }) {
                   </tr>
                 </thead>
                 <tbody>
-                  {units.map((u) => {
-                    const counts = perCycle(events, u.key, cycles);
+                  {rows.map((key) => {
+                    const counts = perCycle(events, key, cycles);
                     return (
-                      <tr key={u.key}>
+                      <tr key={key}>
                         <td className="who">
-                          <img src={icon(u.key)} alt="" />
-                          {nameOf(u.key)}
+                          <Face id={key} />
+                          {key === AHA ? "아하 타임" : nameOf(key)}
                         </td>
                         {counts.map((n, c) => (
                           <td key={c} className={`num n${Math.min(n, 3)}`}>
@@ -437,8 +448,9 @@ export function TeamSimPage({ account }: { account: Account }) {
                   .map((e, i) => (
                     <li key={`${e.key}-${e.n}`} className={e.cycle === 0 ? "c0" : "c1"}>
                       <span className="idx num">{i + 1}</span>
-                      <img src={icon(e.key)} alt="" />
+                      <Face id={e.key} />
                       {e.ult && <span className="ult-tag">필</span>}
+                      {e.extra && <span className="ult-tag">보</span>}
                       <span className="av num">{fmt(e.av)}</span>
                     </li>
                   ))}
@@ -457,6 +469,7 @@ export function TeamSimPage({ account }: { account: Account }) {
               </ul>
               <p className="tool-note">
                 캐릭터 효과는 게임 설명의 수치(스킬 10레벨, 행적 해금, 성혼·광추·성유물 세트 기준)로 계산해요. 필살기 시점은 에너지로 추정한 값이라, 실제와 다르면 캐릭터별로 바꿔 주세요.
+                환락 캐릭터가 있으면 아하 타임도 계산해요(아하 속도 = 80 + 환락 캐릭터 속도 1~4위 ÷ 5/10/20/40).
                 소환물·기억 정령의 행동과 적 처치·격파 같은 조건부 효과는 빠져 있어요.
               </p>
             </div>

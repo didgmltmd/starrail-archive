@@ -3,7 +3,8 @@
   "updatedAt": "2026-10-30",
   "notes": [
     "게임 내 한국어 스킬 설명(StarRailRes kr 데이터)의 수치를 그대로 옮겼다. 스킬 수치는 10레벨, 행적은 해금 기준.",
-    "조건이 복잡해 시뮬레이션하기 어려운 효과(적 처치·격파·피격 조건, 소환물·기억 정령의 행동, 반디 완전연소 등)는 넣지 않는다."
+    "조건이 복잡해 시뮬레이션하기 어려운 효과(적 처치·격파·피격 조건, 소환물·기억 정령의 행동, 반디 완전연소 등)는 넣지 않는다.",
+    "환락 캐릭터가 있으면 아하가 행동 순서에 들어간다. 속도 = 80 + 가장 빠른 환락 캐릭터 1~4위 속도 ÷ 5/10/20/40 (파티 버프·행동 당김은 받지 않음)."
   ],
   "characters": {
     "1101": [
@@ -51,7 +52,8 @@
       { "on": "skill", "to": "team", "kind": "spdPct", "value": 0.12, "dur": 3, "durOn": "owner", "rank": 1, "note": "1성혼: [양명] 동안 모든 아군 속도 12% (곽향 3턴)" }
     ],
     "1502": [
-      { "on": "skill", "to": "team", "kind": "spdPct", "value": 0.12, "dur": 3, "durOn": "owner", "rank": 2, "note": "2성혼: 결계 동안 모든 아군 속도 12% (효광 3턴)" }
+      { "on": "skill", "to": "team", "kind": "spdPct", "value": 0.12, "dur": 3, "durOn": "owner", "rank": 2, "note": "2성혼: 결계 동안 모든 아군 속도 12% (효광 3턴)" },
+      { "on": "ult", "to": "self", "kind": "ahaExtraTurn", "value": 1, "note": "필살기: 아하가 즉시 보너스 턴 1개 획득" }
     ],
     "1506": [
       { "on": "ult", "to": "self", "kind": "advance", "value": 1, "note": "필살기: 자신 행동 100% 당김" }
@@ -87,7 +89,8 @@
       { "on": "basic", "to": "self", "kind": "nextAdvance", "value": 0.2, "note": "행적: 일반 공격 후 다음 행동 20% 당김" }
     ],
     "1513": [
-      { "on": "ult", "to": "self", "kind": "spdPct", "value": 0.3, "dur": 4, "note": "필살기: 속도 30% (4턴)" }
+      { "on": "ult", "to": "self", "kind": "spdPct", "value": 0.3, "dur": 4, "note": "필살기: 속도 30% (4턴)" },
+      { "on": "passive", "to": "self", "kind": "ahaSpdPerAllyAttack", "value": 25, "note": "행적: 환락 캐릭터가 혼자일 때 동료 행동마다 아하 속도 +25 (아하 타임까지, 모든 행동을 공격으로 가정)" }
     ],
     "1508": [
       { "on": "start", "to": "self", "kind": "spdPct", "value": 0.2, "dur": 3, "note": "행적: 전투 진입 시 속도 20% (3턴)" }
@@ -97,6 +100,12 @@
     ],
     "1210": [
       { "on": "start", "to": "self", "kind": "advance", "value": 0.25, "note": "행적: 전투 시작 시 25% 당김" }
+    ],
+    "8009": [
+      { "on": "ult", "to": "ally", "kind": "advance", "value": 0.5, "notPath": "Elation", "note": "필살기: 환락 스킬이 없는 대상은 행동 50% 당김" }
+    ],
+    "8010": [
+      { "on": "ult", "to": "ally", "kind": "advance", "value": 0.5, "notPath": "Elation", "note": "필살기: 환락 스킬이 없는 대상은 행동 50% 당김" }
     ],
     "1503": [
       { "on": "ult", "to": "ally", "kind": "advanceByElation", "value": [0.1, 0.15, 0.3, 1], "note": "필살기: 환락 캐릭터 수(1/2/3/4+)에 따라 대상 10/15/30% 당김·보너스 턴" }
