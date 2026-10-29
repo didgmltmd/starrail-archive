@@ -92,3 +92,10 @@ export const IconTrophy = (p: P) => (
     <path d="M12 13v4M8.5 20.5h7M10 17h4l.5 3.5h-5z" />
   </svg>
 );
+
+export const IconWarp = (p: P) => (
+  <svg {...base} {...p}>
+    <path d="M12 2.8l1.9 5.6 5.9.1-4.7 3.5 1.7 5.7L12 14.3l-4.8 3.4 1.7-5.7-4.7-3.5 5.9-.1z" />
+    <path d="M4 20.5h16" />
+  </svg>
+);

@@ -1,3 +1,4 @@
+mod gacha;
 mod hoyolab;
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
@@ -11,6 +12,8 @@ pub fn run() {
             hoyolab::hoyolab_login,
             hoyolab::hoyolab_logout,
             hoyolab::hoyolab_fetch,
+            gacha::gacha_find_url,
+            gacha::gacha_fetch,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

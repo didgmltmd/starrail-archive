@@ -11,10 +11,12 @@ import {
   IconRelic,
   IconRoster,
   IconTrophy,
+  IconWarp,
 } from "./components/icons";
 import { ELEMENT_COLORS, game } from "./data/game";
 import { timeAgo } from "./lib/hoyolab";
 import { useAccount, type AccountState } from "./lib/useAccount";
+import { useWarps } from "./lib/warps";
 import { AuditPage } from "./pages/AuditPage";
 import { EndgamePage } from "./pages/EndgamePage";
 import { CharacterPage } from "./pages/CharacterPage";
@@ -22,8 +24,9 @@ import { FarmPage } from "./pages/FarmPage";
 import { FriendsPage } from "./pages/FriendsPage";
 import { LinkPage } from "./pages/InfoPages";
 import { RosterPage } from "./pages/RosterPage";
+import { WarpPage } from "./pages/WarpPage";
 
-type Tab = "character" | "roster" | "audit" | "farm" | "endgame" | "friends" | "link";
+type Tab = "character" | "roster" | "audit" | "farm" | "endgame" | "warp" | "friends" | "link";
 
 const TABS: Record<Tab, { label: string; sub: string; icon: ReactNode }> = {
   character: { label: "캐릭터", sub: "CHARACTER", icon: <IconCharacter /> },
@@ -31,6 +34,7 @@ const TABS: Record<Tab, { label: string; sub: string; icon: ReactNode }> = {
   audit: { label: "세팅 점검", sub: "BUILD CHECK", icon: <IconRelic /> },
   farm: { label: "파밍 추천", sub: "FARMING GUIDE", icon: <IconFarm /> },
   endgame: { label: "엔드 컨텐츠", sub: "END GAME", icon: <IconTrophy /> },
+  warp: { label: "워프 기록", sub: "WARP RECORDS", icon: <IconWarp /> },
   friends: { label: "친구", sub: "FRIENDS", icon: <IconFriends /> },
   link: { label: "HoYoLAB 연동", sub: "ACCOUNT LINK", icon: <IconLink /> },
 };
@@ -53,6 +57,7 @@ function SyncChip({ state, onOpenLink }: { state: AccountState; onOpenLink: () =
 
 export default function App() {
   const state = useAccount();
+  const warps = useWarps();
   const { demo } = state;
   // Characters newer than the game data (until the next data refresh) are hidden instead of breaking the UI.
   const account = useMemo(
@@ -64,6 +69,12 @@ export default function App() {
 
   const character = account.characters.find((c) => c.id === charId) ?? account.characters[0];
   const element = character ? game.characters[character.id]?.element : undefined;
+
+  // Opening the warp tab picks up history the game cached since the last check
+  const warpSync = warps.sync;
+  useEffect(() => {
+    if (tab === "warp") warpSync({ quiet: true });
+  }, [tab, warpSync]);
 
   // ← → switch characters on the character screen
   useEffect(() => {
@@ -85,6 +96,7 @@ export default function App() {
     { id: "audit", label: TABS.audit.label, icon: TABS.audit.icon },
     { id: "farm", label: TABS.farm.label, icon: TABS.farm.icon },
     { id: "endgame", label: TABS.endgame.label, icon: TABS.endgame.icon },
+    { id: "warp", label: TABS.warp.label, icon: TABS.warp.icon },
     "divider",
     { id: "friends", label: TABS.friends.label, icon: TABS.friends.icon },
     { id: "link", label: TABS.link.label, icon: TABS.link.icon, badge: demo ? "!" : undefined },
@@ -141,6 +153,7 @@ export default function App() {
           {tab === "audit" && <AuditPage account={account} onOpenCharacter={open} />}
           {tab === "farm" && <FarmPage account={account} onOpenCharacter={open} />}
           {tab === "endgame" && <EndgamePage account={account} />}
+          {tab === "warp" && <WarpPage state={warps} />}
           {tab === "friends" && <FriendsPage myAccount={account} />}
           {tab === "link" && <LinkPage state={state} />}
         </motion.div>
