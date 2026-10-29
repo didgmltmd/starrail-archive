@@ -7,6 +7,8 @@ export interface CharacterInfo {
   rarity: number;
   path: string;
   element: ElementId;
+  /** Energy needed for the ultimate */
+  energy?: number;
   icon: string;
   preview: string;
   portrait: string;

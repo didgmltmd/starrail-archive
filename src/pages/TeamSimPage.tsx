@@ -3,19 +3,38 @@ import { useMemo, useState } from "react";
 import { asset, ELEMENT_COLORS, game } from "../data/game";
 import { statTotal } from "../lib/stats";
 import {
+  availableEffects,
+  baseSpd,
   BREAKPOINTS,
   cycleEnd,
   nextBreakpoint,
   perCycle,
   simulate,
-  type SimUnit,
+  ultEstimate,
+  type Applied,
+  type UnitSetup,
 } from "../lib/teamsim";
 import type { Account, OwnedCharacter } from "../types";
 import "../styles/tools.css";
 import "../styles/teamsim.css";
 
 const TEAM_KEY = "sra.teamsim.team";
-const BUFF_KEY = "sra.teamsim.buffs";
+const CFG_KEY = "sra.teamsim.cfg";
+const OLD_BUFF_KEY = "sra.teamsim.buffs";
+
+/** Per-character choices, remembered between visits. */
+interface UnitCfg {
+  /** Manual SPD bonus */
+  extra: number;
+  /** Skill every N turns (0 = never) */
+  skillEvery: number;
+  /** Ultimate every N turns, 0 = never, null = estimate from energy */
+  ult: number | null;
+  /** Single-target effects go to this character */
+  target?: string;
+  /** Effects turned off by the user */
+  off: string[];
+}
 
 function load<T>(key: string, fallback: T): T {
   try {
@@ -67,6 +86,8 @@ function recentTeams(account: Account, owned: Set<string>) {
   return out.slice(0, 6);
 }
 
+const hasAllyEffect = (list: Applied[]) => list.some((a) => a.effect.to === "ally");
+
 export function TeamSimPage({ account }: { account: Account }) {
   const chars = account.characters;
   const byId = useMemo(() => new Map(chars.map((c) => [c.id, c])), [chars]);
@@ -77,7 +98,14 @@ export function TeamSimPage({ account }: { account: Account }) {
     if (saved.length) return saved;
     return presets[0]?.ids ?? chars.slice(0, 4).map((c) => c.id);
   });
-  const [buffs, setBuffsState] = useState<Record<string, number>>(() => load(BUFF_KEY, {}));
+  const [cfgs, setCfgs] = useState<Record<string, Partial<UnitCfg>>>(() => {
+    const cfg = load<Record<string, Partial<UnitCfg>>>(CFG_KEY, {});
+    // Older versions kept only the manual SPD bonus
+    for (const [id, extra] of Object.entries(load<Record<string, number>>(OLD_BUFF_KEY, {}))) {
+      cfg[id] = { extra, ...cfg[id] };
+    }
+    return cfg;
+  });
   const [cycles, setCycles] = useState(5);
   const [picking, setPicking] = useState<number | null>(null);
 
@@ -85,17 +113,46 @@ export function TeamSimPage({ account }: { account: Account }) {
     setTeamState(t);
     save(TEAM_KEY, t);
   };
-  const setBuff = (id: string, v: number) => {
-    const next = { ...buffs, [id]: v };
-    setBuffsState(next);
-    save(BUFF_KEY, next);
+  const setCfg = (id: string, patch: Partial<UnitCfg>) => {
+    const next = { ...cfgs, [id]: { ...cfgs[id], ...patch } };
+    setCfgs(next);
+    save(CFG_KEY, next);
   };
 
-  const units: SimUnit[] = team
-    .map((id) => byId.get(id))
-    .filter((c): c is OwnedCharacter => !!c)
-    .map((c) => ({ key: c.id, spd: statTotal(c, "SPD") + (buffs[c.id] ?? 0) }));
-  const actions = useMemo(() => simulate(units, cycles), [JSON.stringify(units), cycles]);
+  const members = team.map((id) => byId.get(id)).filter((c): c is OwnedCharacter => !!c);
+
+  // Everything the simulator needs, per member
+  const setups = useMemo(() => {
+    return members.map((c, i) => {
+      const cfg = cfgs[c.id] ?? {};
+      const final = statTotal(c, "SPD");
+      const all = availableEffects(c, final);
+      const skillEvery = cfg.skillEvery ?? 1;
+      const est = ultEstimate(c, skillEvery);
+      const ult = cfg.ult === undefined ? null : cfg.ult;
+      const others = members.filter((m) => m.id !== c.id).map((m) => m.id);
+      const target = cfg.target && others.includes(cfg.target) ? cfg.target : others[0];
+      const setup: UnitSetup = {
+        key: c.id,
+        path: game.characters[c.id]?.path ?? "",
+        base: baseSpd(c),
+        spd: final + (cfg.extra ?? 0),
+        skillEvery,
+        ultFirst: ult === null ? est.first : ult,
+        ultEvery: ult === null ? est.every : ult,
+        target,
+        effects: all.filter((a) => !(cfg.off ?? []).includes(a.id)),
+      };
+      return { c, i, final, all, est, ult, cfg, setup };
+    });
+  }, [JSON.stringify(team), cfgs, chars]);
+
+  const units = setups.map((s) => s.setup);
+  const events = useMemo(() => simulate(units, cycles), [JSON.stringify(units), cycles]);
+  const breakpoints = useMemo(
+    () => Object.fromEntries(units.map((u) => [u.key, nextBreakpoint(units, u.key, cycles)])),
+    [JSON.stringify(units), cycles],
+  );
   const end = cycleEnd(cycles - 1);
 
   if (!chars.length) {
@@ -112,16 +169,16 @@ export function TeamSimPage({ account }: { account: Account }) {
   return (
     <div className="page tool-page teamsim-page">
       <div className="tool-top">
-        {presets.length > 0 && (
-          <div className="presets">
-            <span className="tool-note">최근 엔드 컨텐츠 파티</span>
-            {presets.map((p) => (
-              <button key={p.label} className="tool-btn small" onClick={() => setTeam(p.ids)}>
-                {p.label}
-              </button>
-            ))}
-          </div>
-        )}
+        <div className="presets">
+          <span className="tool-note" title="게임 안의 현재 파티 구성은 HoYoLAB에서 제공하지 않아서, 엔드 컨텐츠에서 실제로 쓴 파티를 불러와요.">
+            엔드 컨텐츠에서 쓴 파티
+          </span>
+          {presets.map((p) => (
+            <button key={p.label} className="tool-btn small" onClick={() => setTeam(p.ids)}>
+              {p.label}
+            </button>
+          ))}
+        </div>
         <span className="tool-status" />
         <div className="tseg">
           {[3, 5, 10].map((n) => (
@@ -134,51 +191,118 @@ export function TeamSimPage({ account }: { account: Account }) {
 
       <div className="ts-slots">
         {[0, 1, 2, 3].map((i) => {
-          const id = team[i];
-          const c = id ? byId.get(id) : undefined;
-          const base = c ? statTotal(c, "SPD") : 0;
-          const bp = c ? nextBreakpoint(base + (buffs[c.id] ?? 0), cycles) : null;
-          const total = c ? actions.filter((a) => a.key === c.id).length : 0;
+          const s = setups[i];
+          const c = s?.c;
+          const total = c ? events.filter((e) => e.key === c.id).length : 0;
+          const bp = c ? breakpoints[c.id] : null;
+          const others = setups.filter((o) => o.c.id !== c?.id);
           return (
             <div key={i} className={`ts-slot tool-card ${c ? "" : "empty"}`} style={{ ["--glow" as string]: c ? colorOf(c.id) + "66" : undefined }}>
-              <button className="ts-face" onClick={() => setPicking(picking === i ? null : i)} title="캐릭터 바꾸기">
-                {c ? <img src={icon(c.id)} alt="" /> : <span>+</span>}
-              </button>
-              {c ? (
-                <div className="ts-info">
-                  <div className="ts-name">
-                    <b>{nameOf(c.id)}</b>
-                    <button className="ts-x" onClick={() => setTeam(team.filter((_, j) => j !== i))} title="빼기">
-                      ×
-                    </button>
+              <div className="ts-main">
+                <button className="ts-face" onClick={() => setPicking(picking === i ? null : i)} title="캐릭터 바꾸기">
+                  {c ? <img src={icon(c.id)} alt="" /> : <span>+</span>}
+                </button>
+                {c && s ? (
+                  <div className="ts-info">
+                    <div className="ts-name">
+                      <b>
+                        {nameOf(c.id)} <small className="num">{c.eidolon}돌</small>
+                      </b>
+                      <button className="ts-x" onClick={() => setTeam(team.filter((x) => x !== c.id))} title="빼기">
+                        ×
+                      </button>
+                    </div>
+                    <div className="ts-spd">
+                      <span>속도</span>
+                      <b className="num">{fmt(s.setup.spd)}</b>
+                      <label title="계산에 없는 버프를 속도로 더해 보세요">
+                        +
+                        <input
+                          className="num-input"
+                          type="number"
+                          step={1}
+                          value={s.cfg.extra ?? 0}
+                          onChange={(e) => setCfg(c.id, { extra: Number(e.target.value) || 0 })}
+                        />
+                      </label>
+                    </div>
+                    <div className="ts-foot">
+                      {cycles}사이클 <b className="num">{total}</b>회 행동
+                      {bp && (
+                        <span className="bp">
+                          속도 <b className="num">+{fmt(bp.extra)}</b> → {bp.actions}회
+                        </span>
+                      )}
+                    </div>
                   </div>
-                  <div className="ts-spd">
-                    <span>속도</span>
-                    <b className="num">{fmt(base + (buffs[c.id] ?? 0))}</b>
+                ) : (
+                  <div className="ts-info tool-note">캐릭터를 골라 주세요</div>
+                )}
+              </div>
+
+              {c && s && (
+                <div className="ts-cfg">
+                  <label>
+                    전투 스킬
+                    <select value={s.setup.skillEvery} onChange={(e) => setCfg(c.id, { skillEvery: Number(e.target.value) })}>
+                      <option value={1}>매 턴</option>
+                      <option value={2}>2턴마다</option>
+                      <option value={3}>3턴마다</option>
+                      <option value={0}>안 씀</option>
+                    </select>
+                  </label>
+                  <label>
+                    필살기
+                    <select
+                      value={s.ult === null ? "auto" : String(s.ult)}
+                      onChange={(e) => setCfg(c.id, { ult: e.target.value === "auto" ? null : Number(e.target.value) })}
+                    >
+                      <option value="auto">
+                        자동 ({s.est.first}턴째, 이후 {s.est.every}턴마다)
+                      </option>
+                      {[1, 2, 3, 4, 5, 6].map((n) => (
+                        <option key={n} value={n}>
+                          {n}턴마다
+                        </option>
+                      ))}
+                      <option value="0">안 씀</option>
+                    </select>
+                  </label>
+                  {hasAllyEffect(s.all) && others.length > 0 && (
                     <label>
-                      +
-                      <input
-                        className="num-input"
-                        type="number"
-                        step={1}
-                        value={buffs[c.id] ?? 0}
-                        onChange={(e) => setBuff(c.id, Number(e.target.value) || 0)}
-                        title="버프·당기기 효과를 속도로 더해 보세요"
-                      />
+                      대상
+                      <select value={s.setup.target} onChange={(e) => setCfg(c.id, { target: e.target.value })}>
+                        {others.map((o) => (
+                          <option key={o.c.id} value={o.c.id}>
+                            {nameOf(o.c.id)}
+                          </option>
+                        ))}
+                      </select>
                     </label>
-                  </div>
-                  <div className="ts-foot">
-                    {cycles}사이클 <b className="num">{total}</b>회 행동
-                    {bp && (
-                      <span className="bp">
-                        속도 <b className="num">+{fmt(Math.max(0.1, bp.spd - base - (buffs[c.id] ?? 0)))}</b> → {bp.cycle}사이클까지 {bp.actions}회
-                      </span>
-                    )}
-                  </div>
+                  )}
+                  <ul className="ts-effects">
+                    {s.all.length === 0 && <li className="none">속도 관련 효과 없음 · 속도만 계산</li>}
+                    {s.all.map((a) => {
+                      const on = !(s.cfg.off ?? []).includes(a.id);
+                      return (
+                        <li key={a.id}>
+                          <button
+                            className={on ? "on" : ""}
+                            onClick={() =>
+                              setCfg(c.id, { off: on ? [...(s.cfg.off ?? []), a.id] : (s.cfg.off ?? []).filter((x) => x !== a.id) })
+                            }
+                            title={on ? "누르면 빼고 계산" : "누르면 넣고 계산"}
+                          >
+                            <i>{on ? "✓" : ""}</i>
+                            {a.effect.note}
+                          </button>
+                        </li>
+                      );
+                    })}
+                  </ul>
                 </div>
-              ) : (
-                <div className="ts-info tool-note">캐릭터를 골라 주세요</div>
               )}
+
               <AnimatePresence>
                 {picking === i && (
                   <motion.div
@@ -226,7 +350,7 @@ export function TeamSimPage({ account }: { account: Account }) {
         <>
           <div className="tool-card timeline-card">
             <h3>
-              행동 타임라인 <small>첫 사이클 150 · 이후 사이클마다 100 행동치</small>
+              행동 타임라인 <small>첫 사이클 150 · 이후 사이클마다 100 행동치 · ◆ 필살기</small>
             </h3>
             <div className="timeline">
               <div className="tl-axis">
@@ -247,17 +371,17 @@ export function TeamSimPage({ account }: { account: Account }) {
                     {Array.from({ length: cycles - 1 }, (_, c) => (
                       <i key={c} className="tl-line" style={{ left: `${(cycleEnd(c) / end) * 100}%` }} />
                     ))}
-                    {actions
-                      .filter((a) => a.key === u.key)
-                      .map((a) => (
+                    {events
+                      .filter((e) => e.key === u.key)
+                      .map((e) => (
                         <motion.span
-                          key={a.n}
-                          className="tl-dot"
+                          key={e.n}
+                          className={`tl-dot ${e.ult ? "ult" : ""}`}
                           initial={{ scale: 0 }}
                           animate={{ scale: 1 }}
-                          transition={{ delay: a.n * 0.02 }}
-                          style={{ left: `${(a.av / end) * 100}%`, background: colorOf(u.key), color: colorOf(u.key) }}
-                          title={`${a.n}번째 행동 · 행동치 ${fmt(a.av)} · ${a.cycle}사이클`}
+                          transition={{ delay: Math.min(e.n, 20) * 0.02 }}
+                          style={{ left: `${(e.av / end) * 100}%`, background: colorOf(u.key), color: colorOf(u.key), rotate: e.ult ? 45 : 0 }}
+                          title={`${e.n}번째 행동 · 행동치 ${fmt(e.av)} · ${e.cycle}사이클 · ${e.type === "skill" ? "전투 스킬" : "일반 공격"}${e.ult ? " + 필살기" : ""} · 속도 ${fmt(e.spd)}`}
                         />
                       ))}
                   </div>
@@ -283,7 +407,7 @@ export function TeamSimPage({ account }: { account: Account }) {
                 </thead>
                 <tbody>
                   {units.map((u) => {
-                    const counts = perCycle(actions, u.key, cycles);
+                    const counts = perCycle(events, u.key, cycles);
                     return (
                       <tr key={u.key}>
                         <td className="who">
@@ -308,20 +432,21 @@ export function TeamSimPage({ account }: { account: Account }) {
                 행동 순서 <small>0~1사이클</small>
               </h3>
               <ol className="order">
-                {actions
-                  .filter((a) => a.av <= cycleEnd(1))
-                  .map((a, i) => (
-                    <li key={`${a.key}-${a.n}`} className={a.cycle === 0 ? "c0" : "c1"}>
+                {events
+                  .filter((e) => e.av <= cycleEnd(1) + 1e-9)
+                  .map((e, i) => (
+                    <li key={`${e.key}-${e.n}`} className={e.cycle === 0 ? "c0" : "c1"}>
                       <span className="idx num">{i + 1}</span>
-                      <img src={icon(a.key)} alt="" />
-                      <span className="av num">{fmt(a.av)}</span>
+                      <img src={icon(e.key)} alt="" />
+                      {e.ult && <span className="ult-tag">필</span>}
+                      <span className="av num">{fmt(e.av)}</span>
                     </li>
                   ))}
               </ol>
             </div>
 
             <div className="tool-card">
-              <h3>자주 쓰는 속도 구간</h3>
+              <h3>자주 쓰는 속도 구간 <small>버프 없이</small></h3>
               <ul className="bp-list">
                 {BREAKPOINTS.map((b) => (
                   <li key={b.label}>
@@ -331,7 +456,8 @@ export function TeamSimPage({ account }: { account: Account }) {
                 ))}
               </ul>
               <p className="tool-note">
-                속도는 HoYoLAB에 표시된 최종 속도예요. 행동 당기기나 속도 버프 같은 캐릭터 효과는 계산에 들어가지 않으니, 캐릭터마다 + 칸에 속도로 더해서 확인해 보세요.
+                캐릭터 효과는 게임 설명의 수치(스킬 10레벨, 행적 해금, 성혼·광추·성유물 세트 기준)로 계산해요. 필살기 시점은 에너지로 추정한 값이라, 실제와 다르면 캐릭터별로 바꿔 주세요.
+                소환물·기억 정령의 행동과 적 처치·격파 같은 조건부 효과는 빠져 있어요.
               </p>
             </div>
           </div>

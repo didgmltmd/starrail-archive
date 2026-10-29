@@ -44,6 +44,7 @@ for (const c of Object.values(characters)) {
     rarity: c.rarity,
     path: c.path,
     element: c.element,
+    energy: c.max_sp,
     icon: c.icon,
     preview: c.preview,
     portrait: c.portrait,

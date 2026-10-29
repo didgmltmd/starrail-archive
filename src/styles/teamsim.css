@@ -353,3 +353,111 @@
     grid-column: 1 / -1;
   }
 }
+
+/* ---------- Per-character settings ---------- */
+
+.ts-slot {
+  flex-direction: column;
+  gap: 10px;
+}
+.ts-main {
+  display: flex;
+  gap: 12px;
+}
+.ts-name small {
+  margin-left: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-faint);
+}
+.ts-cfg {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+.ts-cfg label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+.ts-cfg select {
+  max-width: 62%;
+  height: 26px;
+  padding: 0 6px;
+  border-radius: 6px;
+  font: inherit;
+  font-size: 12px;
+  color: var(--text);
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--line-strong);
+}
+.ts-cfg select:focus {
+  outline: none;
+  border-color: var(--cream);
+}
+.ts-effects {
+  list-style: none;
+  margin: 2px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.ts-effects .none {
+  font-size: 11px;
+  color: var(--text-faint);
+}
+.ts-effects button {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  width: 100%;
+  text-align: left;
+  font-size: 11px;
+  line-height: 1.45;
+  color: var(--text-faint);
+}
+.ts-effects button.on {
+  color: var(--text-dim);
+}
+.ts-effects i {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  margin-top: 1px;
+  border-radius: 3px;
+  display: grid;
+  place-items: center;
+  font-style: normal;
+  font-size: 10px;
+  color: #1a1408;
+  border: 1px solid var(--line-strong);
+}
+.ts-effects button.on i {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+
+.tl-dot.ult {
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border-radius: 3px;
+  border-color: #fff;
+}
+.order .ult-tag {
+  position: absolute;
+  top: -4px;
+  right: 0;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 0 4px;
+  border-radius: 6px;
+  color: #1a1408;
+  background: var(--gold);
+}

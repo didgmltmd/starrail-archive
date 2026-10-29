@@ -8,6 +8,10 @@
   overflow-y: auto;
   z-index: 5;
 }
+/* Cards keep their height; the page scrolls instead */
+.tool-page > * {
+  flex-shrink: 0;
+}
 
 .tool-top {
   display: flex;

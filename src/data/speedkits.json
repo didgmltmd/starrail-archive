@@ -1,0 +1,139 @@
+{
+  "version": 1,
+  "updatedAt": "2026-10-30",
+  "notes": [
+    "게임 내 한국어 스킬 설명(StarRailRes kr 데이터)의 수치를 그대로 옮겼다. 스킬 수치는 10레벨, 행적은 해금 기준.",
+    "조건이 복잡해 시뮬레이션하기 어려운 효과(적 처치·격파·피격 조건, 소환물·기억 정령의 행동, 반디 완전연소 등)는 넣지 않는다."
+  ],
+  "characters": {
+    "1101": [
+      { "on": "skill", "to": "ally", "kind": "advance", "value": 1, "note": "전투 스킬: 대상 즉시 행동" },
+      { "on": "basic", "to": "self", "kind": "nextAdvance", "value": 0.3, "note": "특성: 일반 공격 후 다음 행동 30% 당김" },
+      { "on": "skill", "to": "ally", "kind": "spdPct", "value": 0.3, "dur": 1, "after": true, "rank": 2, "note": "2성혼: 대상이 행동한 뒤 속도 30% (1턴)" }
+    ],
+    "1313": [
+      { "on": "skill", "to": "ally", "kind": "advance", "value": 1, "notPath": "Shaman", "note": "전투 스킬: 대상 즉시 행동 (화합 대상 제외)" }
+    ],
+    "1306": [
+      { "on": "skill", "to": "ally", "kind": "advance", "value": 0.5, "note": "전투 스킬: 대상 행동 50% 당김" },
+      { "on": "start", "to": "self", "kind": "spdPct", "value": 0.15, "dur": 2, "rank": 1, "note": "1성혼: 전투 시작 시 속도 15% (2턴)" },
+      { "on": "skill", "to": "self", "kind": "spdPct", "value": 0.15, "dur": 2, "rank": 1, "note": "1성혼: 전투 스킬 시 속도 15% (2턴)" }
+    ],
+    "1309": [
+      { "on": "start", "to": "self", "kind": "advance", "value": 0.25, "note": "행적: 전투 시작 시 25% 당김" },
+      { "on": "ult", "to": "others", "kind": "advance", "value": 1, "note": "필살기: 다른 아군 즉시 행동" },
+      { "on": "ult", "to": "self", "kind": "countdown", "value": 90, "note": "필살기: [협주] 카운트다운(속도 90) 동안 턴 없음" },
+      { "on": "ult", "to": "team", "kind": "spdPct", "value": 0.16, "dur": 1, "durOn": "owner", "rank": 2, "note": "2성혼: [협주] 동안 모든 아군 속도 16%" }
+    ],
+    "1512": [
+      { "on": "ult", "to": "ally", "kind": "advance", "value": 1, "note": "필살기: 대상 행동 100% 당김" }
+    ],
+    "1303": [
+      { "on": "passive", "to": "others", "kind": "spdPct", "value": 0.1, "note": "특성: 다른 아군 속도 10%" }
+    ],
+    "1009": [
+      { "on": "ult", "to": "team", "kind": "spdFlat", "value": 50, "dur": 2, "note": "필살기: 모든 아군 속도 +50 (2턴)" }
+    ],
+    "1215": [
+      { "on": "ult", "to": "ally", "kind": "spdOfCaster", "value": 0.2, "dur": 2, "note": "필살기: 대상 속도 +한아 속도의 20% (2턴)" },
+      { "on": "skill", "to": "self", "kind": "spdPct", "value": 0.2, "dur": 1, "rank": 2, "note": "2성혼: 전투 스킬 후 속도 20% (1턴)" }
+    ],
+    "1314": [
+      { "on": "start", "to": "self", "kind": "advance", "value": 0.5, "note": "행적: 전투 시작 시 50% 당김" },
+      { "on": "skill", "to": "ally", "kind": "spdFlat", "value": 30, "dur": 3, "note": "전투 스킬: 대상 속도 +30 (3턴)" }
+    ],
+    "1224": [
+      { "on": "start", "to": "self", "kind": "advance", "value": 0.25, "note": "행적: 전투 시작 시 25% 당김" },
+      { "on": "skill", "to": "ally", "kind": "spdPct", "value": 0.1, "note": "전투 스킬: [사부] 속도 10%" },
+      { "on": "skill", "to": "self", "kind": "spdPct", "value": 0.1, "rank": 1, "note": "1성혼: [사부]가 있으면 자신 속도 10%" }
+    ],
+    "1217": [
+      { "on": "skill", "to": "team", "kind": "spdPct", "value": 0.12, "dur": 3, "durOn": "owner", "rank": 1, "note": "1성혼: [양명] 동안 모든 아군 속도 12% (곽향 3턴)" }
+    ],
+    "1502": [
+      { "on": "skill", "to": "team", "kind": "spdPct", "value": 0.12, "dur": 3, "durOn": "owner", "rank": 2, "note": "2성혼: 결계 동안 모든 아군 속도 12% (효광 3턴)" }
+    ],
+    "1506": [
+      { "on": "ult", "to": "self", "kind": "advance", "value": 1, "note": "필살기: 자신 행동 100% 당김" }
+    ],
+    "1207": [
+      { "on": "start", "to": "team", "kind": "spdPct", "value": 0.1, "dur": 2, "rank": 1, "note": "1성혼: 전투 진입 시 모든 아군 속도 10% (2턴)" }
+    ],
+    "1225": [
+      { "on": "ult", "to": "team", "kind": "advance", "value": 0.24, "rank": 2, "note": "2성혼: 필살기 후 모든 아군 24% 당김" }
+    ],
+    "1401": [
+      { "on": "ult", "to": "self", "kind": "advance", "value": 1, "note": "필살기: 발동 후 즉시 행동" },
+      { "on": "passive", "to": "path:Mage", "kind": "spdPct", "value": 0.12, "rank": 4, "note": "4성혼: 파티 내 지식 캐릭터 속도 12%" }
+    ],
+    "1415": [
+      { "on": "ult", "to": "team", "kind": "advance", "value": 1, "once": true, "rank": 6, "note": "6성혼: 첫 필살기 시 모든 아군 100% 당김" }
+    ],
+    "1412": [
+      { "on": "skill", "to": "self", "kind": "spdFlat", "value": 20, "dur": 3, "note": "행적: 전투 스킬 시 자신 속도 +20 (3턴)" },
+      { "on": "skill", "to": "ally", "kind": "spdFlat", "value": 20, "dur": 3, "note": "행적: [군공] 대상 속도 +20 (3턴)" }
+    ],
+    "1301": [
+      { "on": "ult", "to": "self", "kind": "advance", "value": 1, "note": "행적: 필살기 후 100% 당김" }
+    ],
+    "1213": [
+      { "on": "ult", "to": "self", "kind": "advance", "value": 1, "rank": 2, "note": "2성혼: 필살기 후 100% 당김" }
+    ],
+    "1109": [
+      { "on": "ult", "to": "self", "kind": "advance", "value": 0.2, "note": "행적: 필살기 후 20% 당김" }
+    ],
+    "1102": [
+      { "on": "skill", "to": "self", "kind": "spdPct", "value": 0.25, "dur": 2, "note": "전투 스킬: 속도 25% (2턴)" },
+      { "on": "basic", "to": "self", "kind": "nextAdvance", "value": 0.2, "note": "행적: 일반 공격 후 다음 행동 20% 당김" }
+    ],
+    "1513": [
+      { "on": "ult", "to": "self", "kind": "spdPct", "value": 0.3, "dur": 4, "note": "필살기: 속도 30% (4턴)" }
+    ],
+    "1508": [
+      { "on": "start", "to": "self", "kind": "spdPct", "value": 0.2, "dur": 3, "note": "행적: 전투 진입 시 속도 20% (3턴)" }
+    ],
+    "1414": [
+      { "on": "start", "to": "self", "kind": "advance", "value": 0.4, "note": "행적: 전투 시작 시 40% 당김" }
+    ],
+    "1210": [
+      { "on": "start", "to": "self", "kind": "advance", "value": 0.25, "note": "행적: 전투 시작 시 25% 당김" }
+    ],
+    "1503": [
+      { "on": "ult", "to": "ally", "kind": "advanceByElation", "value": [0.1, 0.15, 0.3, 1], "note": "필살기: 환락 캐릭터 수(1/2/3/4+)에 따라 대상 10/15/30% 당김·보너스 턴" }
+    ]
+  },
+  "lightCones": {
+    "21018": [
+      { "on": "ult", "to": "team", "kind": "advance", "value": [0.16, 0.18, 0.2, 0.22, 0.24], "note": "댄스! 댄스! 댄스!: 필살기 후 모든 아군 당김" }
+    ],
+    "20019": [
+      { "on": "start", "to": "team", "kind": "spdFlat", "value": [12, 14, 16, 18, 20], "dur": 1, "note": "어울림: 전투 진입 시 모든 아군 속도 증가 (1턴)" }
+    ],
+    "20015": [
+      { "on": "basic", "to": "self", "kind": "nextAdvance", "value": [0.12, 0.14, 0.16, 0.18, 0.2], "note": "증식: 일반 공격 후 다음 행동 당김" }
+    ],
+    "21045": [
+      { "on": "ult", "to": "self", "kind": "spdPct", "value": [0.08, 0.1, 0.12, 0.14, 0.16], "dur": 2, "note": "조화가 침묵한 후: 필살기 후 속도 증가 (2턴)" }
+    ],
+    "21047": [
+      { "on": "start", "to": "self", "kind": "spdPct", "value": [0.08, 0.09, 0.1, 0.11, 0.12], "dur": 2, "note": "그림자처럼 뒤따르는 밤: 전투 진입 시 속도 증가 (2턴)" }
+    ],
+    "23063": [
+      { "on": "start", "to": "self", "kind": "advance", "value": [0.3, 0.325, 0.35, 0.375, 0.4], "note": "그대는 나아가 노래하리니: 전투 진입 시 당김" }
+    ]
+  },
+  "relicSets": {
+    "110": [
+      { "pieces": 4, "on": "ult", "to": "self", "kind": "advance", "value": 0.25, "note": "밤낮의 경계를 나는 매 4세트: 필살기 후 25% 당김" }
+    ],
+    "114": [
+      { "pieces": 4, "on": "ult", "to": "team", "kind": "spdPct", "value": 0.12, "dur": 1, "note": "가상공간을 누비는 메신저 4세트: 아군 대상 필살기 시 모든 아군 속도 12% (1턴)" }
+    ],
+    "308": [
+      { "pieces": 2, "on": "start", "to": "self", "kind": "advance", "value": 0.4, "minSpd": 120, "note": "생명의 바커 공: 속도 120 이상이면 전투 진입 시 40% 당김" }
+    ],
+    "323": [
+      { "pieces": 2, "on": "passive", "to": "team", "kind": "spdPct", "value": 0.08, "path": "Memory", "note": "영원의 땅 앰포리어스: 기억 정령이 있으면 모든 아군 속도 8%" }
+    ]
+  }
+}

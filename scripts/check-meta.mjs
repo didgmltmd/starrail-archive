@@ -78,6 +78,31 @@ for (const [i, p] of (meta.buildPriority ?? []).entries()) {
   sources(w, p.sources);
 }
 
+// speedkits.json: speed effects used by the team speed simulator
+const kits = JSON.parse(readFileSync(new URL("../src/data/speedkits.json", import.meta.url), "utf8"));
+const ON = new Set(["start", "passive", "skill", "basic", "ult"]);
+const KINDS = new Set(["advance", "nextAdvance", "spdPct", "spdFlat", "spdOfCaster", "countdown", "advanceByElation"]);
+const PATHS = new Set(Object.keys(game.paths));
+function effect(w, e) {
+  if (!ON.has(e.on)) bad(w, `bad on ${e.on}`);
+  if (!KINDS.has(e.kind)) bad(w, `bad kind ${e.kind}`);
+  const to = String(e.to ?? "");
+  if (!["self", "ally", "team", "others"].includes(to) && !(to.startsWith("path:") && PATHS.has(to.slice(5)))) bad(w, `bad to ${to}`);
+  const vals = Array.isArray(e.value) ? e.value : [e.value];
+  if (!vals.length || vals.some((v) => typeof v !== "number" || !(v > 0))) bad(w, "value must be positive number(s)");
+  if (["advance", "nextAdvance", "spdPct", "spdOfCaster"].includes(e.kind) && vals.some((v) => v > 1)) bad(w, "ratio over 1");
+  if (e.notPath && !PATHS.has(e.notPath)) bad(w, `bad notPath ${e.notPath}`);
+  if (e.path && !PATHS.has(e.path)) bad(w, `bad path ${e.path}`);
+  if (!e.note) bad(w, "missing note");
+}
+if (kits.version !== 1) bad("speedkits", "version must be 1");
+for (const [id, list] of Object.entries(kits.characters ?? {})) list.forEach((e, i) => (char(`speedkits.characters.${id}`, id), effect(`speedkits.characters.${id}[${i}]`, e)));
+for (const [id, list] of Object.entries(kits.lightCones ?? {})) {
+  if (!game.lightCones[id]) bad(`speedkits.lightCones.${id}`, "unknown light cone id");
+  list.forEach((e, i) => effect(`speedkits.lightCones.${id}[${i}]`, e));
+}
+for (const [id, list] of Object.entries(kits.relicSets ?? {})) list.forEach((e, i) => (set(`speedkits.relicSets.${id}`, id), effect(`speedkits.relicSets.${id}[${i}]`, e)));
+
 // --check-images: make sure every boss image actually loads (used by the weekly research)
 if (process.argv.includes("--check-images")) {
   for (const [w, b] of images) {
