@@ -1,3 +1,4 @@
+import { useState } from "react";
 import type { Source } from "../data/meta";
 import { openExternal } from "../lib/openExternal";
 
@@ -14,5 +15,22 @@ export function Sources({ sources }: { sources?: Source[] }) {
         </button>
       ))}
     </div>
+  );
+}
+
+/** Image that quietly disappears when the remote file is missing. */
+export function RemoteImg({ src, title, className }: { src: string; title?: string; className?: string }) {
+  const [ok, setOk] = useState(true);
+  if (!ok) return null;
+  return (
+    <img
+      src={src}
+      title={title}
+      alt=""
+      className={className}
+      referrerPolicy="no-referrer"
+      loading="lazy"
+      onError={() => setOk(false)}
+    />
   );
 }

@@ -4,7 +4,9 @@ import { IconStar } from "../components/icons";
 import { asset, game } from "../data/game";
 import { CHALLENGE_KINDS, CHALLENGE_NAMES, daysLeft, maxStars } from "../lib/challenges";
 import type { Account, ChallengeKind, ChallengePeriod, ChallengeTeam } from "../types";
+import { RemoteImg } from "../components/MetaBits";
 import { StrategyPanel } from "./StrategyPanel";
+import { meta } from "../data/meta";
 import "../styles/endgame.css";
 
 type Which = "current" | "previous";
@@ -64,6 +66,8 @@ export function EndgamePage({
             key={k}
             kind={k}
             period={records?.[k]}
+            art={bossArt(k, records?.[k], which === "current")}
+            weak={which === "current" ? weaknesses(k, records?.[k]) : []}
             active={kind === k}
             showDays={which === "current"}
             onClick={() => setKind(k)}
@@ -113,15 +117,45 @@ function Stars({ n, of = 3 }: { n: number; of?: number }) {
   );
 }
 
+interface BossArt {
+  name: string;
+  image: string;
+}
+
+/**
+ * Boss pictures for a mode card: HoYoLAB's own portraits when it sends them (Apocalyptic Shadow),
+ * otherwise the researched wiki images, but only when they belong to this same period.
+ */
+function bossArt(kind: ChallengeKind, period: ChallengePeriod | undefined, current: boolean): BossArt[] {
+  const own = (period?.bossIcons ?? [])
+    .map((image, i) => ({ name: period!.bosses[i] ?? "", image }))
+    .filter((b) => b.image);
+  if (own.length) return own;
+  const r = meta.rotations?.[kind];
+  if (!current || !r?.bosses?.length || (period?.name && r.name !== period.name)) return [];
+  return r.bosses.slice(0, 3).map((b) => ({ name: b.name, image: b.image }));
+}
+
+/** Elements the researched rotation lists as weaknesses (all sides), for cards without boss art. */
+function weaknesses(kind: ChallengeKind, period: ChallengePeriod | undefined): string[] {
+  const r = meta.rotations?.[kind];
+  if (!r || (period?.name && r.name !== period.name)) return [];
+  return [...new Set((r.sides ?? []).flatMap((s) => s.weaknesses ?? []))].slice(0, 5);
+}
+
 function ModeCard({
   kind,
   period,
+  art,
+  weak,
   active,
   showDays,
   onClick,
 }: {
   kind: ChallengeKind;
   period?: ChallengePeriod;
+  art: BossArt[];
+  weak: string[];
   active: boolean;
   showDays: boolean;
   onClick: () => void;
@@ -130,18 +164,26 @@ function ModeCard({
   const max = period ? maxStars(period) : 0;
   return (
     <button
-      className={`mode-card mode-${kind} ${active ? "on" : ""} ${period?.bossIcons?.some(Boolean) ? "has-bosses" : ""}`}
+      className={`mode-card mode-${kind} ${active ? "on" : ""} ${art.length || weak.length ? "has-bosses" : ""}`}
       onClick={onClick}
     >
       <div className="mode-head">
         <span className="mode-kind">{CHALLENGE_NAMES[kind]}</span>
         {left !== null && <span className="mode-days num">D-{left}</span>}
       </div>
-      {period?.bossIcons?.some(Boolean) && (
+      {art.length === 0 && weak.length > 0 && (
+        <div className="mode-weak" title="이번 기간 적 약점">
+          {weak.map((e) => (
+            <img key={e} src={asset(game.elements[e]?.icon ?? "")} alt="" title={game.elements[e]?.name} />
+          ))}
+          <span>약점</span>
+        </div>
+      )}
+      {art.length > 0 && (
         <div className="mode-bosses">
-          {period.bossIcons.map((icon, i) =>
-            icon ? <img key={i} src={icon} alt="" title={period.bosses[i]} referrerPolicy="no-referrer" /> : null,
-          )}
+          {art.map((b, i) => (
+            <RemoteImg key={i} src={b.image} title={b.name} />
+          ))}
         </div>
       )}
       <div className="mode-name">{period?.name ?? "-"}</div>

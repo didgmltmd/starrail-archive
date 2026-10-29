@@ -11,6 +11,7 @@ const STATS = new Set(
 const ELEMENTS = new Set(["Physical", "Fire", "Ice", "Thunder", "Wind", "Quantum", "Imaginary"]);
 const MODES = new Set(["moc", "pf", "as"]);
 const problems = [];
+const images = [];
 const bad = (where, msg) => problems.push(`${where}: ${msg}`);
 
 const char = (where, id) => game.characters[id] || bad(where, `unknown character id ${id}`);
@@ -32,6 +33,12 @@ for (const [mode, r] of Object.entries(meta.rotations ?? {})) {
   if (!MODES.has(mode)) bad(w, "unknown mode");
   if (!r.name) bad(w, "missing name");
   for (const side of r.sides ?? []) for (const e of side.weaknesses ?? []) if (!ELEMENTS.has(e)) bad(w, `bad element ${e}`);
+  for (const b of r.bosses ?? []) {
+    if (!b.name) bad(w, "boss without name");
+    if (!/^https:\/\//.test(b.image ?? "")) bad(w, `boss ${b.name} needs an https image`);
+    if (b.side && !(r.sides ?? []).some((s) => s.label === b.side)) bad(w, `boss ${b.name} side "${b.side}" not in sides`);
+    images.push([w, b]);
+  }
   sources(w, r.sources);
 }
 
@@ -69,6 +76,19 @@ for (const [i, p] of (meta.buildPriority ?? []).entries()) {
   const w = `buildPriority[${i}]`;
   char(w, p.charId);
   sources(w, p.sources);
+}
+
+// --check-images: make sure every boss image actually loads (used by the weekly research)
+if (process.argv.includes("--check-images")) {
+  for (const [w, b] of images) {
+    try {
+      const res = await fetch(b.image, { method: "GET", redirect: "follow" });
+      const type = res.headers.get("content-type") ?? "";
+      if (!res.ok || !type.startsWith("image/")) bad(w, `boss image ${b.name}: HTTP ${res.status} ${type}`);
+    } catch (e) {
+      bad(w, `boss image ${b.name}: ${e.message}`);
+    }
+  }
 }
 
 if (problems.length) {

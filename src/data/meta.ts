@@ -16,8 +16,18 @@ export interface RotationSide {
   enemies?: string[];
 }
 
+export interface RotationBoss {
+  name: string;
+  /** Matches a sides[].label */
+  side?: string;
+  /** Direct image URL (wiki) */
+  image: string;
+  page?: string;
+}
+
 export interface Rotation {
   name: string;
+  bosses?: RotationBoss[];
   begin?: string;
   end?: string;
   summary?: string;

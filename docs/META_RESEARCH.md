@@ -23,6 +23,11 @@ AI 에이전트가 매주 이 지침대로 조사해서 `src/data/meta.json`을 
 ## 조사 항목
 
 1. **이번 기간 로테이션** (`rotations.moc / pf / as`): 기간 이름, 시작·종료일, 전반/후반 적 약점 속성, 주요 적, 기간 버프 요약.
+   각 구간의 대표 보스/정예 적 이미지(`bosses`, 로테이션당 최대 6개)도 넣는다. 이미지는 붕괴: 스타레일 Fandom 위키
+   (`https://honkai-star-rail.fandom.com/wiki/<적_이름>`)의 대표 이미지(static.wikia.nocookie.net 직접 링크, `/revision/latest` 형태)를 쓰고,
+   실제로 열리는지 확인한 주소만 넣는다. 못 찾으면 넣지 않는다.
+   ※ 2026-10 기준 Fandom 이미지는 봇 차단 때문에 앱에서 열리지 않아 `--check-images`를 통과하지 못한다.
+     통과하는 다른 직접 이미지 주소가 없으면 `bosses`는 비워 둔다 (차단 우회 금지).
 2. **추천 파티** (`teams`): 지금 메타에서 많이 쓰이는 파티. 멤버, 대체 가능 멤버, 어느 컨텐츠(moc/pf/as)에 맞는지, 짧은 설명.
 3. **이잘키 기준** (`benchmarks`): 캐릭터별로 "이 정도면 잘 키웠다"고 커뮤니티에서 통용되는 스탯 기준. 성혼 조건이 있으면 `eidolon`에 적는다.
 4. **파티별·돌파별 세팅** (`teamBuilds`): "평소엔 A 세트를 쓰지만 B 파티에선 C를 쓴다", "성혼 2부터는 속도 대신 …" 같은 예외 세팅.
@@ -44,6 +49,9 @@ AI 에이전트가 매주 이 지침대로 조사해서 `src/data/meta.json`을 
       "begin": "2026-09-28",
       "end": "2026-11-02",
       "summary": "기간 버프 요약",
+      "bosses": [
+        { "name": "적 이름", "side": "전반", "image": "https://static.wikia.nocookie.net/houkai-star-rail/images/...", "page": "https://honkai-star-rail.fandom.com/wiki/..." }
+      ],
       "sides": [
         { "label": "전반", "weaknesses": ["Fire", "Ice"], "enemies": ["적 이름"] },
         { "label": "후반", "weaknesses": ["Quantum"], "enemies": ["적 이름"] }
@@ -87,4 +95,4 @@ AI 에이전트가 매주 이 지침대로 조사해서 `src/data/meta.json`을 
 }
 ```
 
-끝나면 `node scripts/check-meta.mjs`로 형식과 ID를 검사하고, 통과하면 커밋한다.
+끝나면 `node scripts/check-meta.mjs --check-images`로 형식, ID, 보스 이미지가 실제로 열리는지 검사하고, 통과하면 커밋한다.

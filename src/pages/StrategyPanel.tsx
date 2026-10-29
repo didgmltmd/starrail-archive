@@ -4,6 +4,7 @@ import { auditCharacter } from "../lib/audit";
 import { CHALLENGE_NAMES } from "../lib/challenges";
 import type { Account, ChallengeKind, OwnedCharacter } from "../types";
 import { GradeBadge } from "./AuditPage";
+import { RemoteImg } from "../components/MetaBits";
 
 /** Researched info for the current period: weaknesses, recommended teams, characters worth building. */
 export function StrategyPanel({ kind, account }: { kind: ChallengeKind; account: Account }) {
@@ -51,6 +52,18 @@ export function StrategyPanel({ kind, account }: { kind: ChallengeKind; account:
             {rotation.summary && <p>{rotation.summary}</p>}
             {(rotation.sides ?? []).map((s) => (
               <div key={s.label} className="rotation-side">
+                {(rotation.bosses ?? []).filter((b) => b.side === s.label).length > 0 && (
+                  <div className="side-bosses">
+                    {(rotation.bosses ?? [])
+                      .filter((b) => b.side === s.label)
+                      .map((b) => (
+                        <div key={b.name} className="side-boss">
+                          <RemoteImg src={b.image} title={b.name} />
+                          <span>{b.name}</span>
+                        </div>
+                      ))}
+                  </div>
+                )}
                 <span className="side-label">{s.label}</span>
                 <div className="side-weak">
                   {(s.weaknesses ?? []).map((e) => (
