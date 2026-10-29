@@ -14,6 +14,6 @@ edit("src-tauri/tauri.conf.json", (s) => s.replace(/"version":\s*"[^"]+"/, `"ver
 edit("src-tauri/Cargo.toml", (s) => s.replace(/^version = "[^"]+"/m, `version = "${version}"`));
 
 console.log(`버전을 ${version}(으)로 바꿨어요. 이제:`);
-console.log(`  git commit -am "v${version}"`);
+console.log(`  git commit -am "chore: v${version} 릴리스"`);
 console.log(`  git tag v${version}`);
 console.log(`  git push && git push --tags`);
