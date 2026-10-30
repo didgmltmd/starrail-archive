@@ -17,6 +17,8 @@ export type StatKey =
   | "ERR"
   | "EHR"
   | "RES"
+  /** 환락도 (Elation path stat) */
+  | "ELA"
   | `${ElementId}_DMG`;
 
 /** Percent stats are stored as ratios (0.648 = 64.8%). */
@@ -64,6 +66,12 @@ export interface OwnedCharacter {
   relics: Relic[];
   /** Final in-game stats (HoYoLAB provides these, including traces). Computed when missing. */
   finalStats?: StatLine[];
+  /** Skill levels by skill id, eidolon bonus included (HoYoLAB) */
+  skills?: Record<string, number>;
+  /** Unlocked trace point ids (bonus abilities) */
+  traces?: string[];
+  /** Uses the enhanced (reworked) version of the kit */
+  enhanced?: boolean;
 }
 
 export type ChallengeKind = "moc" | "pf" | "as";

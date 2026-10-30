@@ -4,10 +4,12 @@
 import { applyRemoteBuilds } from "./builds";
 import { game } from "./game";
 import { applyRemoteMeta, type Meta } from "./meta";
+import { applyRemoteDmgKits, type DmgKits } from "./dmgkits";
+import { applyRemoteSkills, type SkillsData } from "./skills";
 import { applyRemoteSpeedKits, type SpeedKits } from "./speedkits";
 
 const BASE = "https://raw.githubusercontent.com/didgmltmd/starrail-archive/master/src/data/";
-const FILES = ["game.json", "builds.json", "meta.json", "speedkits.json"] as const;
+const FILES = ["game.json", "builds.json", "meta.json", "speedkits.json", "skills.json", "dmgkits.json"] as const;
 const CACHE_PREFIX = "sra.data.";
 
 type GameData = typeof game;
@@ -23,6 +25,8 @@ function apply(file: (typeof FILES)[number], data: unknown) {
   }
   if (file === "meta.json") return applyRemoteMeta(data as Meta);
   if (file === "speedkits.json") return applyRemoteSpeedKits(data as SpeedKits);
+  if (file === "skills.json") return applyRemoteSkills(data as SkillsData);
+  if (file === "dmgkits.json") return applyRemoteDmgKits(data as DmgKits);
   const b = data as { builds?: Record<string, unknown> };
   if (!b?.builds) return false;
   applyRemoteBuilds(b.builds);

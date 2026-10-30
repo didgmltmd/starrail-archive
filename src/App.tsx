@@ -57,7 +57,7 @@ const TABS: Record<Tab, { label: string; sub: string; icon: ReactNode }> = {
   audit: { label: "세팅 점검", sub: "BUILD CHECK", icon: <IconRelic /> },
   farm: { label: "파밍 추천", sub: "FARMING GUIDE", icon: <IconFarm /> },
   planner: { label: "육성 계산", sub: "PLANNER", icon: <IconPlanner /> },
-  teamsim: { label: "파티 속도 시뮬", sub: "TEAM SPEED", icon: <IconSpeed /> },
+  teamsim: { label: "파티 시뮬", sub: "PARTY SIM", icon: <IconSpeed /> },
   endgame: { label: "엔드 컨텐츠", sub: "END GAME", icon: <IconTrophy /> },
   warp: { label: "워프 기록", sub: "WARP RECORDS", icon: <IconWarp /> },
   income: { label: "월간 수입", sub: "MONTHLY INCOME", icon: <IconIncome /> },

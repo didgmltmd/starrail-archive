@@ -75,6 +75,15 @@ interface HyAvatar {
   relics?: HyRelic[];
   ornaments?: HyRelic[];
   properties?: { property_type: number; base: string; add: string; final: string }[];
+  skills?: HySkillPoint[];
+  cur_enhanced_id?: number | string;
+}
+interface HySkillPoint {
+  point_id: string;
+  point_type: number;
+  level: number;
+  is_activated?: boolean;
+  skill_stages?: { skill_id: string; level: number }[];
 }
 export interface SyncPayload {
   role: { game_uid: string; nickname: string; level: number; region: string };
@@ -104,6 +113,7 @@ export function keyFromName(name: string, percent: boolean): StatKey | undefined
   if (n.includes("energy")) return n.includes("regen") ? "ERR" : undefined;
   if (n.includes("effect hit")) return "EHR";
   if (n.includes("effect res")) return "RES";
+  if (n === "elation") return "ELA";
   if (n.includes("dmg")) return ELEMENT_WORDS.find(([w]) => n.includes(w))?.[1];
   if (n.includes("spd") || n.includes("speed")) return "SPD";
   if (/\bhp\b/.test(n)) return percent || n.includes("%") ? "HP_P" : "HP";
@@ -131,7 +141,7 @@ export function parseValue(v: string | number | undefined): { value: number; per
 }
 
 const POS: Record<number, RelicSlot> = { 1: "HEAD", 2: "HAND", 3: "BODY", 4: "FOOT", 5: "NECK", 6: "OBJECT" };
-const STAT_ORDER: StatKey[] = ["HP", "ATK", "DEF", "SPD", "CR", "CD", "BE", "OHB", "ERR", "EHR", "RES"];
+const STAT_ORDER: StatKey[] = ["HP", "ATK", "DEF", "SPD", "CR", "CD", "BE", "ELA", "OHB", "ERR", "EHR", "RES"];
 
 export function mapAccount(p: SyncPayload): { account: Account; unknownTypes: number[] } {
   const info = p.avatars.property_info ?? {};
@@ -186,6 +196,8 @@ export function mapAccount(p: SyncPayload): { account: Account; unknownTypes: nu
       lightCone: a.equip ? { id: String(a.equip.id), level: a.equip.level, superimposition: a.equip.rank } : undefined,
       relics: [...(a.relics ?? []), ...(a.ornaments ?? [])].map(mapRelic).filter((r): r is Relic => !!r),
       finalStats: finalStats.length ? finalStats : undefined,
+      ...skillInfo(a.skills),
+      enhanced: !!Number(a.cur_enhanced_id ?? 0) || undefined,
     };
   });
 
@@ -204,6 +216,26 @@ export function mapAccount(p: SyncPayload): { account: Account; unknownTypes: nu
     },
     unknownTypes: [...unknown],
   };
+}
+
+/** Skill levels (eidolon bonus included) and unlocked bonus abilities. */
+function skillInfo(points: HySkillPoint[] | undefined) {
+  if (!points?.length) return {};
+  const skills: Record<string, number> = {};
+  const traces: string[] = [];
+  for (const p of points) {
+    if (p.point_type === 3) {
+      if (p.is_activated) traces.push(String(p.point_id));
+      continue;
+    }
+    if (p.point_type !== 2 && p.point_type !== 4) continue;
+    for (const st of p.skill_stages ?? []) {
+      if (st.skill_id && st.skill_id !== "0") skills[String(st.skill_id)] = st.level || p.level;
+    }
+    // Keyed by point too, for skills HoYoLAB lists without an id (Elation skills)
+    skills[`point:${p.point_id}`] = p.level;
+  }
+  return { skills, traces };
 }
 
 function rank(k: StatKey) {

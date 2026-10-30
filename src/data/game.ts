@@ -91,6 +91,7 @@ export const STATS: Record<StatKey, StatDef> = {
   ERR: { name: "에너지 회복효율", percent: true, icon: "icon/property/IconEnergyRecovery.png" },
   EHR: { name: "효과 명중", percent: true, icon: "icon/property/IconStatusProbability.png" },
   RES: { name: "효과 저항", percent: true, icon: "icon/property/IconStatusResistance.png" },
+  ELA: { name: "환락도", percent: true, icon: "icon/property/IconJoy.png" },
   ...(ELEMENT_DMG as Record<`${ElementId}_DMG`, StatDef>),
 };
 
