@@ -4,27 +4,15 @@ import { IconStar } from "../components/icons";
 import { asset, game } from "../data/game";
 import { CHALLENGE_KINDS, CHALLENGE_NAMES, daysLeft, maxStars } from "../lib/challenges";
 import type { Account, ChallengeKind, ChallengePeriod, ChallengeTeam } from "../types";
-import { RemoteImg } from "../components/MetaBits";
-import { StrategyPanel } from "./StrategyPanel";
-import { meta } from "../data/meta";
+import { RemoteImg } from "../components/RemoteImg";
 import "../styles/endgame.css";
 
 type Which = "current" | "previous";
 
 const TEAM_LABEL = ["전반", "후반", "3번째"];
 
-export function EndgamePage({
-  account,
-  title,
-  showStrategy = true,
-}: {
-  account: Account;
-  title?: string;
-  /** Show the researched strategy / recommendations tab (my own account only) */
-  showStrategy?: boolean;
-}) {
+export function EndgamePage({ account }: { account: Account }) {
   const [which, setWhich] = useState<Which>("current");
-  const [view, setView] = useState<"records" | "strategy">("records");
   const [kind, setKind] = useState<ChallengeKind>("moc");
   const records = account.challenges?.[which];
   const period = records?.[kind];
@@ -44,7 +32,6 @@ export function EndgamePage({
   return (
     <div className="page endgame-page">
       <div className="endgame-top">
-        {title && <span className="endgame-owner">{title}</span>}
         <p className="endgame-lead">HoYoLAB에 기록된 실제 클리어 기록이에요.</p>
         <div className="toggle">
           {(
@@ -66,8 +53,7 @@ export function EndgamePage({
             key={k}
             kind={k}
             period={records?.[k]}
-            art={bossArt(k, records?.[k], which === "current")}
-            weak={which === "current" ? weaknesses(k, records?.[k]) : []}
+            art={bossArt(records?.[k])}
             active={kind === k}
             showDays={which === "current"}
             onClick={() => setKind(k)}
@@ -77,26 +63,14 @@ export function EndgamePage({
 
       <AnimatePresence mode="wait">
         <motion.div
-          key={which + kind + view}
+          key={which + kind}
           className="mode-detail"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
         >
-          {showStrategy && which === "current" && (
-            <div className="detail-tabs">
-              <button className={view === "records" ? "on" : ""} onClick={() => setView("records")}>
-                내 기록
-              </button>
-              <button className={view === "strategy" ? "on" : ""} onClick={() => setView("strategy")}>
-                공략 · 추천 파티
-              </button>
-            </div>
-          )}
-          {showStrategy && which === "current" && view === "strategy" ? (
-            <StrategyPanel kind={kind} account={account} />
-          ) : period?.hasData ? (
+          {period?.hasData ? (
             <PeriodDetail period={period} />
           ) : (
             <div className="endgame-empty small">이 기간에는 도전 기록이 없어요</div>
@@ -122,32 +96,15 @@ interface BossArt {
   image: string;
 }
 
-/**
- * Boss pictures for a mode card: HoYoLAB's own portraits when it sends them (Apocalyptic Shadow),
- * otherwise the researched wiki images, but only when they belong to this same period.
- */
-function bossArt(kind: ChallengeKind, period: ChallengePeriod | undefined, current: boolean): BossArt[] {
-  const own = (period?.bossIcons ?? [])
-    .map((image, i) => ({ name: period!.bosses[i] ?? "", image }))
-    .filter((b) => b.image);
-  if (own.length) return own;
-  const r = meta.rotations?.[kind];
-  if (!current || !r?.bosses?.length || (period?.name && r.name !== period.name)) return [];
-  return r.bosses.slice(0, 3).map((b) => ({ name: b.name, image: b.image }));
-}
-
-/** Elements the researched rotation lists as weaknesses (all sides), for cards without boss art. */
-function weaknesses(kind: ChallengeKind, period: ChallengePeriod | undefined): string[] {
-  const r = meta.rotations?.[kind];
-  if (!r || (period?.name && r.name !== period.name)) return [];
-  return [...new Set((r.sides ?? []).flatMap((s) => s.weaknesses ?? []))].slice(0, 5);
+/** Boss portraits HoYoLAB sends for a period (Apocalyptic Shadow only). */
+function bossArt(period: ChallengePeriod | undefined): BossArt[] {
+  return (period?.bossIcons ?? []).map((image, i) => ({ name: period!.bosses[i] ?? "", image })).filter((b) => b.image);
 }
 
 function ModeCard({
   kind,
   period,
   art,
-  weak,
   active,
   showDays,
   onClick,
@@ -155,7 +112,6 @@ function ModeCard({
   kind: ChallengeKind;
   period?: ChallengePeriod;
   art: BossArt[];
-  weak: string[];
   active: boolean;
   showDays: boolean;
   onClick: () => void;
@@ -164,21 +120,13 @@ function ModeCard({
   const max = period ? maxStars(period) : 0;
   return (
     <button
-      className={`mode-card mode-${kind} ${active ? "on" : ""} ${art.length || weak.length ? "has-bosses" : ""}`}
+      className={`mode-card mode-${kind} ${active ? "on" : ""} ${art.length ? "has-bosses" : ""}`}
       onClick={onClick}
     >
       <div className="mode-head">
         <span className="mode-kind">{CHALLENGE_NAMES[kind]}</span>
         {left !== null && <span className="mode-days num">D-{left}</span>}
       </div>
-      {art.length === 0 && weak.length > 0 && (
-        <div className="mode-weak" title="이번 기간 적 약점">
-          {weak.map((e) => (
-            <img key={e} src={asset(game.elements[e]?.icon ?? "")} alt="" title={game.elements[e]?.name} />
-          ))}
-          <span>약점</span>
-        </div>
-      )}
       {art.length > 0 && (
         <div className="mode-bosses">
           {art.map((b, i) => (

@@ -6,7 +6,7 @@ The party simulator (파티 시뮬) computes damage from three things:
 2. **Game data** (`src/data/skills.json`, regenerated daily by `scripts/sync-gamedata.mjs`): every skill's params per level, trace params, light cone params per superimposition, each skill's toughness reduction and energy.
 3. **Kits** (`src/data/dmgkits.json`, this guide): how each character, light cone and relic set behaves, written as data.
 
-The engine is `src/lib/combat/battle.ts` (types in `src/data/dmgkits.ts`). Speed-only effects (action advance, SPD buffs, countdowns, Aha SPD) live in `src/data/speedkits.json` (see `docs/META_RESEARCH.md`) and are merged automatically; **do not repeat them in dmgkits.json**. The one exception is an Aha extra turn (`ahaExtraTurn`), which belongs in dmgkits because it carries a fixed Punchline amount.
+The engine is `src/lib/combat/battle.ts` (types in `src/data/dmgkits.ts`). Speed-only effects (action advance, SPD buffs, countdowns, Aha SPD) live in `src/data/speedkits.json` (see `docs/SPEED_KITS.md`) and are merged automatically; **do not repeat them in dmgkits.json**. The one exception is an Aha extra turn (`ahaExtraTurn`), which belongs in dmgkits because it carries a fixed Punchline amount.
 
 ## Rules (the owner rejects made-up data)
 
