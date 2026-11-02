@@ -33,14 +33,6 @@ export const IconFarm = (p: P) => (
   </svg>
 );
 
-export const IconFriends = (p: P) => (
-  <svg {...base} {...p}>
-    <circle cx="9" cy="8" r="3.2" />
-    <path d="M3 19.5c.6-3.6 3-5.6 6-5.6s5.4 2 6 5.6" />
-    <path d="M15.5 4.9a3.2 3.2 0 0 1 0 6.2M17.5 14.2c2 .6 3.2 2.4 3.5 5.3" />
-  </svg>
-);
-
 export const IconLink = (p: P) => (
   <svg {...base} {...p}>
     <path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1" />

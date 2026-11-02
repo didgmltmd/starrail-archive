@@ -334,22 +334,3 @@ function TeamLine({ label, team, kind }: { label: string; team: ChallengeTeam; k
   );
 }
 
-/** Compact star summary used on friend cards. */
-export function ChallengeSummary({ account }: { account: Account }) {
-  const cur = account.challenges?.current;
-  if (!cur) return null;
-  return (
-    <div className="eg-summary">
-      {CHALLENGE_KINDS.map((k) => {
-        const p = cur[k];
-        return (
-          <span key={k} className="eg-summary-item" title={`${CHALLENGE_NAMES[k]} ${p?.name ?? ""}`}>
-            <em>{CHALLENGE_NAMES[k].slice(0, 2)}</em>
-            <IconStar className="on" />
-            <b className="num">{p?.hasData ? p.stars : "-"}</b>
-          </span>
-        );
-      })}
-    </div>
-  );
-}

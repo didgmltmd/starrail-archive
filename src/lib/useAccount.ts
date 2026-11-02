@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { mockAccount } from "../data/mock";
 import type { Account } from "../types";
-import { publishProfile } from "./friends";
 import {
   AUTO_SYNC_AFTER_MS,
   describeError,
@@ -25,7 +24,7 @@ export interface AccountState {
   syncing: boolean;
   loggingIn: boolean;
   error: string | null;
-  /** Problems that did not stop the sync (e.g. friend sharing failed) */
+  /** Problems that did not stop the sync */
   warning: string | null;
   canLink: boolean;
   sync: () => Promise<void>;
@@ -52,12 +51,6 @@ export function useAccount(): AccountState {
       setAccount(fresh);
       saveCachedAccount(fresh);
       if (unknownTypes.length) console.warn("Unknown HoYoLAB property types:", unknownTypes);
-      try {
-        await publishProfile(fresh);
-        setWarning(null);
-      } catch (e) {
-        setWarning(describeError(e).message);
-      }
     } catch (e) {
       const { code, message } = describeError(e);
       setError(message);

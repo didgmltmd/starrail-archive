@@ -26,14 +26,12 @@ pnpm sync:gamedata
 - **HoYoLAB 연동**: 앱 안에서 로그인 → 보유 캐릭터 전체 불러오기. 로그인 정보는 Windows 자격 증명에 저장
 - **세팅 점검 / 파밍 추천**: 캐릭터별 권장 세팅(hsr-optimizer 기준 + 직접 정리한 세트)과 비교해 점수, 문제점, 돌아야 할 동굴/차원장식 순위. 등급 필터, 육성 제외 캐릭터 지정
 - **엔드 컨텐츠**: 혼돈의 기억 / 허구 이야기 / 종말의 환영 이번·지난 기간 기록 (HoYoLAB 실제 기록: 별, 점수, 사용 파티, 버프, 보스)
-- **친구**: UID로 친구 추가, 서로 공개한 캐릭터와 엔드 컨텐츠 기록 보기. 서버는 방장 PC에서 실행 → [docs/FRIENDS_SERVER.md](docs/FRIENDS_SERVER.md)
 - **자동 업데이트**: GitHub Releases에 새 버전을 올리면 앱이 알아서 업데이트 → 설정: [docs/UPDATES.md](docs/UPDATES.md)
 
 ## 동기화 주기
 
 - 앱을 켤 때 마지막 동기화가 30분보다 오래됐으면 자동 동기화
 - 켜 둔 동안 1시간마다 자동 동기화, 상단의 동기화 버튼으로 언제든 수동 동기화
-- 친구 화면의 데이터는 그 친구가 마지막으로 동기화한 시점 기준
 
 ## 데이터 자동 갱신
 
@@ -53,7 +51,7 @@ pnpm sync:builds     # hsr-optimizer에서 캐릭터별 권장 주옵/부옵/세
 src/
   App.tsx              화면 전체 구성, 왼쪽 메뉴 탭 전환
   components/Shell.tsx 상단 바, 왼쪽 메뉴, 창 버튼, 배경
-  pages/               캐릭터 / 보유 캐릭터 / 세팅 점검 / 파밍 추천 / 친구 / 연동 화면
+  pages/               캐릭터 / 보유 캐릭터 / 세팅 점검 / 파밍 추천 / 연동 화면
   data/game.json       게임 데이터 (sync:gamedata로 생성)
   data/builds.json     캐릭터별 권장 세팅 (sync:builds로 생성), builds.ts에서 보정
   data/mock.ts         연동 전에 쓰는 샘플 계정
@@ -61,6 +59,5 @@ src/
   lib/useAccount.ts    연동 상태, 자동 동기화
   lib/audit.ts         성유물 점수, 세팅 점검
   lib/farming.ts       파밍 우선순위
-  lib/friends.ts       친구 공유 (방장 PC 서버: server/index.mjs)
 src-tauri/             데스크톱 앱 (Rust) — src/hoyolab.rs: 로그인 창, 쿠키 저장, HoYoLAB API
 ```

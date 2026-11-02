@@ -5,7 +5,6 @@ import { UpdateBanner } from "./components/UpdateBanner";
 import {
   IconCharacter,
   IconFarm,
-  IconFriends,
   IconIncome,
   IconLink,
   IconPlanner,
@@ -27,7 +26,6 @@ import { AuditPage } from "./pages/AuditPage";
 import { EndgamePage } from "./pages/EndgamePage";
 import { CharacterPage } from "./pages/CharacterPage";
 import { FarmPage } from "./pages/FarmPage";
-import { FriendsPage } from "./pages/FriendsPage";
 import { IncomePage } from "./pages/IncomePage";
 import { LinkPage } from "./pages/InfoPages";
 import { PlannerPage } from "./pages/PlannerPage";
@@ -47,7 +45,6 @@ type Tab =
   | "endgame"
   | "warp"
   | "income"
-  | "friends"
   | "link";
 
 const TABS: Record<Tab, { label: string; sub: string; icon: ReactNode }> = {
@@ -61,7 +58,6 @@ const TABS: Record<Tab, { label: string; sub: string; icon: ReactNode }> = {
   endgame: { label: "엔드 컨텐츠", sub: "END GAME", icon: <IconTrophy /> },
   warp: { label: "워프 기록", sub: "WARP RECORDS", icon: <IconWarp /> },
   income: { label: "월간 수입", sub: "MONTHLY INCOME", icon: <IconIncome /> },
-  friends: { label: "친구", sub: "FRIENDS", icon: <IconFriends /> },
   link: { label: "HoYoLAB 연동", sub: "ACCOUNT LINK", icon: <IconLink /> },
 };
 
@@ -137,7 +133,6 @@ export default function App() {
     { id: "warp", label: TABS.warp.label, icon: TABS.warp.icon },
     { id: "income", label: TABS.income.label, icon: TABS.income.icon },
     "divider",
-    { id: "friends", label: TABS.friends.label, icon: TABS.friends.icon },
     { id: "link", label: TABS.link.label, icon: TABS.link.icon, badge: demo ? "!" : undefined },
   ];
 
@@ -199,7 +194,6 @@ export default function App() {
           {tab === "income" && (
             <IncomePage state={income} warps={warps.data} linked={!!state.linked} onLink={() => setTab("link")} />
           )}
-          {tab === "friends" && <FriendsPage myAccount={account} />}
           {tab === "link" && <LinkPage state={state} />}
         </motion.div>
       </AnimatePresence>

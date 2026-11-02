@@ -31,8 +31,6 @@ GitHub 저장소 → Settings → Secrets and variables → Actions → **New re
 |---|---|
 | `TAURI_SIGNING_PRIVATE_KEY` | `starrail-archive.key` 파일 내용 전체 (메모장으로 열어서 복사) |
 | `TAURI_SIGNING_PRIVATE_KEY_PASSWORD` | 비워 둬도 되지만 GitHub는 빈 값을 못 넣으니, 이 항목은 **만들지 않아도 돼요** |
-| `VITE_SUPABASE_URL` | 친구 기능용 (docs/FRIENDS_SETUP.md 참고) |
-| `VITE_SUPABASE_ANON_KEY` | 친구 기능용 |
 
 ## 새 버전 내보내기 (매번)
 

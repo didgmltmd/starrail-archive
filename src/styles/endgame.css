@@ -329,34 +329,6 @@
   color: var(--text-dim);
 }
 
-/* ---------- Compact summary (friend cards) ---------- */
-
-.eg-summary {
-  display: flex;
-  gap: 8px;
-}
-.eg-summary-item {
-  display: flex;
-  align-items: center;
-  gap: 3px;
-  font-size: 12px;
-  color: var(--text-dim);
-}
-.eg-summary-item em {
-  font-style: normal;
-  font-size: 11px;
-  color: var(--text-faint);
-}
-.eg-summary-item svg {
-  width: 12px;
-  height: 12px;
-  color: var(--gold);
-}
-.eg-summary-item b {
-  font-size: 14px;
-  color: var(--text);
-}
-
 .floor-row.quick {
   padding: 10px 14px;
   background: rgba(12, 14, 22, 0.5);
