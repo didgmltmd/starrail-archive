@@ -3078,6 +3078,80 @@
     "325"
    ]
   },
+  "1514": {
+   "weights": {
+    "ATK": 1,
+    "ATK_P": 1,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "CR",
+     "CD",
+     "ATK_P"
+    ],
+    "FOOT": [
+     "ATK_P",
+     "SPD"
+    ],
+    "NECK": [
+     "ATK_P",
+     "Ice_DMG"
+    ],
+    "OBJECT": [
+     "ATK_P",
+     "ERR"
+    ]
+   },
+   "relicSets": [
+    [
+     "134",
+     "134"
+    ]
+   ],
+   "ornamentSets": [
+    "309"
+   ]
+  },
+  "1515": {
+   "weights": {
+    "ATK": 1,
+    "ATK_P": 1,
+    "SPD": 1,
+    "CR": 1,
+    "CD": 1
+   },
+   "mains": {
+    "BODY": [
+     "ATK_P",
+     "CR",
+     "CD"
+    ],
+    "FOOT": [
+     "ATK_P",
+     "SPD"
+    ],
+    "NECK": [
+     "ATK_P",
+     "Quantum_DMG"
+    ],
+    "OBJECT": [
+     "ATK_P",
+     "ERR"
+    ]
+   },
+   "relicSets": [
+    [
+     "134",
+     "134"
+    ]
+   ],
+   "ornamentSets": [
+    "309"
+   ]
+  },
   "8001": {
    "weights": {
     "ATK": 0.75,
