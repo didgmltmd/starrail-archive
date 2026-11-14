@@ -1221,7 +1221,8 @@
      "Imaginary_DMG"
     ],
     "OBJECT": [
-     "ATK_P"
+     "ATK_P",
+     "ERR"
     ]
    },
    "relicSets": [
